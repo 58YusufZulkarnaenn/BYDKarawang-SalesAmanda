@@ -79,7 +79,7 @@
 <!-- HERO -->
 <header id="top" class="relative min-h-[92vh] flex items-center pt-20 overflow-hidden bg-[#0B1220]">
   <div class="absolute inset-0 z-0">
-    <img src="hero-amanda.jpeg" alt="Amanda, Sales Executive BYD Harmony Karawang" class="w-full h-full object-cover object-[65%_20%]">
+    <img src="hero-amanda.jpg" alt="Amanda, Sales Executive BYD Harmony Karawang" class="w-full h-full object-cover object-[65%_20%]">
     <div class="absolute inset-0 bg-gradient-to-r from-[#0B1220] via-[#0B1220]/85 to-[#0B1220]/40"></div>
     <div class="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-transparent to-transparent"></div>
   </div>
@@ -459,26 +459,27 @@ function sendToWA() {
 
 /* ============ TESTIMONI ============ */
 /* Tambah entri baru di sini. Foto naruhnya di folder GitHub yang sama kayak gambar mobil. */
-const testimonials = [const testimonials = [
-  { img:'testi1.jpeg' },
+const testimonials = [
+  // { img:'testi1.jpeg', name:'Bapak Hj Endang', vehicle:'BYD Atto 1 Dynamic', quote:'Prosesnya cepat, Amanda bantu dari awal sampai unit sampai rumah.' },
 ];
-
 
 const testimoniGrid = document.getElementById('testimoniGrid');
 const testimoniEmpty = document.getElementById('testimoniEmpty');
 if (testimonials.length > 0) {
   testimoniEmpty.classList.add('hidden');
   testimonials.forEach(t => {
+    const hasInfo = t.name || t.vehicle;
+    const hasQuote = t.quote;
     testimoniGrid.innerHTML += `
-      <div class="bg-white border border-black/10 rounded-3xl p-6 flex flex-col">
-        <div class="flex items-center gap-3 mb-4">
-          <img src="${t.img}" alt="${t.name}" class="w-14 h-14 rounded-full object-cover bg-[#F3F5F7]" onerror="this.style.opacity=0.2">
-          <div>
-            <p class="font-semibold text-[#0B1220] text-sm">${t.name}</p>
-            <p class="text-[#0E7490] text-xs">${t.vehicle}</p>
-          </div>
-        </div>
-        <p class="text-[#5B6472] text-sm leading-relaxed">"${t.quote}"</p>
+      <div class="bg-white border border-black/10 rounded-3xl overflow-hidden flex flex-col">
+        <img src="${t.img}" alt="${t.name || 'Testimoni customer'}" class="w-full h-56 object-cover bg-[#F3F5F7]" onerror="this.style.opacity=0.2">
+        ${(hasInfo || hasQuote) ? `
+        <div class="p-6">
+          ${hasInfo ? `
+          <p class="font-semibold text-[#0B1220] text-sm">${t.name || ''}</p>
+          <p class="text-[#0E7490] text-xs mb-2">${t.vehicle || ''}</p>` : ''}
+          ${hasQuote ? `<p class="text-[#5B6472] text-sm leading-relaxed mt-2">"${t.quote}"</p>` : ''}
+        </div>` : ''}
       </div>`;
   });
 } else {
