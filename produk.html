@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Detail Produk | BYD Harmony Karawang</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --cyan: #22D3EE; --midnight: #0B1220; --porcelain: #F3F5F7; }
+  body { font-family: 'Inter', sans-serif; background: var(--porcelain); color: var(--midnight); }
+  .font-display { font-family: 'Space Grotesk', sans-serif; }
+  .fade-in { animation: fadeIn 0.5s ease-in-out; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  
+  /* Styling buat buletan warna biar rapi */
+  .color-btn { transition: all 0.2s; border: 2px solid transparent; }
+  .color-btn.active { border-color: var(--cyan); transform: scale(1.1); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- NAVBAR (Sama kaya landing page biar konsisten) -->
+<nav class="bg-[#0B1220] fixed w-full z-50 top-0 shadow-lg">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+    <a href="index.html" class="flex items-center gap-3">
+      <span class="bg-white rounded-xl px-3 py-2 flex items-center">
+        <img src="logo_byd_harmony_auto.webp" alt="BYD Harmony Auto" class="h-10 sm:h-12 w-auto object-contain">
+      </span>
+    </a>
+    <div class="hidden md:flex items-center gap-6">
+      <a href="index.html" class="text-sm font-medium text-white/70 hover:text-[#22D3EE] transition"><i class="fa-solid fa-arrow-left mr-2"></i>Kembali ke Beranda</a>
+      <a id="navWaBtn" href="#" target="_blank" class="bg-[#22D3EE] hover:bg-white text-[#0B1220] px-5 py-2.5 rounded-full text-sm font-semibold transition">Tanya Amanda</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<header id="heroSection" class="pt-28 pb-16 px-6 bg-gradient-to-b from-[#0B1220] to-[#111B2E] text-white overflow-hidden">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center fade-in">
+    <div>
+      <span id="heroCategory" class="text-[#22D3EE] text-xs font-semibold tracking-widest uppercase bg-[#22D3EE]/10 px-3 py-1 rounded-full border border-[#22D3EE]/20">Pure EV</span>
+      <h1 id="heroTitle" class="font-display text-5xl lg:text-7xl font-bold mt-4 mb-2 uppercase">BYD CAR</h1>
+      <p id="heroTagline" class="text-white/60 text-lg mb-8">Tagline mobil ada disini.</p>
+      
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm inline-block w-full max-w-md">
+        <p class="text-white/50 text-xs uppercase tracking-wider mb-1">Mulai Dari</p>
+        <p id="heroPrice" class="font-display text-3xl font-bold text-[#22D3EE]">Rp 0</p>
+        <div class="flex gap-4 mt-6">
+          <a id="btnTestDrive" href="#" target="_blank" class="flex-1 text-center bg-[#22D3EE] hover:bg-white text-[#0B1220] font-semibold py-3 rounded-xl transition">Test Drive</a>
+          <a id="btnSimulasi" href="#" target="_blank" class="flex-1 text-center border border-white/20 hover:bg-white/10 text-white font-semibold py-3 rounded-xl transition">Minta Simulasi</a>
+        </div>
+      </div>
+    </div>
+    <div class="relative flex justify-center items-center">
+      <div class="absolute w-[120%] h-[120%] bg-[#22D3EE]/10 rounded-full blur-[80px] -z-10"></div>
+      <img id="heroImg" src="seal.webp" alt="Car" class="w-full max-w-2xl object-contain drop-shadow-2xl">
+    </div>
+  </div>
+</header>
+
+<!-- SPESIFIKASI UTAMA (4 GRID) -->
+<section class="py-12 px-6 max-w-7xl mx-auto -mt-10 relative z-10">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="specGrid">
+    <!-- Diisi otomatis lewat JS -->
+  </div>
+</section>
+
+<!-- PILIHAN WARNA (Replikasi dari image_3d6190.jpg) -->
+<section class="py-20 px-6 bg-white border-t border-black/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="inline-block bg-[#F8F9FA] border border-[#E5E7EB] text-[#1F2937] font-semibold px-6 py-2.5 rounded-br-2xl rounded-tr-sm rounded-l-sm shadow-sm mb-10">
+      Pilihan Warna
+    </div>
+    
+    <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
+      <!-- Gambar Mobil Gede -->
+      <div class="flex-1 flex justify-center relative w-full">
+        <!-- Bayangan di bawah mobil biar realistis -->
+        <div class="absolute bottom-0 w-3/4 h-10 bg-black/20 blur-xl rounded-[100%]"></div>
+        <img id="colorDisplayImg" src="" alt="Pilihan Warna" class="w-full max-w-3xl object-contain relative z-10 transition-all duration-300">
+      </div>
+      
+      <!-- Panel Warna (Kanan) -->
+      <div class="bg-[#FAFAFA] border border-[#F3F4F6] p-8 rounded-2xl w-full lg:w-64 flex flex-col gap-6 shadow-sm">
+        <div id="colorSwatches" class="flex flex-row lg:flex-col justify-center items-center gap-6 flex-wrap">
+          <!-- Diisi otomatis lewat JS -->
+        </div>
+      </div>
+    </div>
+    
+    <p class="text-center text-xs text-[#6B7280] mt-12">
+      *Pilihan warna mungkin sedikit berbeda dengan warna mobil sebenarnya
+    </p>
+  </div>
+</section>
+
+<!-- PILIHAN VARIAN -->
+<section class="py-20 px-6 bg-[#F3F5F7] border-t border-black/5">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="font-display text-3xl font-bold text-[#0B1220] mb-10">Varian Tersedia</h2>
+    <div id="variantList" class="flex flex-col gap-4">
+      <!-- Diisi otomatis lewat JS -->
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-[#0B1220] text-white/40 py-10 px-6 text-center text-xs">
+  <p>&copy; 2026 BYD Harmony Karawang. All rights reserved. Official Sales: Amanda.</p>
+</footer>
+
+<script>
+/* ============ DATABASE SPESIFIKASI MOBIL ============ */
+const dbProduk = {
+  seal: {
+    nama: "BYD SEAL",
+    tagline: "Ocean Aesthetics. Pure Performance.",
+    kategori: "Pure EV Sedan",
+    hargaBawah: "Rp 629.000.000",
+    heroImg: "seal.webp",
+    spek: [
+      { ikon: "fa-battery-full", judul: "82.56 kWh", sub: "Blade Battery" },
+      { ikon: "fa-route", judul: "650 km", sub: "Jarak Tempuh (NEDC)" },
+      { ikon: "fa-stopwatch", judul: "3.8s", sub: "Akselerasi 0-100 km/h" },
+      { ikon: "fa-bolt", judul: "150 kW", sub: "DC Fast Charging" }
+    ],
+    warna: [
+      { nama: "Atlantis Grey", hex: "#4C5866", img: "seal.webp" }, // Tinggal ganti nama file kalau gambarnya udah ada
+      { nama: "Arctic Blue", hex: "#3B597B", img: "seal.webp" },
+      { nama: "Aurora White", hex: "#F4F4F4", img: "seal.webp" },
+      { nama: "Cosmos Black", hex: "#111111", img: "seal.webp" }
+    ],
+    varian: [
+      { nama: "BYD Seal Premium", harga: "Rp 629.000.000" },
+      { nama: "BYD Seal Performance (AWD)", harga: "Rp 719.000.000" }
+    ]
+  },
+  atto3: {
+    nama: "BYD ATTO 3",
+    tagline: "Kenyamanan Ekstra, Desain Dinamis.",
+    kategori: "Pure EV SUV",
+    hargaBawah: "Rp 515.000.000",
+    heroImg: "atto3.webp",
+    spek: [
+      { ikon: "fa-battery-full", judul: "60.48 kWh", sub: "Blade Battery" },
+      { ikon: "fa-route", judul: "480 km", sub: "Jarak Tempuh (NEDC)" },
+      { ikon: "fa-stopwatch", judul: "7.3s", sub: "Akselerasi 0-100 km/h" },
+      { ikon: "fa-car-side", judul: "204 PS", sub: "Tenaga Motor" }
+    ],
+    warna: [
+      { nama: "Surf Blue", hex: "#4A80A6", img: "atto3.webp" },
+      { nama: "Ski White", hex: "#F5F5F5", img: "atto3.webp" },
+      { nama: "Boulder Grey", hex: "#6C7378", img: "atto3.webp" }
+    ],
+    varian: [
+      { nama: "BYD Atto 3 Advanced", harga: "Rp 515.000.000" },
+      { nama: "BYD Atto 3 Superior", harga: "Rp 550.000.000" }
+    ]
+  },
+  m6: {
+    nama: "BYD M6",
+    tagline: "MPV EV Pertama di Indonesia.",
+    kategori: "Pure EV 7-Seater",
+    hargaBawah: "Rp 379.000.000",
+    heroImg: "m6.webp",
+    spek: [
+      { ikon: "fa-battery-full", judul: "71.8 kWh", sub: "Blade Battery" },
+      { ikon: "fa-route", judul: "530 km", sub: "Jarak Tempuh (NEDC)" },
+      { ikon: "fa-users", judul: "7 Penumpang", sub: "Kapasitas Kabin Luas" },
+      { ikon: "fa-suitcase", judul: "580 L", sub: "Kapasitas Bagasi" }
+    ],
+    warna: [
+      { nama: "Crystal White", hex: "#F3F4F6", img: "m6.webp" },
+      { nama: "Ink Stone Blue", hex: "#2B3C5A", img: "m6.webp" },
+      { nama: "Cosmos Black", hex: "#1A1A1A", img: "m6.webp" }
+    ],
+    varian: [
+      { nama: "BYD M6 Standard 7-Seater", harga: "Rp 379.000.000" },
+      { nama: "BYD M6 Superior 7-Seater", harga: "Rp 419.000.000" },
+      { nama: "BYD M6 Superior Captain Seat", harga: "Rp 429.000.000" }
+    ]
+  },
+  dolphin: {
+    nama: "BYD DOLPHIN",
+    tagline: "Lincah Mengeksplorasi Kota.",
+    kategori: "Pure EV Hatchback",
+    hargaBawah: "Rp 425.000.000",
+    heroImg: "dolphin.webp",
+    spek: [
+      { ikon: "fa-battery-full", judul: "60.48 kWh", sub: "Blade Battery" },
+      { ikon: "fa-route", judul: "490 km", sub: "Jarak Tempuh (NEDC)" },
+      { ikon: "fa-stopwatch", judul: "7.0s", sub: "Akselerasi 0-100 km/h" },
+      { ikon: "fa-shield-halved", judul: "5 Bintang", sub: "Euro NCAP Safety" }
+    ],
+    warna: [
+      { nama: "Maldive Purple", hex: "#8A6D8F", img: "dolphin.webp" },
+      { nama: "Coral Pink", hex: "#D99395", img: "dolphin.webp" },
+      { nama: "Sand White", hex: "#F1EEE9", img: "dolphin.webp" }
+    ],
+    varian: [
+      { nama: "BYD Dolphin Dynamic", harga: "Rp 425.000.000" },
+      { nama: "BYD Dolphin Premium", harga: "Rp 490.000.000" }
+    ]
+  },
+  atto1: {
+    nama: "BYD ATTO 1",
+    tagline: "City Car Compact & Lincah.",
+    kategori: "Pure EV Compact",
+    hargaBawah: "Rp 202.500.000",
+    heroImg: "atto1.webp",
+    spek: [
+      { ikon: "fa-battery-full", judul: "38.88 kWh", sub: "Blade Battery" },
+      { ikon: "fa-route", judul: "405 km", sub: "Jarak Tempuh (NEDC)" },
+      { ikon: "fa-car", judul: "Desain Compact", sub: "Cocok untuk Perkotaan" },
+      { ikon: "fa-bolt", judul: "40 kW", sub: "DC Fast Charging" }
+    ],
+    warna: [
+      { nama: "Sprout Green", hex: "#B8C9A6", img: "atto1.webp" },
+      { nama: "Polar White", hex: "#F8F9FA", img: "atto1.webp" }
+    ],
+    varian: [
+      { nama: "BYD Atto 1 Standard", harga: "Rp 202.500.000" },
+      { nama: "BYD Atto 1 Dynamic", harga: "Rp 213.500.000" },
+      { nama: "BYD Atto 1 Premium", harga: "Rp 248.500.000" }
+    ]
+  },
+  sealion7: {
+    nama: "SEALION 7",
+    tagline: "Premium SUV Performa Tinggi.",
+    kategori: "Pure EV Premium SUV",
+    hargaBawah: "Rp 882.500.000",
+    heroImg: "sealion7.webp",
+    spek: [
+      { ikon: "fa-battery-full", judul: "82.5 kWh", sub: "Blade Battery" },
+      { ikon: "fa-route", judul: "610 km", sub: "Jarak Tempuh (NEDC)" },
+      { ikon: "fa-stopwatch", judul: "4.5s", sub: "Akselerasi 0-100 km/h" },
+      { ikon: "fa-truck-fast", judul: "AWD", sub: "Sistem Penggerak" }
+    ],
+    warna: [
+      { nama: "Shark Grey", hex: "#5C5F66", img: "sealion7.webp" },
+      { nama: "Ocean Blue", hex: "#2C4A6B", img: "sealion7.webp" }
+    ],
+    varian: [
+      { nama: "Sealion 7 Extended", harga: "Rp 882.500.000" }
+    ]
+  },
+  m6dm: {
+    nama: "BYD M6 DM",
+    tagline: "Efisiensi Hybrid Maksimal.",
+    kategori: "PHEV 7-Seater",
+    hargaBawah: "Rp 302.000.000",
+    heroImg: "m6-dm.png",
+    spek: [
+      { ikon: "fa-gas-pump", judul: "1050 km", sub: "Jarak Tempuh Kombinasi" },
+      { ikon: "fa-battery-full", judul: "18.3 kWh", sub: "Kapasitas Baterai PHEV" },
+      { ikon: "fa-leaf", judul: "DM-i Tech", sub: "Super Hybrid System" },
+      { ikon: "fa-users", judul: "7 Penumpang", sub: "Kapasitas Kabin" }
+    ],
+    warna: [
+      { nama: "Silver Sand", hex: "#C0C2C4", img: "m6-dm.png" },
+      { nama: "Crystal White", hex: "#F8F9FA", img: "m6-dm.png" }
+    ],
+    varian: [
+      { nama: "BYD M6 DM Classic Standard", harga: "Rp 302.000.000" },
+      { nama: "BYD M6 DM Classic Dynamic", harga: "Rp 322.000.000" }
+    ]
+  },
+  denza: {
+    nama: "DENZA D9",
+    tagline: "Luxury MPV Kelas Atas.",
+    kategori: "Premium EV MPV",
+    hargaBawah: "Rp 944.000.000",
+    heroImg: "denza-d9.webp",
+    spek: [
+      { ikon: "fa-battery-full", judul: "103 kWh", sub: "Blade Battery" },
+      { ikon: "fa-route", judul: "620 km", sub: "Jarak Tempuh" },
+      { ikon: "fa-chair", judul: "VIP Seats", sub: "Kursi Pijat & Pemanas" },
+      { ikon: "fa-tv", judul: "7 Screens", sub: "Sistem Hiburan Kabin" }
+    ],
+    warna: [
+      { nama: "Night Black", hex: "#111111", img: "denza-d9.webp" },
+      { nama: "Pearl White", hex: "#F3F4F5", img: "denza-d9.webp" }
+    ],
+    varian: [
+      { nama: "Denza D9 (Tanpa Home Charging)", harga: "Rp 944.000.000" },
+      { nama: "Denza D9 (Dengan Home Charging)", harga: "Rp 953.000.000" }
+    ]
+  }
+};
+
+/* ============ LOGIC HALAMAN ============ */
+// 1. Ambil ID dari URL (?id=seal)
+const urlParams = new URLSearchParams(window.location.search);
+const carId = urlParams.get('id') || 'seal'; // Kalau kosong, default ke seal
+const data = dbProduk[carId];
+
+// Kalau ID ngaco, lempar ke home
+if (!data) window.location.href = 'index.html';
+
+// 2. Isi data ke Hero Section
+document.title = `${data.nama} | BYD Harmony Karawang`;
+document.getElementById('heroCategory').innerText = data.kategori;
+document.getElementById('heroTitle').innerText = data.nama;
+document.getElementById('heroTagline').innerText = data.tagline;
+document.getElementById('heroPrice').innerText = data.hargaBawah;
+document.getElementById('heroImg').src = data.heroImg;
+
+// 3. Setup Link WhatsApp
+const waNumber = "6287897999648"; // Nomor Amanda
+const waTextTestDrive = `Halo Amanda, saya mau jadwalkan Test Drive untuk mobil *${data.nama}*. Bisa dibantu prosesnya?`;
+const waTextSimulasi = `Halo Amanda, boleh minta info promo dan simulasi kredit lengkap untuk mobil *${data.nama}*?`;
+const waTextUmum = `Halo Amanda, saya mau tanya-tanya seputar mobil *${data.nama}*.`;
+
+document.getElementById('btnTestDrive').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(waTextTestDrive)}`;
+document.getElementById('btnSimulasi').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(waTextSimulasi)}`;
+document.getElementById('navWaBtn').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(waTextUmum)}`;
+
+// 4. Bikin Grid Spesifikasi
+const specGrid = document.getElementById('specGrid');
+data.spek.forEach(s => {
+  specGrid.innerHTML += `
+    <div class="bg-white border border-black/10 rounded-2xl p-6 shadow-sm flex flex-col items-center text-center">
+      <i class="fa-solid ${s.ikon} text-2xl text-[#22D3EE] mb-4 bg-[#22D3EE]/10 p-3 rounded-full"></i>
+      <h3 class="font-display font-bold text-[#0B1220] text-xl mb-1">${s.judul}</h3>
+      <p class="text-[#5B6472] text-xs">${s.sub}</p>
+    </div>
+  `;
+});
+
+// 5. Setup UI Pilihan Warna
+const colorSwatches = document.getElementById('colorSwatches');
+const colorDisplayImg = document.getElementById('colorDisplayImg');
+
+// Set warna default (warna pertama dari array)
+colorDisplayImg.src = data.warna[0].img;
+
+data.warna.forEach((w, index) => {
+  // Bikin button bulet untuk tiap warna
+  const btn = document.createElement('button');
+  btn.className = `color-btn flex flex-col items-center gap-2 outline-none group ${index === 0 ? 'active' : ''}`;
+  
+  btn.innerHTML = `
+    <div class="w-12 h-12 rounded-full shadow-inner border border-black/10 transition-transform group-hover:scale-110" style="background-color: ${w.hex};"></div>
+    <span class="text-xs font-medium text-[#4B5563]">${w.nama}</span>
+  `;
+  
+  // Logic pas diklik ganti gambar dan ganti state 'active'
+  btn.onclick = () => {
+    // Ubah gambar mobil (kasih efek fade kecil)
+    colorDisplayImg.style.opacity = '0.5';
+    setTimeout(() => {
+      colorDisplayImg.src = w.img;
+      colorDisplayImg.style.opacity = '1';
+    }, 150);
+    
+    // Ganti class active di tombol
+    document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  };
+  
+  colorSwatches.appendChild(btn);
+});
+
+// 6. Bikin List Varian & Harga
+const variantList = document.getElementById('variantList');
+data.varian.forEach(v => {
+  variantList.innerHTML += `
+    <div class="bg-white border border-black/5 rounded-2xl p-6 flex flex-col sm:flex-row justify-between items-center shadow-sm hover:shadow-md transition">
+      <h3 class="font-bold text-[#0B1220] text-lg">${v.nama}</h3>
+      <div class="text-right mt-2 sm:mt-0">
+        <p class="text-xs text-[#5B6472] uppercase tracking-wider mb-1">Estimasi OTR</p>
+        <p class="font-display font-bold text-[#22D3EE] text-xl">${v.harga}</p>
+      </div>
+    </div>
+  `;
+});
+</script>
+</body>
+</html>
