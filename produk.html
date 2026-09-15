@@ -37,25 +37,29 @@
 </nav>
 
 <!-- HERO SECTION -->
-<header id="heroSection" class="pt-28 pb-16 px-6 bg-gradient-to-b from-[#0B1220] to-[#111B2E] text-white overflow-hidden">
-  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center fade-in">
-    <div>
-      <span id="heroCategory" class="text-[#22D3EE] text-xs font-semibold tracking-widest uppercase bg-[#22D3EE]/10 px-3 py-1 rounded-full border border-[#22D3EE]/20">Pure EV</span>
-      <h1 id="heroTitle" class="font-display text-5xl lg:text-7xl font-bold mt-4 mb-2 uppercase">BYD CAR</h1>
-      <p id="heroTagline" class="text-white/60 text-lg mb-8">Tagline mobil ada disini.</p>
+<header id="heroSection" class="relative pt-32 pb-28 px-6 min-h-[75vh] flex items-center overflow-hidden">
+  <!-- Background Image Full -->
+  <div class="absolute inset-0 z-0">
+    <img id="heroImg" src="seal.webp" alt="Car" class="w-full h-full object-cover object-center">
+    <!-- Overlay Gradient (Biar foto menyatu & teks tetep kebaca) -->
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-[#0B1220]/80 to-transparent lg:bg-gradient-to-r lg:from-[#0B1220] lg:via-[#0B1220]/90 lg:to-[#0B1220]/20"></div>
+  </div>
+  
+  <!-- Content Hero (Teks & Tombol) -->
+  <div class="relative z-10 max-w-7xl mx-auto w-full fade-in">
+    <div class="max-w-2xl"> <!-- Teks agak dibatesin lebarnya biar ga nutupin mobil di kanan -->
+      <span id="heroCategory" class="text-[#22D3EE] text-xs font-semibold tracking-widest uppercase bg-[#22D3EE]/20 px-3 py-1 rounded-full border border-[#22D3EE]/30 backdrop-blur-md">Pure EV</span>
+      <h1 id="heroTitle" class="font-display text-5xl lg:text-7xl font-bold mt-4 mb-2 uppercase text-white drop-shadow-lg">BYD CAR</h1>
+      <p id="heroTagline" class="text-white/80 text-lg mb-8 drop-shadow-md">Tagline mobil ada disini.</p>
       
-      <div class="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm inline-block w-full max-w-md">
-        <p class="text-white/50 text-xs uppercase tracking-wider mb-1">Mulai Dari</p>
+      <div class="bg-[#0B1220]/60 border border-white/10 rounded-2xl p-6 backdrop-blur-md inline-block w-full max-w-md shadow-2xl">
+        <p class="text-white/60 text-xs uppercase tracking-wider mb-1">Mulai Dari</p>
         <p id="heroPrice" class="font-display text-3xl font-bold text-[#22D3EE]">Rp 0</p>
         <div class="flex gap-4 mt-6">
           <a id="btnTestDrive" href="#" target="_blank" class="flex-1 text-center bg-[#22D3EE] hover:bg-white text-[#0B1220] font-semibold py-3 rounded-xl transition">Test Drive</a>
           <a id="btnSimulasi" href="#" target="_blank" class="flex-1 text-center border border-white/20 hover:bg-white/10 text-white font-semibold py-3 rounded-xl transition">Minta Simulasi</a>
         </div>
       </div>
-    </div>
-    <div class="relative flex justify-center items-center">
-      <div class="absolute w-[120%] h-[120%] bg-[#22D3EE]/10 rounded-full blur-[80px] -z-10"></div>
-      <img id="heroImg" src="seal.webp" alt="Car" class="w-full max-w-2xl object-contain drop-shadow-2xl">
     </div>
   </div>
 </header>
