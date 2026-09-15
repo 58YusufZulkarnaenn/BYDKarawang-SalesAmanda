@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BYD Harmony Karawang | Dealer Resmi BYD & Denza — Amanda Official</title>
 <meta name="description" content="Dealer resmi BYD & Denza di Karawang. Simulasi kredit MUF lengkap, test drive ke rumah, promo September. Hubungi Amanda untuk penawaran terbaik.">
+<meta name="keywords" content="BYD Karawang, Dealer BYD Karawang, BYD M6, BYD Seal, Promo BYD, Sales BYD Karawang">
 <meta property="og:title" content="BYD Harmony Karawang — Dealer Resmi BYD & Denza">
 <meta property="og:description" content="Simulasi kredit lengkap, katalog 8 lineup, lokasi showroom, dan kontak langsung Amanda, Sales Executive BYD Harmony Karawang.">
 <meta property="og:image" content="logo_byd_harmony_auto.webp">
@@ -24,19 +25,14 @@
   }
   body{font-family:'Inter',sans-serif; background:var(--porcelain); color:var(--midnight);}
   .font-display{font-family:'Space Grotesk',sans-serif;}
-  .voltage-bg{
-    background-color:var(--midnight);
-    background-image:
-      radial-gradient(circle at 15% 20%, rgba(34,211,238,0.18), transparent 40%),
-      radial-gradient(circle at 85% 0%, rgba(34,211,238,0.10), transparent 35%);
+  
+  /* Animasi Slider */
+  .fade-in { animation: fadeIn 0.5s ease-in-out; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.98); }
+    to { opacity: 1; transform: scale(1); }
   }
-  .line-grid{
-    background-image: linear-gradient(rgba(34,211,238,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,0.08) 1px, transparent 1px);
-    background-size: 56px 56px;
-  }
-  .cat-card{transition: transform .25s ease, box-shadow .25s ease;}
-  .cat-card:hover{transform: translateY(-4px);}
-  .filter-btn.active{background:var(--midnight); color:#fff;}
+  
   ::-webkit-scrollbar{height:8px; width:8px;}
   ::-webkit-scrollbar-thumb{background:#c7cdd4; border-radius:8px;}
   details summary::-webkit-details-marker{display:none;}
@@ -51,29 +47,48 @@
 <nav class="bg-[#0B1220]/95 backdrop-blur-md fixed w-full z-50 top-0 border-b border-white/10">
   <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
     <a href="#top" class="flex items-center gap-3">
-  <span class="bg-white rounded-xl px-3 py-2 flex items-center">
-    <img src="logo_byd_harmony_auto.webp" alt="BYD Harmony Auto Karawang" class="h-10 sm:h-12 w-auto object-contain">
-  </span>
-  <span class="hidden sm:inline text-white/40 text-xs font-medium tracking-widest uppercase pl-3 border-l border-white/20">Karawang</span>
-</a>
+      <span class="bg-white rounded-xl px-3 py-2 flex items-center shadow-lg">
+        <img src="logo_byd_harmony_auto.webp" alt="BYD Harmony Auto Karawang" class="h-10 sm:h-12 w-auto object-contain">
+      </span>
+      <span class="hidden sm:inline text-white/40 text-xs font-medium tracking-widest uppercase pl-3 border-l border-white/20">Karawang</span>
+    </a>
+    
     <div class="hidden md:flex items-center gap-8">
-      <a href="#katalog" class="text-sm font-medium text-white/70 hover:text-[#22D3EE] transition">Lineup</a>
+      <!-- Dropdown Menu Product -->
+      <div class="relative group">
+        <button class="text-sm font-medium text-white/70 hover:text-[#22D3EE] transition flex items-center gap-1.5 py-2">
+          Product <i class="fa-solid fa-chevron-down text-[10px] group-hover:rotate-180 transition duration-300"></i>
+        </button>
+        <div class="absolute top-full left-0 w-48 bg-[#111B2E] border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col overflow-hidden">
+          <a href="produk.html?id=seal" class="px-4 py-3 text-sm text-white/80 hover:bg-[#22D3EE] hover:text-[#0B1220] transition">BYD SEAL</a>
+          <a href="produk.html?id=atto3" class="px-4 py-3 text-sm text-white/80 hover:bg-[#22D3EE] hover:text-[#0B1220] transition">BYD ATTO 3</a>
+          <a href="produk.html?id=m6" class="px-4 py-3 text-sm text-white/80 hover:bg-[#22D3EE] hover:text-[#0B1220] transition">BYD M6</a>
+          <a href="produk.html?id=dolphin" class="px-4 py-3 text-sm text-white/80 hover:bg-[#22D3EE] hover:text-[#0B1220] transition">BYD DOLPHIN</a>
+        </div>
+      </div>
       <a href="#simulasi" class="text-sm font-medium text-white/70 hover:text-[#22D3EE] transition">Simulasi Kredit</a>
       <a href="#lokasi" class="text-sm font-medium text-white/70 hover:text-[#22D3EE] transition">Lokasi</a>
       <a href="#faq" class="text-sm font-medium text-white/70 hover:text-[#22D3EE] transition">FAQ</a>
       <a href="https://wa.me/6287897999648?text=Halo%20Amanda,%20saya%20mau%20tanya%20promo%20mobil%20BYD." target="_blank" class="bg-[#22D3EE] hover:bg-white text-[#0B1220] px-5 py-2.5 rounded-full text-sm font-semibold transition">Hubungi Amanda</a>
     </div>
+    
     <button id="menuBtn" class="md:hidden text-white text-xl w-10 h-10 flex items-center justify-center">
       <i class="fa-solid fa-bars"></i>
     </button>
   </div>
+  
   <div id="mobileMenu" class="md:hidden overflow-hidden max-h-0 bg-[#0B1220] border-t border-white/10">
     <div class="flex flex-col px-6 py-4 gap-4">
-      <a href="#katalog" class="text-white/80 text-sm font-medium">Lineup</a>
-      <a href="#simulasi" class="text-white/80 text-sm font-medium">Simulasi Kredit</a>
+      <div class="flex flex-col gap-2">
+        <span class="text-white/40 text-xs font-semibold tracking-widest uppercase">Products</span>
+        <a href="produk.html?id=seal" class="text-white/90 text-sm pl-2 border-l border-white/20">BYD SEAL</a>
+        <a href="produk.html?id=atto3" class="text-white/90 text-sm pl-2 border-l border-white/20">BYD ATTO 3</a>
+        <a href="produk.html?id=m6" class="text-white/90 text-sm pl-2 border-l border-white/20">BYD M6</a>
+      </div>
+      <a href="#simulasi" class="text-white/80 text-sm font-medium mt-2">Simulasi Kredit</a>
       <a href="#lokasi" class="text-white/80 text-sm font-medium">Lokasi</a>
       <a href="#faq" class="text-white/80 text-sm font-medium">FAQ</a>
-      <a href="https://wa.me/6287897999648" target="_blank" class="bg-[#22D3EE] text-[#0B1220] text-center px-5 py-2.5 rounded-full text-sm font-semibold">Hubungi Amanda</a>
+      <a href="https://wa.me/6287897999648" target="_blank" class="bg-[#22D3EE] text-[#0B1220] text-center px-5 py-2.5 rounded-full text-sm font-semibold mt-2">Hubungi Amanda</a>
     </div>
   </div>
 </nav>
@@ -98,7 +113,7 @@
           8 lineup BYD &amp; Denza — dari city car sampai luxury MPV — siap dites langsung di Karawang. Simulasi kredit MUF, test drive ke rumah, proses transparan bareng Amanda.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#katalog" class="bg-[#22D3EE] hover:bg-white text-[#0B1220] font-semibold px-7 py-3.5 rounded-full text-center transition">Lihat Lineup</a>
+          <a href="#product-slider" class="bg-[#22D3EE] hover:bg-white text-[#0B1220] font-semibold px-7 py-3.5 rounded-full text-center transition">Lihat Lineup</a>
           <a href="#simulasi" class="border border-white/25 text-white hover:bg-white/10 font-semibold px-7 py-3.5 rounded-full text-center transition">Hitung Cicilan</a>
         </div>
       </div>
@@ -124,24 +139,23 @@
   </div>
 </header>
 
-<!-- KATALOG -->
-<section id="katalog" class="py-24 px-6 max-w-7xl mx-auto">
-  <div class="max-w-2xl mb-4">
-    <span class="text-xs font-semibold tracking-widest uppercase text-[#0E7490]">Lineup</span>
-    <h2 class="font-display text-3xl sm:text-4xl font-bold text-[#0B1220] mt-2 mb-4">Pilih tipe yang cocok sama gaya hidup lo</h2>
-    <p class="text-[#5B6472] text-base">Dari city car harian sampai luxury MPV untuk keluarga besar — semua tersedia untuk test drive langsung.</p>
+<!-- SECTION SLIDER PRODUK -->
+<section id="product-slider" class="relative bg-[#a1a7b0] w-full min-h-[80vh] flex items-center justify-center overflow-hidden">
+  <div id="sliderContent" class="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col items-center text-center fade-in">
+    <img id="sliderImg" src="seal.webp" alt="BYD SEAL" class="w-full max-w-4xl h-auto object-contain drop-shadow-2xl mb-2 -mt-10 lg:-mt-20">
+    <h2 id="sliderTitle" class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-wide drop-shadow-lg uppercase">BYD SEAL</h2>
+    <p id="sliderDesc" class="text-white/90 text-sm sm:text-lg mt-3 mb-8 drop-shadow-md font-medium">Ocean Aesthetics. Pure Performance.</p>
+    <a id="sliderBtn" href="produk.html?id=seal" class="border-2 border-[#22D3EE] text-white hover:bg-[#22D3EE] hover:text-[#0B1220] font-semibold px-8 py-3 rounded-sm transition duration-300">
+      Lihat Model
+    </a>
   </div>
-
-  <div class="flex flex-wrap gap-2 mb-10 mt-8" id="filterBar">
-    <button data-filter="all" class="filter-btn active px-4 py-2 rounded-full text-sm font-medium border border-[#0B1220]/15 transition">Semua</button>
-    <button data-filter="citycar" class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-[#0B1220]/15 transition">City Car</button>
-    <button data-filter="suv" class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-[#0B1220]/15 transition">SUV</button>
-    <button data-filter="sedan" class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-[#0B1220]/15 transition">Sedan</button>
-    <button data-filter="mpv" class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-[#0B1220]/15 transition">MPV &amp; Hybrid</button>
-    <button data-filter="luxury" class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-[#0B1220]/15 transition">Luxury</button>
-  </div>
-
-  <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+  <button onclick="prevSlide()" class="absolute left-4 sm:left-10 top-1/2 -translate-y-1/2 z-20 text-white/50 hover:text-white text-3xl sm:text-5xl transition">
+    <i class="fa-solid fa-angle-left"></i>
+  </button>
+  <button onclick="nextSlide()" class="absolute right-4 sm:right-10 top-1/2 -translate-y-1/2 z-20 text-white/50 hover:text-white text-3xl sm:text-5xl transition">
+    <i class="fa-solid fa-angle-right"></i>
+  </button>
+  <div class="absolute bottom-8 w-full flex justify-center gap-3 z-20" id="sliderDots"></div>
 </section>
 
 <!-- SIMULASI KREDIT -->
@@ -219,22 +233,22 @@
 <!-- USP -->
 <section class="py-20 px-6 max-w-7xl mx-auto">
   <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-    <div class="p-6 border border-black/10 rounded-2xl">
+    <div class="p-6 border border-black/10 rounded-2xl bg-white">
       <i class="fa-solid fa-percent text-[#0E7490] text-xl mb-4"></i>
       <h3 class="font-display font-semibold text-lg mb-1">Bunga Spesial</h3>
       <p class="text-[#5B6472] text-sm">Lebih hemat lewat program kredit MUF bulan ini.</p>
     </div>
-    <div class="p-6 border border-black/10 rounded-2xl">
+    <div class="p-6 border border-black/10 rounded-2xl bg-white">
       <i class="fa-solid fa-bolt-lightning text-[#0E7490] text-xl mb-4"></i>
       <h3 class="font-display font-semibold text-lg mb-1">Proses Mudah</h3>
       <p class="text-[#5B6472] text-sm">Persetujuan cepat untuk pengajuan yang memenuhi syarat.</p>
     </div>
-    <div class="p-6 border border-black/10 rounded-2xl">
+    <div class="p-6 border border-black/10 rounded-2xl bg-white">
       <i class="fa-solid fa-calendar-days text-[#0E7490] text-xl mb-4"></i>
       <h3 class="font-display font-semibold text-lg mb-1">Jangka Waktu Fleksibel</h3>
       <p class="text-[#5B6472] text-sm">Tenor 1 sampai 5 tahun, disesuaikan kemampuan cicilan.</p>
     </div>
-    <div class="p-6 border border-black/10 rounded-2xl">
+    <div class="p-6 border border-black/10 rounded-2xl bg-white">
       <i class="fa-solid fa-handshake text-[#0E7490] text-xl mb-4"></i>
       <h3 class="font-display font-semibold text-lg mb-1">Pelayanan Profesional</h3>
       <p class="text-[#5B6472] text-sm">Didampingi Amanda dari konsultasi sampai serah terima unit.</p>
@@ -243,9 +257,9 @@
 </section>
 
 <!-- LOKASI -->
-<section id="lokasi" class="py-24 bg-[#F3F5F7] px-6 border-t border-black/5">
+<section id="lokasi" class="py-24 bg-white px-6 border-t border-black/5">
   <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 items-stretch">
-    <div class="rounded-3xl overflow-hidden border border-black/10 min-h-[320px]">
+    <div class="rounded-3xl overflow-hidden border border-black/10 min-h-[320px] bg-[#F3F5F7]">
       <iframe
         class="w-full h-full min-h-[320px]"
         style="border:0;"
@@ -353,78 +367,78 @@ menuBtn.addEventListener('click', () => {
   mobileMenu.style.maxHeight = menuOpen ? mobileMenu.scrollHeight + 'px' : '0px';
   menuBtn.innerHTML = menuOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
 });
-document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => {
-  menuOpen = false;
-  mobileMenu.style.maxHeight = '0px';
-  menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
-}));
 
-/* ============ CATALOG DATA ============ */
-const catalog = [
-  { id:'atto1', name:'BYD ATTO 1', category:'citycar', tag:'City Car EV', desc:'Kompak, stylish, dan lincah untuk kebutuhan harian perkotaan.', img:'atto1.webp', rangeLabel:'Range 300–380 km', priceFrom:'202.500.000' },
-  { id:'seal', name:'BYD SEAL', category:'sedan', tag:'Sedan EV', desc:'Sedan sport listrik dengan akselerasi setara supercar.', img:'seal.webp', rangeLabel:'Range hingga 650 km', priceFrom:'872.500.000' },
-  { id:'atto3', name:'BYD ATTO 3', category:'suv', tag:'SUV EV', desc:'SUV compact dengan kabin lega dan fitur ADAS lengkap.', img:'atto3.webp', rangeLabel:'Range hingga 410 km', priceFrom:'418.500.000' },
-  { id:'dolphin', name:'BYD DOLPHIN', category:'citycar', tag:'City Car EV', desc:'City car listrik nyaman dan lincah untuk mobilitas perkotaan.', img:'dolphin.webp', rangeLabel:'Tanya Amanda untuk harga terbaru', priceFrom:null },
-  { id:'sealion7', name:'SEALION 7', category:'suv', tag:'Premium SUV', desc:'SUV listrik premium dengan jarak tempuh jauh & performa tinggi.', img:'sealion7.webp', rangeLabel:'Range hingga 650 km', priceFrom:'882.500.000' },
-  { id:'m6', name:'BYD M6', category:'mpv', tag:'MPV EV', desc:'MPV listrik keluarga 6–7 penumpang, terlaris di kelasnya.', img:'m6.webp', rangeLabel:'Range 450–600 km', priceFrom:'398.500.000' },
-  { id:'denza', name:'DENZA D9', category:'luxury', tag:'Luxury MPV', desc:'MPV mewah kelas atas dengan kabin captain seat premium.', img:'denza-d9.webp', rangeLabel:'Range hingga 600 km', priceFrom:'944.000.000' },
-  { id:'m6dm', name:'BYD M6 DM', category:'mpv', tag:'Hybrid PHEV', desc:'Efisiensi hybrid maksimal, bebas cemas soal jarak tempuh.', img:'m6-dm.png', rangeLabel:'Hybrid (BBM + Listrik)', priceFrom:'302.000.000' },
+/* ============ SLIDER PRODUK ============ */
+const products = [
+  { id: 'seal', name: 'BYD SEAL', tagline: 'Ocean Aesthetics. Pure Performance.', img: 'seal.webp', bg: '#8ca4b5' },
+  { id: 'atto3', name: 'BYD ATTO 3', tagline: 'Kenyamanan Ekstra, Desain Dinamis.', img: 'atto3.webp', bg: '#4a5b6d' },
+  { id: 'm6', name: 'BYD M6', tagline: 'MPV EV Pertama di Indonesia.', img: 'm6.webp', bg: '#d4d8db' },
+  { id: 'dolphin', name: 'BYD DOLPHIN', tagline: 'Lincah Mengeksplorasi Kota.', img: 'dolphin.webp', bg: '#c9aeb3' }
 ];
 
-const catalogGrid = document.getElementById('catalogGrid');
-function renderCatalog(filter){
-  catalogGrid.innerHTML = '';
-  catalog.filter(c => filter === 'all' || c.category === filter).forEach(c => {
-    const waText = encodeURIComponent(`Halo Amanda, saya tertarik dengan promo ${c.name}`);
-    catalogGrid.innerHTML += `
-      <div class="cat-card bg-white rounded-3xl p-6 border border-black/10 flex flex-col justify-between">
-        <div>
-          <div class="h-40 w-full mb-6 flex items-center justify-center bg-[#F3F5F7] rounded-2xl p-4">
-            <img src="${c.img}" alt="${c.name}" class="max-h-full object-contain" onerror="this.style.opacity=0.15">
-          </div>
-          <span class="text-xs font-semibold text-[#0E7490] bg-[#22D3EE]/10 px-3 py-1 rounded-full">${c.tag}</span>
-          <h3 class="font-display text-xl font-bold text-[#0B1220] mt-3 mb-1">${c.name}</h3>
-          <p class="text-sm text-[#5B6472] mb-3">${c.desc}</p>
-          <p class="text-xs text-[#0E7490] font-medium">${c.rangeLabel}</p>
-        </div>
-        <div>
-          <div class="border-t border-black/10 pt-4 mt-4 mb-4 flex justify-between items-center text-sm">
-            <span class="text-[#5B6472]">Mulai dari</span>
-            <span class="font-bold text-[#0B1220]">${c.priceFrom ? 'Rp ' + c.priceFrom : 'Hubungi Amanda'}</span>
-          </div>
-          <a href="https://wa.me/6287897999648?text=${waText}" target="_blank" class="block w-full text-center bg-[#0B1220] hover:bg-[#22D3EE] hover:text-[#0B1220] text-white font-medium py-3 rounded-xl transition">Tanya Promo</a>
-        </div>
-      </div>`;
-  });
-}
-renderCatalog('all');
+let currentSlide = 0;
+const sliderImg = document.getElementById('sliderImg');
+const sliderTitle = document.getElementById('sliderTitle');
+const sliderDesc = document.getElementById('sliderDesc');
+const sliderBtn = document.getElementById('sliderBtn');
+const sliderSection = document.getElementById('product-slider');
+const sliderContent = document.getElementById('sliderContent');
+const sliderDots = document.getElementById('sliderDots');
 
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderCatalog(btn.dataset.filter);
-  });
+products.forEach((_, i) => {
+  const dot = document.createElement('button');
+  dot.className = `w-2 h-2 rounded-full transition-all duration-300 ${i === 0 ? 'bg-white w-6' : 'bg-white/40'}`;
+  dot.onclick = () => goToSlide(i);
+  sliderDots.appendChild(dot);
 });
 
-/* ============ SIMULASI KREDIT DATA (sumber: pricelist MUF Karawang, September 2026) ============ */
+function updateSlider() {
+  const p = products[currentSlide];
+  sliderContent.classList.remove('fade-in');
+  void sliderContent.offsetWidth; 
+  sliderContent.classList.add('fade-in');
+  
+  sliderImg.src = p.img;
+  sliderTitle.innerText = p.name;
+  sliderDesc.innerText = p.tagline;
+  sliderBtn.href = `produk.html?id=${p.id}`;
+  sliderSection.style.backgroundColor = p.bg; 
+
+  Array.from(sliderDots.children).forEach((dot, i) => {
+    dot.className = `w-2 h-2 rounded-full transition-all duration-300 ${i === currentSlide ? 'bg-white w-8' : 'bg-white/40 hover:bg-white/70'}`;
+  });
+}
+
+function nextSlide() { currentSlide = (currentSlide + 1) % products.length; updateSlider(); }
+function prevSlide() { currentSlide = (currentSlide - 1 + products.length) % products.length; updateSlider(); }
+function goToSlide(index) { currentSlide = index; updateSlider(); }
+
+let startX = 0;
+sliderSection.addEventListener('touchstart', e => startX = e.changedTouches[0].screenX);
+sliderSection.addEventListener('touchend', e => {
+  let diff = e.changedTouches[0].screenX - startX;
+  if (diff > 50) prevSlide();
+  if (diff < -50) nextSlide();
+});
+
+/* ============ SIMULASI KREDIT DATA ============ */
 const dbMobil = {
-  atto1_std:   { nama:'BYD Atto 1 Standard',            otr:'202.500.000', dp:'38.600.000', range:'300 km', cicilan:{1:'15.435.000',2:'7.998.000',3:'5.521.000',4:'4.453.000',5:'3.849.000'} },
-  atto1_dyn:   { nama:'BYD Atto 1 Dynamic',              otr:'213.500.000', dp:'40.200.000', range:'300 km', cicilan:{1:'16.273.000',2:'8.432.000',3:'5.821.000',4:'4.695.000',5:'4.058.000'} },
-  atto1_prem:  { nama:'BYD Atto 1 Premium',              otr:'248.500.000', dp:'45.300.000', range:'380 km', cicilan:{1:'18.956.000',2:'9.817.000',3:'6.777.000',4:'5.466.000',5:'4.725.000'} },
-  atto3_adv:   { nama:'BYD Atto 3 Advance Plus',         otr:'418.500.000', dp:'66.600.000', range:'410 km', cicilan:{1:'31.970.000',2:'16.556.000',3:'11.423.000',4:'9.209.000',5:'7.957.000'} },
-  m6dm_std:    { nama:'BYD M6 DM Classic Standard',      otr:'302.000.000', dp:'53.200.000', hybrid:true,    cicilan:{1:'23.059.000',2:'11.941.000',3:'8.239.000',4:'6.642.000',5:'5.741.000'} },
-  m6dm_dyn:    { nama:'BYD M6 DM Classic Dynamic',       otr:'322.000.000', dp:'56.100.000', hybrid:true,    cicilan:{1:'24.596.000',2:'12.737.000',3:'8.788.000',4:'7.085.000',5:'6.121.000'} },
-  m6cross_adv: { nama:'BYD M6 Cross Advanced',           otr:'364.000.000', dp:'62.200.000', hybrid:true,    cicilan:{1:'27.808.000',2:'14.401.000',3:'9.936.000',4:'8.011.000',5:'6.921.000'} },
-  m6cross_s7:  { nama:'BYD M6 Cross Superior 7 Seat',    otr:'384.000.000', dp:'65.200.000', hybrid:true,    cicilan:{1:'29.331.000',2:'15.190.000',3:'10.480.000',4:'8.449.000',5:'7.300.000'} },
-  m6cross_sc:  { nama:'BYD M6 Cross Superior Captain',   otr:'394.000.000', dp:'66.600.000', hybrid:true,    cicilan:{1:'30.101.000',2:'15.588.000',3:'10.755.000',4:'8.671.000',5:'7.492.000'} },
-  m6_std:      { nama:'BYD M6 Standard',                 otr:'398.500.000', dp:'67.700.000', range:'450 km', cicilan:{1:'30.412.000',2:'15.750.000',3:'10.866.000',4:'8.761.000',5:'7.569.000'} },
-  m6_sup:      { nama:'BYD M6 Superior',                 otr:'438.500.000', dp:'69.600.000', range:'600 km', cicilan:{1:'33.484.000',2:'17.340.000',3:'11.964.000',4:'9.645.000',5:'8.333.000'} },
-  m6_supc:     { nama:'BYD M6 Superior Captain Seat',    otr:'448.500.000', dp:'70.900.000', range:'600 km', cicilan:{1:'34.251.000',2:'17.737.000',3:'12.238.000',4:'9.866.000',5:'8.524.000'} },
-  sealion7_ext:{ nama:'Sealion 7 Extended',              otr:'882.500.000', dp:'133.300.000', range:'650 km', cicilan:{1:'67.144.000',2:'34.729.000',3:'23.934.000',4:'19.277.000',5:'16.640.000'} },
-  seal_prem:   { nama:'BYD Seal Premium',                otr:'872.500.000', dp:'131.800.000', range:'650 km', cicilan:{1:'66.391.000',2:'34.339.000',3:'23.666.000',4:'19.061.000',5:'16.453.000'} },
-  denza_home:  { nama:'Denza D9 (With Home Charging)',   otr:'953.000.000', dp:'143.900.000', range:'600 km', cicilan:{1:'72.452.000',2:'37.456.000',3:'25.814.000',4:'20.792.000',5:'17.947.000'} },
-  denza_nohome:{ nama:'Denza D9 (Without Home Charging)',otr:'944.000.000', dp:'142.600.000', range:'600 km', cicilan:{1:'71.812.000',2:'37.125.000',3:'25.586.000',4:'20.608.000',5:'17.788.000'} },
+  atto1_std:   { nama:'BYD Atto 1 Standard',           otr:'202.500.000', dp:'38.600.000', range:'300 km', cicilan:{1:'15.435.000',2:'7.998.000',3:'5.521.000',4:'4.453.000',5:'3.849.000'} },
+  atto1_dyn:   { nama:'BYD Atto 1 Dynamic',            otr:'213.500.000', dp:'40.200.000', range:'300 km', cicilan:{1:'16.273.000',2:'8.432.000',3:'5.821.000',4:'4.695.000',5:'4.058.000'} },
+  atto1_prem:  { nama:'BYD Atto 1 Premium',            otr:'248.500.000', dp:'45.300.000', range:'380 km', cicilan:{1:'18.956.000',2:'9.817.000',3:'6.777.000',4:'5.466.000',5:'4.725.000'} },
+  atto3_adv:   { nama:'BYD Atto 3 Advance Plus',       otr:'418.500.000', dp:'66.600.000', range:'410 km', cicilan:{1:'31.970.000',2:'16.556.000',3:'11.423.000',4:'9.209.000',5:'7.957.000'} },
+  m6dm_std:    { nama:'BYD M6 DM Classic Standard',    otr:'302.000.000', dp:'53.200.000', hybrid:true,    cicilan:{1:'23.059.000',2:'11.941.000',3:'8.239.000',4:'6.642.000',5:'5.741.000'} },
+  m6dm_dyn:    { nama:'BYD M6 DM Classic Dynamic',     otr:'322.000.000', dp:'56.100.000', hybrid:true,    cicilan:{1:'24.596.000',2:'12.737.000',3:'8.788.000',4:'7.085.000',5:'6.121.000'} },
+  m6cross_adv: { nama:'BYD M6 Cross Advanced',         otr:'364.000.000', dp:'62.200.000', hybrid:true,    cicilan:{1:'27.808.000',2:'14.401.000',3:'9.936.000',4:'8.011.000',5:'6.921.000'} },
+  m6cross_s7:  { nama:'BYD M6 Cross Superior 7 Seat',  otr:'384.000.000', dp:'65.200.000', hybrid:true,    cicilan:{1:'29.331.000',2:'15.190.000',3:'10.480.000',4:'8.449.000',5:'7.300.000'} },
+  m6cross_sc:  { nama:'BYD M6 Cross Superior Captain', otr:'394.000.000', dp:'66.600.000', hybrid:true,    cicilan:{1:'30.101.000',2:'15.588.000',3:'10.755.000',4:'8.671.000',5:'7.492.000'} },
+  m6_std:      { nama:'BYD M6 Standard',               otr:'398.500.000', dp:'67.700.000', range:'450 km', cicilan:{1:'30.412.000',2:'15.750.000',3:'10.866.000',4:'8.761.000',5:'7.569.000'} },
+  m6_sup:      { nama:'BYD M6 Superior',               otr:'438.500.000', dp:'69.600.000', range:'600 km', cicilan:{1:'33.484.000',2:'17.340.000',3:'11.964.000',4:'9.645.000',5:'8.333.000'} },
+  m6_supc:     { nama:'BYD M6 Superior Captain Seat',  otr:'448.500.000', dp:'70.900.000', range:'600 km', cicilan:{1:'34.251.000',2:'17.737.000',3:'12.238.000',4:'9.866.000',5:'8.524.000'} },
+  sealion7_ext:{ nama:'Sealion 7 Extended',            otr:'882.500.000', dp:'133.300.000', range:'650 km', cicilan:{1:'67.144.000',2:'34.729.000',3:'23.934.000',4:'19.277.000',5:'16.640.000'} },
+  seal_prem:   { nama:'BYD Seal Premium',              otr:'872.500.000', dp:'131.800.000', range:'650 km', cicilan:{1:'66.391.000',2:'34.339.000',3:'23.666.000',4:'19.061.000',5:'16.453.000'} },
+  denza_home:  { nama:'Denza D9 (With Home Charging)', otr:'953.000.000', dp:'143.900.000', range:'600 km', cicilan:{1:'72.452.000',2:'37.456.000',3:'25.814.000',4:'20.792.000',5:'17.947.000'} },
+  denza_nohome:{ nama:'Denza D9 (No Home Charging)',   otr:'944.000.000', dp:'142.600.000', range:'600 km', cicilan:{1:'71.812.000',2:'37.125.000',3:'25.586.000',4:'20.608.000',5:'17.788.000'} },
 };
 
 const selectCar = document.getElementById('carType');
@@ -460,7 +474,6 @@ function sendToWA() {
 }
 
 /* ============ TESTIMONI ============ */
-/* Tambah entri baru di sini. Foto naruhnya di folder GitHub yang sama kayak gambar mobil. */
 const testimonials = [
 { img:'testi1.jpeg', name:'Bapak Hj Endang', vehicle:'BYD Atto 1 Dynamic', quote:'Prosesnya cepat, Amanda bantu dari awal sampai unit sampai rumah.' },
 ];
