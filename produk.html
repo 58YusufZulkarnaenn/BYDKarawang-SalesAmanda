@@ -37,29 +37,21 @@
 </nav>
 
 <!-- HERO SECTION -->
-<header id="heroSection" class="relative pt-32 pb-28 px-6 min-h-[75vh] flex items-center overflow-hidden">
+<!-- HERO SECTION (Bersih, Fokus ke Mobil) -->
+<header id="heroSection" class="relative pt-24 pb-12 px-6 min-h-[60vh] md:min-h-[75vh] flex items-end overflow-hidden">
   <!-- Background Image Full -->
-  <div class="absolute inset-0 z-0">
-    <img id="heroImg" src="seal.webp" alt="Car" class="w-full h-full object-cover object-center">
-    <!-- Overlay Gradient (Biar foto menyatu & teks tetep kebaca) -->
-    <div class="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-[#0B1220]/80 to-transparent lg:bg-gradient-to-r lg:from-[#0B1220] lg:via-[#0B1220]/90 lg:to-[#0B1220]/20"></div>
+  <div class="absolute inset-0 z-0 bg-[#0B1220]">
+    <img id="heroImg" src="seal.webp" alt="Car" class="w-full h-full object-cover object-center opacity-90">
+    <!-- Gradient tipis di bawah aja biar judul tetep kebaca -->
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-[#0B1220]/40 to-transparent"></div>
   </div>
   
-  <!-- Content Hero (Teks & Tombol) -->
+  <!-- Content Hero (Teks digeser ke bawah kiri biar ga nutupin mobil) -->
   <div class="relative z-10 max-w-7xl mx-auto w-full fade-in">
-    <div class="max-w-2xl"> <!-- Teks agak dibatesin lebarnya biar ga nutupin mobil di kanan -->
-      <span id="heroCategory" class="text-[#22D3EE] text-xs font-semibold tracking-widest uppercase bg-[#22D3EE]/20 px-3 py-1 rounded-full border border-[#22D3EE]/30 backdrop-blur-md">Pure EV</span>
-      <h1 id="heroTitle" class="font-display text-5xl lg:text-7xl font-bold mt-4 mb-2 uppercase text-white drop-shadow-lg">BYD CAR</h1>
-      <p id="heroTagline" class="text-white/80 text-lg mb-8 drop-shadow-md">Tagline mobil ada disini.</p>
-      
-      <div class="bg-[#0B1220]/60 border border-white/10 rounded-2xl p-6 backdrop-blur-md inline-block w-full max-w-md shadow-2xl">
-        <p class="text-white/60 text-xs uppercase tracking-wider mb-1">Mulai Dari</p>
-        <p id="heroPrice" class="font-display text-3xl font-bold text-[#22D3EE]">Rp 0</p>
-        <div class="flex gap-4 mt-6">
-          <a id="btnTestDrive" href="#" target="_blank" class="flex-1 text-center bg-[#22D3EE] hover:bg-white text-[#0B1220] font-semibold py-3 rounded-xl transition">Test Drive</a>
-          <a id="btnSimulasi" href="#" target="_blank" class="flex-1 text-center border border-white/20 hover:bg-white/10 text-white font-semibold py-3 rounded-xl transition">Minta Simulasi</a>
-        </div>
-      </div>
+    <div class="max-w-2xl">
+      <span id="heroCategory" class="text-[#22D3EE] text-[10px] sm:text-xs font-semibold tracking-widest uppercase bg-[#0B1220]/60 px-4 py-1.5 rounded-full border border-[#22D3EE]/30 backdrop-blur-md">Pure EV</span>
+      <h1 id="heroTitle" class="font-display text-5xl lg:text-7xl font-bold mt-5 mb-2 uppercase text-white drop-shadow-xl">BYD CAR</h1>
+      <p id="heroTagline" class="text-white/90 text-lg sm:text-xl drop-shadow-lg font-medium">Tagline mobil ada disini.</p>
     </div>
   </div>
 </header>
@@ -106,6 +98,28 @@
     <h2 class="font-display text-3xl font-bold text-[#0B1220] mb-10">Varian Tersedia</h2>
     <div id="variantList" class="flex flex-col gap-4">
       <!-- Diisi otomatis lewat JS -->
+    </div>
+  </div>
+</section>
+
+<!-- CALL TO ACTION (Pindahan dari Hero) -->
+<section class="py-20 px-6 bg-[#0B1220] text-center border-t border-white/10">
+  <div class="max-w-3xl mx-auto fade-in">
+    <p class="text-white/50 text-xs uppercase tracking-widest mb-2 font-semibold">Miliki Sekarang</p>
+    <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">
+      Mulai Dari <span id="heroPrice" class="text-[#22D3EE]">Rp 0</span>
+    </h2>
+    <p class="text-white/60 text-sm md:text-base mb-10 max-w-xl mx-auto">
+      Dapatkan penawaran terbaik dan jadwalkan test drive langsung ke rumah Anda di area Karawang dan sekitarnya.
+    </p>
+    
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a id="btnTestDrive" href="#" target="_blank" class="bg-[#22D3EE] hover:bg-white text-[#0B1220] font-bold py-4 px-8 rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-[#22D3EE]/20">
+        <i class="fa-solid fa-car"></i> Jadwalkan Test Drive
+      </a>
+      <a id="btnSimulasi" href="#" target="_blank" class="border border-white/20 hover:bg-white/10 text-white font-bold py-4 px-8 rounded-xl transition flex items-center justify-center gap-2">
+        <i class="fa-solid fa-calculator"></i> Minta Simulasi
+      </a>
     </div>
   </div>
 </section>
