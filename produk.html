@@ -347,6 +347,11 @@ data.spek.forEach(s => {
     </div>
   `;
 });
+  // --- PRELOAD GAMBAR BIAR KLIK WARNA LANGSUNG NONGOL SECARA INSTAN ---
+data.warna.forEach(w => {
+  const preloadImg = new Image();
+  preloadImg.src = w.img;
+});
 
 // 5. Setup UI Pilihan Warna
 const colorSwatches = document.getElementById('colorSwatches');
