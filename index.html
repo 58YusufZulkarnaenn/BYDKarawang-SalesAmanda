@@ -1,377 +1,471 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BYD Harmony Karawang | Amanda Official</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .hero-gradient {
-            background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.6));
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BYD Harmony Karawang | Dealer Resmi BYD & Denza — Amanda Official</title>
+<meta name="description" content="Dealer resmi BYD & Denza di Karawang. Simulasi kredit MUF lengkap, test drive ke rumah, promo September. Hubungi Amanda untuk penawaran terbaik.">
+<meta property="og:title" content="BYD Harmony Karawang — Dealer Resmi BYD & Denza">
+<meta property="og:description" content="Simulasi kredit lengkap, katalog 8 lineup, lokasi showroom, dan kontak langsung Amanda, Sales Executive BYD Harmony Karawang.">
+<meta property="og:image" content="logo_byd_harmony_auto.webp">
+<link rel="icon" href="logo_byd_harmony_auto.webp">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --midnight:#0B1220;
+    --midnight-2:#111B2E;
+    --cyan:#22D3EE;
+    --cyan-dim:#0E7490;
+    --porcelain:#F3F5F7;
+    --steel:#5B6472;
+    --amber:#F5A623;
+  }
+  body{font-family:'Inter',sans-serif; background:var(--porcelain); color:var(--midnight);}
+  .font-display{font-family:'Space Grotesk',sans-serif;}
+  .voltage-bg{
+    background-color:var(--midnight);
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(34,211,238,0.18), transparent 40%),
+      radial-gradient(circle at 85% 0%, rgba(34,211,238,0.10), transparent 35%);
+  }
+  .line-grid{
+    background-image: linear-gradient(rgba(34,211,238,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,0.08) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  .cat-card{transition: transform .25s ease, box-shadow .25s ease;}
+  .cat-card:hover{transform: translateY(-4px);}
+  .filter-btn.active{background:var(--midnight); color:#fff;}
+  ::-webkit-scrollbar{height:8px; width:8px;}
+  ::-webkit-scrollbar-thumb{background:#c7cdd4; border-radius:8px;}
+  details summary::-webkit-details-marker{display:none;}
+  details[open] .faq-icon{transform:rotate(45deg);}
+  .faq-icon{transition: transform .2s ease;}
+  #mobileMenu{transition: max-height .3s ease;}
+</style>
 </head>
-<body class="bg-gray-50 text-gray-900 antialiased">
+<body class="antialiased">
 
-    <!-- NAVBAR -->
-    <nav class="bg-white/90 backdrop-blur-md fixed w-full z-50 top-0 border-b border-gray-100 shadow-sm">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
-            <div class="text-xl font-bold tracking-wider text-slate-900">
-                BYD<span class="text-blue-600 ml-1 font-light">HARMONY KARAWANG</span>
-            </div>
-            <div class="flex items-center gap-4">
-                <a href="#katalog" class="hidden md:inline-block text-sm font-semibold text-gray-600 hover:text-blue-600 transition">Lineup</a>
-                <a href="#simulasi" class="hidden md:inline-block text-sm font-semibold text-gray-600 hover:text-blue-600 transition">Simulasi Kredit</a>
-                <a href="https://wa.me/6287897999648?text=Halo%20Amanda,%20saya%20mau%20tanya%20promo%20mobil%20BYD." target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-full text-sm font-medium transition shadow-md shadow-blue-600/20">
-                    Hubungi Amanda
-                </a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- HERO SECTION -->
-    <header class="relative min-h-[90vh] flex items-center pt-20 bg-slate-900 overflow-hidden">
-        <!-- Background Image dengan Overlay -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1695641775798-5085d7da0017?q=80&w=2070&auto=format&fit=crop" alt="BYD Background" class="w-full h-full object-cover opacity-40 scale-105 animate-pulse duration-1000">
-            <div class="absolute inset-0 hero-gradient"></div>
-        </div>
-
-        <div class="relative z-10 max-w-7xl mx-auto px-6 py-20 w-full text-white">
-            <div class="max-w-3xl">
-                <span class="inline-block bg-blue-600/30 text-blue-400 border border-blue-500/30 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase mb-6 backdrop-blur-md">
-                    Authorized Dealer Karawang
-                </span>
-                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-none mb-6">
-                    Masa Depan <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Mobilitas Listrik.</span>
-                </h1>
-                <p class="text-lg sm:text-xl text-gray-300 font-light mb-10 leading-relaxed">
-                    Rasakan pengalaman berkendara mewah tanpa emisi bersama lini kendaraan listrik canggih dari BYD. Penawaran eksklusif dan proses transparan bersama Amanda.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#katalog" class="bg-white text-slate-900 hover:bg-gray-100 font-semibold px-8 py-4 rounded-full text-center transition shadow-lg">
-                        Jelajahi Lineup
-                    </a>
-                    <a href="#simulasi" class="bg-transparent hover:bg-white/10 text-white border border-white/30 font-semibold px-8 py-4 rounded-full text-center transition backdrop-blur-sm">
-                        Hitung Simulasi Kredit
-                    </a>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- SECTION KATALOG MOBIL (8 LINEUP) -->
-    <section id="katalog" class="py-24 px-6 max-w-7xl mx-auto">
-        <div class="text-center max-w-2xl mx-auto mb-16">
-            <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 mb-4">Pilihan Model BYD</h2>
-            <p class="text-gray-500 text-base">Inovasi teknologi mutakhir yang dirancang untuk kenyamanan dan performa maksimal di setiap perjalanan.</p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            
-            <!-- 1. M6 -->
-            <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-xl shadow-gray-100 flex flex-col justify-between hover:-translate-y-1 transition-all duration-300">
-                <div>
-                    <div class="h-44 w-full mb-6 flex items-center justify-center bg-gray-50 rounded-2xl p-4">
-                        <img src="m6.webp" alt="BYD M6" class="max-h-full object-contain">
-                    </div>
-                    <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">MPV EV</span>
-                    <h3 class="text-xl font-bold text-slate-900 mt-3 mb-1">BYD M6</h3>
-                    <p class="text-sm text-gray-500 mb-4">MPV Listrik 7-Seater Keluarga</p>
-                </div>
-                <div>
-                    <div class="border-t border-gray-100 pt-4 mb-4 flex justify-between items-center text-sm">
-                        <span class="text-gray-400">Penawaran</span>
-                        <span class="font-bold text-slate-900">DP Minim</span>
-                    </div>
-                    <a href="https://wa.me/6287897999648?text=Halo%20Amanda,%20saya%20tertarik%20dengan%20promo%20BYD%20M6" target="_blank" class="block w-full text-center bg-slate-900 hover:bg-blue-600 text-white font-medium py-3 rounded-xl transition">Tanya Promo</a>
-                </div>
-            </div>
-
-            <!-- 2. SEAL -->
-            <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-xl shadow-gray-100 flex flex-col justify-between hover:-translate-y-1 transition-all duration-300">
-                <div>
-                    <div class="h-44 w-full mb-6 flex items-center justify-center bg-gray-50 rounded-2xl p-4">
-                        <img src="seal.webp" alt="BYD Seal" class="max-h-full object-contain">
-                    </div>
-                    <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">Sedan EV</span>
-                    <h3 class="text-xl font-bold text-slate-900 mt-3 mb-1">BYD SEAL</h3>
-                    <p class="text-sm text-gray-500 mb-4">Sports Sedan EV Super Cepat</p>
-                </div>
-                <div>
-                    <div class="border-t border-gray-100 pt-4 mb-4 flex justify-between items-center text-sm">
-                        <span class="text-gray-400">Penawaran</span>
-                        <span class="font-bold text-slate-900">Ready Stock</span>
-                    </div>
-                    <a href="https://wa.me/6287897999648?text=Halo%20Amanda,%20saya%20tertarik%20dengan%20promo%20BYD%20Seal" target="_blank" class="block w-full text-center bg-slate-900 hover:bg-blue-600 text-white font-medium py-3 rounded-xl transition">Tanya Promo</a>
-                </div>
-            </div>
-
-            <!-- 3. ATTO 3 -->
-            <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-xl shadow-gray-100 flex flex-col justify-between hover:-translate-y-1 transition-all duration-300">
-                <div>
-                    <div class="h-44 w-full mb-6 flex items-center justify-center bg-gray-50 rounded-2xl p-4">
-                        <img src="atto3.webp" alt="BYD Atto 3" class="max-h-full object-contain">
-                    </div>
-                    <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">SUV EV</span>
-                    <h3 class="text-xl font-bold text-slate-900 mt-3 mb-1">BYD ATTO 3</h3>
-                    <p class="text-sm text-gray-500 mb-4">SUV Canggih & Dinamis</p>
-                </div>
-                <div>
-                    <div class="border-t border-gray-100 pt-4 mb-4 flex justify-between items-center text-sm">
-                        <span class="text-gray-400">Penawaran</span>
-                        <span class="font-bold text-slate-900">Bunga 0%</span>
-                    </div>
-                    <a href="https://wa.me/6287897999648?text=Halo%20Amanda,%20saya%20tertarik%20dengan%20promo%20BYD%20Atto%203" target="_blank" class="block w-full text-center bg-slate-900 hover:bg-blue-600 text-white font-medium py-3 rounded-xl transition">Tanya Promo</a>
-                </div>
-            </div>
-
-            <!-- 4. DOLPHIN -->
-            <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-xl shadow-gray-100 flex flex-col justify-between hover:-translate-y-1 transition-all duration-300">
-                <div>
-                    <div class="h-44 w-full mb-6 flex items-center justify-center bg-gray-50 rounded-2xl p-4">
-                        <img src="dolphin.webp" alt="BYD Dolphin" class="max-h-full object-contain">
-                    </div>
-                    <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">City Car EV</span>
-                    <h3 class="text-xl font-bold text-slate-900 mt-3 mb-1">BYD DOLPHIN</h3>
-                    <p class="text-sm text-gray-500 mb-4">City Car Nyaman & Lincah</p>
-                </div>
-                <div>
-                    <div class="border-t border-gray-100 pt-4 mb-4 flex justify-between items-center text-sm">
-                        <span class="text-gray-400">Penawaran</span>
-                        <span class="font-bold text-slate-900">Cashback Khusus</span>
-                    </div>
-                    <a href="https://wa.me/6287897999648?text=Halo%20Amanda,%20saya%20tertarik%20dengan%20promo%20BYD%20Dolphin" target="_blank" class="block w-full text-center bg-slate-900 hover:bg-blue-600 text-white font-medium py-3 rounded-xl transition">Tanya Promo</a>
-                </div>
-            </div>
-
-            <!-- 5. SEALION 7 -->
-            <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-xl shadow-gray-100 flex flex-col justify-between hover:-translate-y-1 transition-all duration-300">
-                <div>
-                    <div class="h-44 w-full mb-6 flex items-center justify-center bg-gray-50 rounded-2xl p-4">
-                        <img src="sealion7.webp" alt="BYD Sealion 7" class="max-h-full object-contain">
-                    </div>
-                    <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">Premium SUV</span>
-                    <h3 class="text-xl font-bold text-slate-900 mt-3 mb-1">SEALION 7</h3>
-                    <p class="text-sm text-gray-500 mb-4">SUV Listrik Elegan & Premium</p>
-                </div>
-                <div>
-                    <div class="border-t border-gray-100 pt-4 mb-4 flex justify-between items-center text-sm">
-                        <span class="text-gray-400">Penawaran</span>
-                        <span class="font-bold text-slate-900">Unit Terbatas</span>
-                    </div>
-                    <a href="https://wa.me/6287897999648?text=Halo%20Amanda,%20saya%20tertarik%20dengan%20promo%20BYD%20Sealion%207" target="_blank" class="block w-full text-center bg-slate-900 hover:bg-blue-600 text-white font-medium py-3 rounded-xl transition">Tanya Promo</a>
-                </div>
-            </div>
-
-            <!-- 6. ATTO 1 -->
-            <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-xl shadow-gray-100 flex flex-col justify-between hover:-translate-y-1 transition-all duration-300">
-                <div>
-                    <div class="h-44 w-full mb-6 flex items-center justify-center bg-gray-50 rounded-2xl p-4">
-                        <img src="atto1.webp" alt="BYD Atto 1" class="max-h-full object-contain">
-                    </div>
-                    <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">Compact EV</span>
-                    <h3 class="text-xl font-bold text-slate-900 mt-3 mb-1">BYD ATTO 1</h3>
-                    <p class="text-sm text-gray-500 mb-4">Kompak, Stylish & Futuristik</p>
-                </div>
-                <div>
-                    <div class="border-t border-gray-100 pt-4 mb-4 flex justify-between items-center text-sm">
-                        <span class="text-gray-400">Penawaran</span>
-                        <span class="font-bold text-slate-900">Booking Sekarang</span>
-                    </div>
-                    <a href="https://wa.me/6287897999648?text=Halo%20Amanda,%20saya%20tertarik%20dengan%20promo%20BYD%20Atto%201" target="_blank" class="block w-full text-center bg-slate-900 hover:bg-blue-600 text-white font-medium py-3 rounded-xl transition">Tanya Promo</a>
-                </div>
-            </div>
-
-            <!-- 7. DENZA D9 -->
-            <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-xl shadow-gray-100 flex flex-col justify-between hover:-translate-y-1 transition-all duration-300">
-                <div>
-                    <div class="h-44 w-full mb-6 flex items-center justify-center bg-gray-50 rounded-2xl p-4">
-                        <img src="denza-d9.webp" alt="BYD Denza D9" class="max-h-full object-contain">
-                    </div>
-                    <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">Luxury MPV</span>
-                    <h3 class="text-xl font-bold text-slate-900 mt-3 mb-1">DENZA D9</h3>
-                    <p class="text-sm text-gray-500 mb-4">Luxury MPV Kelas Atas</p>
-                </div>
-                <div>
-                    <div class="border-t border-gray-100 pt-4 mb-4 flex justify-between items-center text-sm">
-                        <span class="text-gray-400">Penawaran</span>
-                        <span class="font-bold text-slate-900">Exclusive Deal</span>
-                    </div>
-                    <a href="https://wa.me/6287897999648?text=Halo%20Amanda,%20saya%20tertarik%20dengan%20promo%20BYD%20Denza%20D9" target="_blank" class="block w-full text-center bg-slate-900 hover:bg-blue-600 text-white font-medium py-3 rounded-xl transition">Tanya Promo</a>
-                </div>
-            </div>
-
-            <!-- 8. M6 DM -->
-            <div class="bg-white rounded-3xl p-6 border border-gray-100 shadow-xl shadow-gray-100 flex flex-col justify-between hover:-translate-y-1 transition-all duration-300">
-                <div>
-                    <div class="h-44 w-full mb-6 flex items-center justify-center bg-gray-50 rounded-2xl p-4">
-                        <img src="m6-dm.png" alt="BYD M6 DM" class="max-h-full object-contain">
-                    </div>
-                    <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">Hybrid EV</span>
-                    <h3 class="text-xl font-bold text-slate-900 mt-3 mb-1">BYD M6 DM</h3>
-                    <p class="text-sm text-gray-500 mb-4">Efisiensi Hybrid Maksimal</p>
-                </div>
-                <div>
-                    <div class="border-t border-gray-100 pt-4 mb-4 flex justify-between items-center text-sm">
-                        <span class="text-gray-400">Penawaran</span>
-                        <span class="font-bold text-slate-900">Pilihan Cerdas</span>
-                    </div>
-                    <a href="https://wa.me/6287897999648?text=Halo%20Amanda,%20saya%20tertarik%20dengan%20promo%20BYD%20M6%20DM" target="_blank" class="block w-full text-center bg-slate-900 hover:bg-blue-600 text-white font-medium py-3 rounded-xl transition">Tanya Promo</a>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- SECTION KALKULATOR KREDIT MUF -->
-    <section id="simulasi" class="py-24 bg-slate-100 px-6">
-        <div class="max-w-4xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 mb-3">Simulasi Kredit MUF Karawang</h2>
-                <p class="text-gray-500">Pilih tipe mobil dan tenor untuk melihat estimasi cicilan terbaik.</p>
-            </div>
-
-            <div class="bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden grid md:grid-cols-2 p-8 gap-8">
-                <!-- Form Input -->
-                <div class="space-y-6 flex flex-col justify-center">
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Pilih Tipe Mobil</label>
-                        <select id="carType" class="w-full bg-gray-50 border border-gray-200 rounded-2xl p-4 text-sm font-medium focus:outline-none focus:border-blue-600 transition" onchange="updateSimulasi()">
-                            <!-- Diloop lewat script -->
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold uppercase tracking-wider text-gray-500 mb-2">Pilihan Tenor</label>
-                        <select id="tenor" class="w-full bg-gray-50 border border-gray-200 rounded-2xl p-4 text-sm font-medium focus:outline-none focus:border-blue-600 transition" onchange="updateSimulasi()">
-                            <option value="1">1 Tahun</option>
-                            <option value="2">2 Tahun</option>
-                            <option value="3">3 Tahun</option>
-                            <option value="4">4 Tahun</option>
-                            <option value="5" selected>5 Tahun</option>
-                        </select>
-                    </div>
-                    <button onclick="sendToWA()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 rounded-2xl transition shadow-lg shadow-blue-600/30 flex items-center justify-center gap-2">
-                        <i class="fab fa-whatsapp text-lg"></i> Booking Paket Ini
-                    </button>
-                </div>
-
-                <!-- Hasil Display -->
-                <div class="bg-slate-900 text-white p-8 rounded-2xl flex flex-col justify-between">
-                    <div>
-                        <span class="text-xs font-semibold text-blue-400 tracking-wider uppercase">Estimasi Pembiayaan</span>
-                        <h3 id="displayCarName" class="text-2xl font-bold mt-1 mb-6 pb-4 border-b border-slate-800">BYD Atto 1</h3>
-                        
-                        <div class="space-y-4 text-sm">
-                            <div class="flex justify-between items-center text-gray-300">
-                                <span>Harga OTR Karawang</span>
-                                <span id="displayOtr" class="font-semibold text-white">Rp 202.500.000</span>
-                            </div>
-                            <div class="flex justify-between items-center text-gray-300">
-                                `<span>Total DP</span>
-                                <span id="displayDp" class="font-bold text-white text-base">Rp 38.600.000</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pt-6 border-t border-slate-800 mt-6">
-                        <div class="flex justify-between items-end">
-                            <div>
-                                <span class="text-xs text-gray-400 block mb-1">Angsuran Per Bulan</span>
-                                <span id="displayTenorLabel" class="text-[10px] bg-blue-500/20 text-blue-400 px-2.5 py-1 rounded-md font-semibold">Tenor 5 Tahun</span>
-                            </div>
-                            <span id="displayAngsuran" class="text-2xl sm:text-3xl font-extrabold text-blue-400">Rp 3.849.000</span>
-                        </div>
-                        <p class="text-[10px] text-gray-500 mt-4">*Kerjasama Mandiri Utama Finance (MUF) Area Karawang.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROFILE SALES SECTION -->
-    <section class="py-24 bg-white px-6 border-t border-gray-100">
-        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10">
-            <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-blue-600/20 shadow-2xl flex-shrink-0 bg-gray-100">
-                <img src="profile.jpg" alt="Amanda BYD Sales" class="w-full h-full object-cover">
-            </div>
-            <div class="text-center md:text-left flex-1">
-                <span class="text-xs font-semibold text-blue-600 tracking-wider uppercase">Official Sales Executive</span>
-                <h3 class="text-3xl font-bold text-slate-900 mt-1 mb-2">Amanda (Ladika Chandra)</h3>
-                <p class="text-gray-500 text-sm mb-6 leading-relaxed">
-                    Siap membantu mewujudkan kendaraan listrik impian Anda dengan layanan profesional, proses cepat, dan transparan di wilayah Karawang dan sekitarnya. Melayani *test drive* langsung ke rumah atau kantor Anda.
-                </p>
-                <div class="flex flex-wrap justify-center md:justify-start gap-3">
-                    <a href="https://wa.me/6287897999648" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition flex items-center gap-2">
-                        <i class="fab fa-whatsapp"></i> WhatsApp
-                    </a>
-                    <a href="https://www.instagram.com/ladikachandra/" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition flex items-center gap-2">
-                        <i class="fab fa-instagram"></i> Instagram
-                    </a>
-                    <a href="https://www.tiktok.com/@ladikachandra37" target="_blank" class="bg-slate-900 hover:bg-slate-800 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition flex items-center gap-2">
-                        <i class="fab fa-tiktok"></i> TikTok
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-slate-900 text-gray-400 py-8 text-center text-xs">
-        <p>&copy; 2026 BYD Harmony Karawang. All rights reserved. Official Sales: Amanda.</p>
-    </footer>
-
-    <!-- FLOATING WHATSAPP -->
-    <a href="https://wa.me/6287897999648?text=Halo%20Amanda,%20saya%20tertarik%20dengan%20mobil%20BYD." target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-xl shadow-green-500/30 hover:bg-green-600 hover:scale-105 transition z-50">
-        <i class="fab fa-whatsapp"></i>
+<!-- NAVBAR -->
+<nav class="bg-[#0B1220]/95 backdrop-blur-md fixed w-full z-50 top-0 border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+    <a href="#top" class="flex items-center gap-2">
+      <span class="font-display font-bold tracking-wide text-white text-lg">BYD <span class="text-[#22D3EE] font-medium">HARMONY</span></span>
+      <span class="hidden sm:inline text-white/40 text-xs font-medium tracking-widest uppercase pl-2 border-l border-white/20">Karawang</span>
     </a>
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#katalog" class="text-sm font-medium text-white/70 hover:text-[#22D3EE] transition">Lineup</a>
+      <a href="#simulasi" class="text-sm font-medium text-white/70 hover:text-[#22D3EE] transition">Simulasi Kredit</a>
+      <a href="#lokasi" class="text-sm font-medium text-white/70 hover:text-[#22D3EE] transition">Lokasi</a>
+      <a href="#faq" class="text-sm font-medium text-white/70 hover:text-[#22D3EE] transition">FAQ</a>
+      <a href="https://wa.me/6287897999648?text=Halo%20Amanda,%20saya%20mau%20tanya%20promo%20mobil%20BYD." target="_blank" class="bg-[#22D3EE] hover:bg-white text-[#0B1220] px-5 py-2.5 rounded-full text-sm font-semibold transition">Hubungi Amanda</a>
+    </div>
+    <button id="menuBtn" class="md:hidden text-white text-xl w-10 h-10 flex items-center justify-center">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+  <div id="mobileMenu" class="md:hidden overflow-hidden max-h-0 bg-[#0B1220] border-t border-white/10">
+    <div class="flex flex-col px-6 py-4 gap-4">
+      <a href="#katalog" class="text-white/80 text-sm font-medium">Lineup</a>
+      <a href="#simulasi" class="text-white/80 text-sm font-medium">Simulasi Kredit</a>
+      <a href="#lokasi" class="text-white/80 text-sm font-medium">Lokasi</a>
+      <a href="#faq" class="text-white/80 text-sm font-medium">FAQ</a>
+      <a href="https://wa.me/6287897999648" target="_blank" class="bg-[#22D3EE] text-[#0B1220] text-center px-5 py-2.5 rounded-full text-sm font-semibold">Hubungi Amanda</a>
+    </div>
+  </div>
+</nav>
 
-    <!-- SCRIPT KALKULATOR -->
-    <script>
-        const dbMobil = {
-            "atto1_std": { nama: "BYD Atto 1 Standard", otr: "202.500.000", dp: "38.600.000", cicilan: { "1": "15.435.000", "2": "7.998.000", "3": "5.521.000", "4": "4.453.000", "5": "3.849.000" } },
-            "atto1_dyn": { nama: "BYD Atto 1 Dynamic", otr: "213.500.000", dp: "40.200.000", cicilan: { "1": "16.273.000", "2": "8.432.000", "3": "5.821.000", "4": "4.695.000", "5": "4.058.000" } },
-            "m6_std": { nama: "BYD M6 Classic Standard", otr: "302.000.000", dp: "53.200.000", cicilan: { "1": "23.059.000", "2": "11.941.000", "3": "8.239.000", "4": "6.642.000", "5": "5.741.000" } },
-            "m6_dyn": { nama: "BYD M6 Classic Dynamic", otr: "322.000.000", dp: "56.100.000", cicilan: { "1": "24.596.000", "2": "12.737.000", "3": "8.788.000", "4": "7.085.000", "5": "6.121.000" } },
-            "m6_cross": { nama: "BYD M6 Cross Advanced", otr: "364.000.000", dp: "62.200.000", cicilan: { "1": "27.808.000", "2": "14.401.000", "3": "9.936.000", "4": "8.011.000", "5": "6.921.000" } }
-        };
+<!-- HERO -->
+<header id="top" class="voltage-bg line-grid relative min-h-[92vh] flex items-center pt-20 overflow-hidden">
+  <div class="relative z-10 max-w-7xl mx-auto px-6 py-16 w-full">
+    <div class="grid lg:grid-cols-12 gap-10 items-end">
+      <div class="lg:col-span-8">
+        <span class="inline-flex items-center gap-2 bg-white/5 border border-white/15 text-[#22D3EE] px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase mb-8">
+          <i class="fa-solid fa-bolt"></i> Authorized Dealer BYD &amp; Denza — Karawang
+        </span>
+        <h1 class="font-display font-bold text-white leading-[0.95] text-5xl sm:text-6xl lg:text-7xl mb-6">
+          Jarak tempuh<br>sampai <span class="text-[#22D3EE]">705 km.</span><br>Sekali cas.
+        </h1>
+        <p class="text-white/60 text-lg max-w-xl leading-relaxed mb-10">
+          8 lineup BYD &amp; Denza — dari city car sampai luxury MPV — siap dites langsung di Karawang. Simulasi kredit MUF, test drive ke rumah, proses transparan bareng Amanda.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="#katalog" class="bg-[#22D3EE] hover:bg-white text-[#0B1220] font-semibold px-7 py-3.5 rounded-full text-center transition">Lihat Lineup</a>
+          <a href="#simulasi" class="border border-white/25 text-white hover:bg-white/10 font-semibold px-7 py-3.5 rounded-full text-center transition">Hitung Cicilan</a>
+        </div>
+      </div>
+      <div class="lg:col-span-4 grid grid-cols-2 gap-4">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
+          <p class="font-display text-3xl font-bold text-white">16</p>
+          <p class="text-white/50 text-xs mt-1">Varian siap simulasi kredit</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
+          <p class="font-display text-3xl font-bold text-white">0%</p>
+          <p class="text-white/50 text-xs mt-1">Opsi bunga spesial*</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
+          <p class="font-display text-3xl font-bold text-white">1-5</p>
+          <p class="text-white/50 text-xs mt-1">Tahun tenor fleksibel</p>
+        </div>
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
+          <p class="font-display text-3xl font-bold text-white">Gratis</p>
+          <p class="text-white/50 text-xs mt-1">Home charging tertentu**</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
 
-        const selectCar = document.getElementById('carType');
-        for (const key in dbMobil) {
-            let option = document.createElement("option");
-            option.value = key;
-            option.text = dbMobil[key].nama;
-            selectCar.appendChild(option);
-        }
+<!-- KATALOG -->
+<section id="katalog" class="py-24 px-6 max-w-7xl mx-auto">
+  <div class="max-w-2xl mb-4">
+    <span class="text-xs font-semibold tracking-widest uppercase text-[#0E7490]">Lineup</span>
+    <h2 class="font-display text-3xl sm:text-4xl font-bold text-[#0B1220] mt-2 mb-4">Pilih tipe yang cocok sama gaya hidup lo</h2>
+    <p class="text-[#5B6472] text-base">Dari city car harian sampai luxury MPV untuk keluarga besar — semua tersedia untuk test drive langsung.</p>
+  </div>
 
-        function updateSimulasi() {
-            const carKey = document.getElementById('carType').value;
-            const tenor = document.getElementById('tenor').value;
-            const data = dbMobil[carKey];
+  <div class="flex flex-wrap gap-2 mb-10 mt-8" id="filterBar">
+    <button data-filter="all" class="filter-btn active px-4 py-2 rounded-full text-sm font-medium border border-[#0B1220]/15 transition">Semua</button>
+    <button data-filter="citycar" class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-[#0B1220]/15 transition">City Car</button>
+    <button data-filter="suv" class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-[#0B1220]/15 transition">SUV</button>
+    <button data-filter="sedan" class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-[#0B1220]/15 transition">Sedan</button>
+    <button data-filter="mpv" class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-[#0B1220]/15 transition">MPV &amp; Hybrid</button>
+    <button data-filter="luxury" class="filter-btn px-4 py-2 rounded-full text-sm font-medium border border-[#0B1220]/15 transition">Luxury</button>
+  </div>
 
-            document.getElementById('displayCarName').innerText = data.nama;
-            document.getElementById('displayOtr').innerText = "Rp " + data.otr;
-            document.getElementById('displayDp').innerText = "Rp " + data.dp;
-            document.getElementById('displayTenorLabel').innerText = `Tenor ${tenor} Tahun`;
-            document.getElementById('displayAngsuran').innerText = "Rp " + data.cicilan[tenor];
-        }
+  <div id="catalogGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+</section>
 
-        function sendToWA() {
-            const carKey = document.getElementById('carType').value;
-            const tenor = document.getElementById('tenor').value;
-            const data = dbMobil[carKey];
-            
-            const text = `Halo Amanda, saya lihat web dan tertarik dengan promo:\n\nMobil: *${data.nama}*\nOTR: Rp ${data.otr}\nDP: Rp ${data.dp}\nTenor: ${tenor} Tahun\nAngsuran: Rp ${data.cicilan[tenor]} / bulan\n\nMohon info selanjutnya ya.`;
-            window.open(`https://wa.me/6287897999648?text=${encodeURIComponent(text)}`, '_blank');
-        }
+<!-- SIMULASI KREDIT -->
+<section id="simulasi" class="py-24 bg-[#0B1220] px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center max-w-xl mx-auto mb-14">
+      <span class="text-xs font-semibold tracking-widest uppercase text-[#22D3EE]">Simulasi Kredit MUF Karawang</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-2 mb-3">Cek cicilan sebelum ke showroom</h2>
+      <p class="text-white/50 text-sm">16 varian, lengkap DP dan cicilan per tenor. Kerjasama Mandiri Utama Finance (MUF) Area Karawang.</p>
+    </div>
 
-        updateSimulasi();
-    </script>
+    <div class="bg-white rounded-3xl shadow-2xl overflow-hidden grid md:grid-cols-2 p-8 gap-8">
+      <div class="space-y-6 flex flex-col justify-center">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-[#5B6472] mb-2">Pilih Tipe &amp; Varian</label>
+          <select id="carType" class="w-full bg-[#F3F5F7] border border-black/10 rounded-2xl p-4 text-sm font-medium focus:outline-none focus:border-[#22D3EE] transition"></select>
+        </div>
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-[#5B6472] mb-2">Pilihan Tenor</label>
+          <select id="tenor" class="w-full bg-[#F3F5F7] border border-black/10 rounded-2xl p-4 text-sm font-medium focus:outline-none focus:border-[#22D3EE] transition">
+            <option value="1">1 Tahun</option>
+            <option value="2">2 Tahun</option>
+            <option value="3">3 Tahun</option>
+            <option value="4">4 Tahun</option>
+            <option value="5" selected>5 Tahun</option>
+          </select>
+        </div>
+        <button onclick="sendToWA()" class="w-full bg-[#22D3EE] hover:bg-[#0B1220] hover:text-white text-[#0B1220] font-semibold py-4 rounded-2xl transition flex items-center justify-center gap-2">
+          <i class="fab fa-whatsapp text-lg"></i> Booking Paket Ini
+        </button>
+        <p class="text-[11px] text-[#5B6472] leading-relaxed">*BYD Dolphin belum masuk simulasi karena harga belum dirilis dealer — <a href="https://wa.me/6287897999648?text=Halo%20Amanda,%20saya%20mau%20tanya%20harga%20%26%20simulasi%20BYD%20Dolphin" target="_blank" class="text-[#0E7490] underline">tanya langsung ke Amanda</a>.</p>
+      </div>
+
+      <div class="bg-[#0B1220] text-white p-8 rounded-2xl flex flex-col justify-between">
+        <div>
+          <span class="text-xs font-semibold text-[#22D3EE] tracking-wider uppercase">Estimasi Pembiayaan</span>
+          <h3 id="displayCarName" class="font-display text-2xl font-bold mt-1 mb-1 pb-4 border-b border-white/10">—</h3>
+          <p id="displayRange" class="text-xs text-white/40 mb-5">—</p>
+          <div class="space-y-4 text-sm">
+            <div class="flex justify-between items-center text-white/60">
+              <span>Harga OTR Karawang</span>
+              <span id="displayOtr" class="font-semibold text-white">—</span>
+            </div>
+            <div class="flex justify-between items-center text-white/60">
+              <span>Total DP</span>
+              <span id="displayDp" class="font-bold text-white text-base">—</span>
+            </div>
+          </div>
+        </div>
+        <div class="pt-6 border-t border-white/10 mt-6">
+          <div class="flex justify-between items-end">
+            <div>
+              <span class="text-xs text-white/40 block mb-1">Angsuran Per Bulan</span>
+              <span id="displayTenorLabel" class="text-[10px] bg-[#22D3EE]/15 text-[#22D3EE] px-2.5 py-1 rounded-md font-semibold">Tenor 5 Tahun</span>
+            </div>
+            <span id="displayAngsuran" class="text-2xl sm:text-3xl font-extrabold text-[#22D3EE]">—</span>
+          </div>
+          <p class="text-[10px] text-white/30 mt-4">*Syarat &amp; ketentuan berlaku. Harga dapat berubah, konfirmasi terbaru ke Amanda.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Eligibility chips -->
+    <div class="mt-10 flex flex-wrap justify-center gap-3">
+      <span class="text-white/40 text-xs uppercase tracking-widest w-full text-center mb-2">Khusus untuk</span>
+      <span class="bg-white/5 border border-white/10 text-white/70 text-xs px-4 py-2 rounded-full"><i class="fa-solid fa-briefcase mr-1.5"></i>Karyawan Formal</span>
+      <span class="bg-white/5 border border-white/10 text-white/70 text-xs px-4 py-2 rounded-full"><i class="fa-solid fa-building-columns mr-1.5"></i>ASN</span>
+      <span class="bg-white/5 border border-white/10 text-white/70 text-xs px-4 py-2 rounded-full"><i class="fa-solid fa-user-doctor mr-1.5"></i>Dokter</span>
+      <span class="bg-white/5 border border-white/10 text-white/70 text-xs px-4 py-2 rounded-full"><i class="fa-solid fa-shield-halved mr-1.5"></i>TNI/POLRI</span>
+      <span class="bg-white/5 border border-white/10 text-white/70 text-xs px-4 py-2 rounded-full"><i class="fa-solid fa-industry mr-1.5"></i>Wiraswasta Berbadan Hukum</span>
+    </div>
+  </div>
+</section>
+
+<!-- USP -->
+<section class="py-20 px-6 max-w-7xl mx-auto">
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="p-6 border border-black/10 rounded-2xl">
+      <i class="fa-solid fa-percent text-[#0E7490] text-xl mb-4"></i>
+      <h3 class="font-display font-semibold text-lg mb-1">Bunga Spesial</h3>
+      <p class="text-[#5B6472] text-sm">Lebih hemat lewat program kredit MUF bulan ini.</p>
+    </div>
+    <div class="p-6 border border-black/10 rounded-2xl">
+      <i class="fa-solid fa-bolt-lightning text-[#0E7490] text-xl mb-4"></i>
+      <h3 class="font-display font-semibold text-lg mb-1">Proses Mudah</h3>
+      <p class="text-[#5B6472] text-sm">Persetujuan cepat untuk pengajuan yang memenuhi syarat.</p>
+    </div>
+    <div class="p-6 border border-black/10 rounded-2xl">
+      <i class="fa-solid fa-calendar-days text-[#0E7490] text-xl mb-4"></i>
+      <h3 class="font-display font-semibold text-lg mb-1">Jangka Waktu Fleksibel</h3>
+      <p class="text-[#5B6472] text-sm">Tenor 1 sampai 5 tahun, disesuaikan kemampuan cicilan.</p>
+    </div>
+    <div class="p-6 border border-black/10 rounded-2xl">
+      <i class="fa-solid fa-handshake text-[#0E7490] text-xl mb-4"></i>
+      <h3 class="font-display font-semibold text-lg mb-1">Pelayanan Profesional</h3>
+      <p class="text-[#5B6472] text-sm">Didampingi Amanda dari konsultasi sampai serah terima unit.</p>
+    </div>
+  </div>
+</section>
+
+<!-- LOKASI -->
+<section id="lokasi" class="py-24 bg-[#F3F5F7] px-6 border-t border-black/5">
+  <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 items-stretch">
+    <div class="rounded-3xl overflow-hidden border border-black/10 min-h-[320px]">
+      <iframe
+        class="w-full h-full min-h-[320px]"
+        style="border:0;"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://maps.google.com/maps?q=Jl.+Surotokunto+No.52%2C+Adiarsa+Timur%2C+Karawang+Timur%2C+Karawang%2C+Jawa+Barat+41311&output=embed">
+      </iframe>
+    </div>
+    <div class="flex flex-col justify-center">
+      <span class="text-xs font-semibold tracking-widest uppercase text-[#0E7490]">Showroom</span>
+      <h2 class="font-display text-3xl font-bold text-[#0B1220] mt-2 mb-6">Kunjungi Showroom BYD Harmony Karawang</h2>
+      <div class="space-y-5">
+        <div class="flex gap-4">
+          <i class="fa-solid fa-location-dot text-[#0E7490] mt-1"></i>
+          <p class="text-[#5B6472] text-sm leading-relaxed">Jl. Surotokunto No.52, Adiarsa Timur, Kec. Karawang Timur, Karawang, Jawa Barat 41311</p>
+        </div>
+        <div class="flex gap-4">
+          <i class="fa-solid fa-clock text-[#0E7490] mt-1"></i>
+          <div class="text-[#5B6472] text-sm leading-relaxed">
+            <p>Senin – Jumat: 08.30 – 16.30 WIB</p>
+            <p>Sabtu: 08.30 – 14.30 WIB</p>
+            <p>Minggu / Libur Nasional: Tutup</p>
+          </div>
+        </div>
+        <div class="flex gap-4">
+          <i class="fa-solid fa-car text-[#0E7490] mt-1"></i>
+          <p class="text-[#5B6472] text-sm leading-relaxed">Test drive juga bisa dijadwalkan langsung ke rumah atau kantor di area Karawang dan sekitarnya.</p>
+        </div>
+      </div>
+      <a href="https://wa.me/6287897999648?text=Halo%20Amanda,%20saya%20mau%20jadwalkan%20test%20drive." target="_blank" class="mt-8 inline-flex items-center gap-2 bg-[#0B1220] hover:bg-[#0E7490] text-white px-6 py-3.5 rounded-full text-sm font-semibold transition w-fit">
+        <i class="fab fa-whatsapp"></i> Jadwalkan Test Drive
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="py-24 px-6 max-w-3xl mx-auto">
+  <div class="text-center mb-12">
+    <span class="text-xs font-semibold tracking-widest uppercase text-[#0E7490]">FAQ</span>
+    <h2 class="font-display text-3xl sm:text-4xl font-bold text-[#0B1220] mt-2">Pertanyaan yang sering ditanyakan</h2>
+  </div>
+  <div class="space-y-3" id="faqList"></div>
+</section>
+
+<!-- PROFILE SALES SECTION -->
+<section class="py-24 bg-white px-6 border-t border-black/5">
+  <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-10">
+    <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-[#22D3EE]/25 flex-shrink-0 bg-[#F3F5F7]">
+      <img src="profile.jpg" alt="Amanda, Sales Executive BYD Harmony Karawang" class="w-full h-full object-cover">
+    </div>
+    <div class="text-center md:text-left flex-1">
+      <span class="text-xs font-semibold text-[#0E7490] tracking-wider uppercase">Official Sales Executive</span>
+      <h3 class="font-display text-3xl font-bold text-[#0B1220] mt-1 mb-2">Amanda (Ladika Chandra)</h3>
+      <p class="text-[#5B6472] text-sm mb-6 leading-relaxed">
+        Siap membantu mewujudkan kendaraan listrik impian Anda dengan layanan profesional, proses cepat, dan transparan di wilayah Karawang dan sekitarnya. Melayani test drive langsung ke rumah atau kantor Anda.
+      </p>
+      <div class="flex flex-wrap justify-center md:justify-start gap-3">
+        <a href="https://wa.me/6287897999648" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition flex items-center gap-2">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+        <a href="https://www.instagram.com/ladikachandra/" target="_blank" class="bg-[#0B1220] hover:bg-[#0E7490] text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition flex items-center gap-2">
+          <i class="fab fa-instagram"></i> Instagram
+        </a>
+        <a href="https://www.tiktok.com/@ladikachandra37" target="_blank" class="bg-[#0B1220] hover:bg-[#0E7490] text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition flex items-center gap-2">
+          <i class="fab fa-tiktok"></i> TikTok
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONI (placeholder, menyusul) -->
+<section class="py-20 bg-[#F3F5F7] px-6 border-t border-black/5">
+  <div class="max-w-4xl mx-auto text-center">
+    <span class="text-xs font-semibold tracking-widest uppercase text-[#0E7490]">Testimoni Customer</span>
+    <h2 class="font-display text-2xl sm:text-3xl font-bold text-[#0B1220] mt-2 mb-4">Dokumentasi serah terima unit menyusul di sini</h2>
+    <p class="text-[#5B6472] text-sm max-w-xl mx-auto">Bagian ini disiapkan untuk foto serah terima dan testimoni customer. Kirim materinya ke Amanda dan section ini akan diisi.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-[#0B1220] text-white/40 py-10 px-6 text-center text-xs">
+  <img src="logo_byd_harmony_auto.webp" alt="BYD Harmony Auto" class="h-8 mx-auto mb-4 opacity-80">
+  <p>&copy; 2026 BYD Harmony Karawang. All rights reserved. Official Sales: Amanda.</p>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/6287897999648?text=Halo%20Amanda,%20saya%20tertarik%20dengan%20mobil%20BYD." target="_blank" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-xl hover:bg-green-600 hover:scale-105 transition z-50">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+/* ============ MOBILE MENU ============ */
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+let menuOpen = false;
+menuBtn.addEventListener('click', () => {
+  menuOpen = !menuOpen;
+  mobileMenu.style.maxHeight = menuOpen ? mobileMenu.scrollHeight + 'px' : '0px';
+  menuBtn.innerHTML = menuOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+});
+document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => {
+  menuOpen = false;
+  mobileMenu.style.maxHeight = '0px';
+  menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+}));
+
+/* ============ CATALOG DATA ============ */
+const catalog = [
+  { id:'atto1', name:'BYD ATTO 1', category:'citycar', tag:'City Car EV', desc:'Kompak, stylish, dan lincah untuk kebutuhan harian perkotaan.', img:'atto1.webp', rangeLabel:'Range 300–380 km', priceFrom:'202.500.000' },
+  { id:'seal', name:'BYD SEAL', category:'sedan', tag:'Sedan EV', desc:'Sedan sport listrik dengan akselerasi setara supercar.', img:'seal.webp', rangeLabel:'Range hingga 650 km', priceFrom:'872.500.000' },
+  { id:'atto3', name:'BYD ATTO 3', category:'suv', tag:'SUV EV', desc:'SUV compact dengan kabin lega dan fitur ADAS lengkap.', img:'atto3.webp', rangeLabel:'Range hingga 410 km', priceFrom:'418.500.000' },
+  { id:'dolphin', name:'BYD DOLPHIN', category:'citycar', tag:'City Car EV', desc:'City car listrik nyaman dan lincah untuk mobilitas perkotaan.', img:'dolphin.webp', rangeLabel:'Tanya Amanda untuk harga terbaru', priceFrom:null },
+  { id:'sealion7', name:'SEALION 7', category:'suv', tag:'Premium SUV', desc:'SUV listrik premium dengan jarak tempuh jauh & performa tinggi.', img:'sealion7.webp', rangeLabel:'Range hingga 650 km', priceFrom:'882.500.000' },
+  { id:'m6', name:'BYD M6', category:'mpv', tag:'MPV EV', desc:'MPV listrik keluarga 6–7 penumpang, terlaris di kelasnya.', img:'m6.webp', rangeLabel:'Range 450–600 km', priceFrom:'398.500.000' },
+  { id:'denza', name:'DENZA D9', category:'luxury', tag:'Luxury MPV', desc:'MPV mewah kelas atas dengan kabin captain seat premium.', img:'denza-d9.webp', rangeLabel:'Range hingga 600 km', priceFrom:'944.000.000' },
+  { id:'m6dm', name:'BYD M6 DM', category:'mpv', tag:'Hybrid PHEV', desc:'Efisiensi hybrid maksimal, bebas cemas soal jarak tempuh.', img:'m6-dm.png', rangeLabel:'Hybrid (BBM + Listrik)', priceFrom:'302.000.000' },
+];
+
+const catalogGrid = document.getElementById('catalogGrid');
+function renderCatalog(filter){
+  catalogGrid.innerHTML = '';
+  catalog.filter(c => filter === 'all' || c.category === filter).forEach(c => {
+    const waText = encodeURIComponent(`Halo Amanda, saya tertarik dengan promo ${c.name}`);
+    catalogGrid.innerHTML += `
+      <div class="cat-card bg-white rounded-3xl p-6 border border-black/10 flex flex-col justify-between">
+        <div>
+          <div class="h-40 w-full mb-6 flex items-center justify-center bg-[#F3F5F7] rounded-2xl p-4">
+            <img src="${c.img}" alt="${c.name}" class="max-h-full object-contain" onerror="this.style.opacity=0.15">
+          </div>
+          <span class="text-xs font-semibold text-[#0E7490] bg-[#22D3EE]/10 px-3 py-1 rounded-full">${c.tag}</span>
+          <h3 class="font-display text-xl font-bold text-[#0B1220] mt-3 mb-1">${c.name}</h3>
+          <p class="text-sm text-[#5B6472] mb-3">${c.desc}</p>
+          <p class="text-xs text-[#0E7490] font-medium">${c.rangeLabel}</p>
+        </div>
+        <div>
+          <div class="border-t border-black/10 pt-4 mt-4 mb-4 flex justify-between items-center text-sm">
+            <span class="text-[#5B6472]">Mulai dari</span>
+            <span class="font-bold text-[#0B1220]">${c.priceFrom ? 'Rp ' + c.priceFrom : 'Hubungi Amanda'}</span>
+          </div>
+          <a href="https://wa.me/6287897999648?text=${waText}" target="_blank" class="block w-full text-center bg-[#0B1220] hover:bg-[#22D3EE] hover:text-[#0B1220] text-white font-medium py-3 rounded-xl transition">Tanya Promo</a>
+        </div>
+      </div>`;
+  });
+}
+renderCatalog('all');
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderCatalog(btn.dataset.filter);
+  });
+});
+
+/* ============ SIMULASI KREDIT DATA (sumber: pricelist MUF Karawang, September 2026) ============ */
+const dbMobil = {
+  atto1_std:   { nama:'BYD Atto 1 Standard',            otr:'202.500.000', dp:'38.600.000', range:'300 km', cicilan:{1:'15.435.000',2:'7.998.000',3:'5.521.000',4:'4.453.000',5:'3.849.000'} },
+  atto1_dyn:   { nama:'BYD Atto 1 Dynamic',              otr:'213.500.000', dp:'40.200.000', range:'300 km', cicilan:{1:'16.273.000',2:'8.432.000',3:'5.821.000',4:'4.695.000',5:'4.058.000'} },
+  atto1_prem:  { nama:'BYD Atto 1 Premium',              otr:'248.500.000', dp:'45.300.000', range:'380 km', cicilan:{1:'18.956.000',2:'9.817.000',3:'6.777.000',4:'5.466.000',5:'4.725.000'} },
+  atto3_adv:   { nama:'BYD Atto 3 Advance Plus',         otr:'418.500.000', dp:'66.600.000', range:'410 km', cicilan:{1:'31.970.000',2:'16.556.000',3:'11.423.000',4:'9.209.000',5:'7.957.000'} },
+  m6dm_std:    { nama:'BYD M6 DM Classic Standard',      otr:'302.000.000', dp:'53.200.000', hybrid:true,    cicilan:{1:'23.059.000',2:'11.941.000',3:'8.239.000',4:'6.642.000',5:'5.741.000'} },
+  m6dm_dyn:    { nama:'BYD M6 DM Classic Dynamic',       otr:'322.000.000', dp:'56.100.000', hybrid:true,    cicilan:{1:'24.596.000',2:'12.737.000',3:'8.788.000',4:'7.085.000',5:'6.121.000'} },
+  m6cross_adv: { nama:'BYD M6 Cross Advanced',           otr:'364.000.000', dp:'62.200.000', hybrid:true,    cicilan:{1:'27.808.000',2:'14.401.000',3:'9.936.000',4:'8.011.000',5:'6.921.000'} },
+  m6cross_s7:  { nama:'BYD M6 Cross Superior 7 Seat',    otr:'384.000.000', dp:'65.200.000', hybrid:true,    cicilan:{1:'29.331.000',2:'15.190.000',3:'10.480.000',4:'8.449.000',5:'7.300.000'} },
+  m6cross_sc:  { nama:'BYD M6 Cross Superior Captain',   otr:'394.000.000', dp:'66.600.000', hybrid:true,    cicilan:{1:'30.101.000',2:'15.588.000',3:'10.755.000',4:'8.671.000',5:'7.492.000'} },
+  m6_std:      { nama:'BYD M6 Standard',                 otr:'398.500.000', dp:'67.700.000', range:'450 km', cicilan:{1:'30.412.000',2:'15.750.000',3:'10.866.000',4:'8.761.000',5:'7.569.000'} },
+  m6_sup:      { nama:'BYD M6 Superior',                 otr:'438.500.000', dp:'69.600.000', range:'600 km', cicilan:{1:'33.484.000',2:'17.340.000',3:'11.964.000',4:'9.645.000',5:'8.333.000'} },
+  m6_supc:     { nama:'BYD M6 Superior Captain Seat',    otr:'448.500.000', dp:'70.900.000', range:'600 km', cicilan:{1:'34.251.000',2:'17.737.000',3:'12.238.000',4:'9.866.000',5:'8.524.000'} },
+  sealion7_ext:{ nama:'Sealion 7 Extended',              otr:'882.500.000', dp:'133.300.000', range:'650 km', cicilan:{1:'67.144.000',2:'34.729.000',3:'23.934.000',4:'19.277.000',5:'16.640.000'} },
+  seal_prem:   { nama:'BYD Seal Premium',                otr:'872.500.000', dp:'131.800.000', range:'650 km', cicilan:{1:'66.391.000',2:'34.339.000',3:'23.666.000',4:'19.061.000',5:'16.453.000'} },
+  denza_home:  { nama:'Denza D9 (With Home Charging)',   otr:'953.000.000', dp:'143.900.000', range:'600 km', cicilan:{1:'72.452.000',2:'37.456.000',3:'25.814.000',4:'20.792.000',5:'17.947.000'} },
+  denza_nohome:{ nama:'Denza D9 (Without Home Charging)',otr:'944.000.000', dp:'142.600.000', range:'600 km', cicilan:{1:'71.812.000',2:'37.125.000',3:'25.586.000',4:'20.608.000',5:'17.788.000'} },
+};
+
+const selectCar = document.getElementById('carType');
+for (const key in dbMobil) {
+  const opt = document.createElement('option');
+  opt.value = key;
+  opt.text = dbMobil[key].nama;
+  selectCar.appendChild(opt);
+}
+
+function updateSimulasi() {
+  const carKey = document.getElementById('carType').value;
+  const tenor = document.getElementById('tenor').value;
+  const data = dbMobil[carKey];
+
+  document.getElementById('displayCarName').innerText = data.nama;
+  document.getElementById('displayRange').innerText = data.hybrid ? 'Tipe: Hybrid PHEV' : ('Jarak tempuh: ' + data.range);
+  document.getElementById('displayOtr').innerText = 'Rp ' + data.otr;
+  document.getElementById('displayDp').innerText = 'Rp ' + data.dp;
+  document.getElementById('displayTenorLabel').innerText = `Tenor ${tenor} Tahun`;
+  document.getElementById('displayAngsuran').innerText = 'Rp ' + data.cicilan[tenor];
+}
+selectCar.addEventListener('change', updateSimulasi);
+document.getElementById('tenor').addEventListener('change', updateSimulasi);
+updateSimulasi();
+
+function sendToWA() {
+  const carKey = document.getElementById('carType').value;
+  const tenor = document.getElementById('tenor').value;
+  const data = dbMobil[carKey];
+  const text = `Halo Amanda, saya lihat web dan tertarik dengan simulasi:\n\nMobil: *${data.nama}*\nOTR: Rp ${data.otr}\nDP: Rp ${data.dp}\nTenor: ${tenor} Tahun\nAngsuran: Rp ${data.cicilan[tenor]} / bulan\n\nMohon info selanjutnya ya.`;
+  window.open(`https://wa.me/6287897999648?text=${encodeURIComponent(text)}`, '_blank');
+}
+
+/* ============ FAQ ============ */
+const faqs = [
+  { q:'Bagaimana proses pengajuan kredit lewat MUF?', a:'Konsultasi tipe & simulasi bersama Amanda, lengkapi dokumen (KTP, KK, slip gaji/NPWP untuk wiraswasta), lalu pengajuan diproses tim MUF. Proses persetujuan umumnya cepat untuk berkas lengkap.' },
+  { q:'Berapa lama garansi baterai BYD?', a:'Umumnya baterai BYD mendapat garansi 8 tahun dengan ketentuan jarak tempuh dan State of Health tertentu. Detail garansi per model bisa dikonfirmasi langsung ke Amanda karena ketentuannya bisa berbeda tiap tipe.' },
+  { q:'Apakah bisa test drive tanpa datang ke showroom?', a:'Bisa. BYD Harmony Karawang melayani test drive langsung ke rumah atau kantor di area Karawang dan sekitarnya — tinggal jadwalkan lewat WhatsApp Amanda.' },
+  { q:'Ada layanan trade-in mobil lama?', a:'Ada, trade-in bisa untuk berbagai merek. Nilai tukar tambah akan dihitung saat konsultasi dengan tim sales.' },
+  { q:'Simulasi cicilan di web ini sudah termasuk asuransi?', a:'Angka simulasi mengikuti pricelist MUF Karawang bulan berjalan. Untuk rincian komponen (termasuk asuransi/insentif tambahan), konfirmasikan ke Amanda karena bisa menyesuaikan promo aktif.' },
+];
+const faqList = document.getElementById('faqList');
+faqs.forEach(f => {
+  faqList.innerHTML += `
+    <details class="bg-white border border-black/10 rounded-2xl px-6 py-4 group">
+      <summary class="flex items-center justify-between cursor-pointer list-none">
+        <span class="font-medium text-[#0B1220] text-sm pr-4">${f.q}</span>
+        <i class="fa-solid fa-plus text-[#0E7490] faq-icon"></i>
+      </summary>
+      <p class="text-[#5B6472] text-sm mt-3 leading-relaxed">${f.a}</p>
+    </details>`;
+});
+</script>
 </body>
 </html>
