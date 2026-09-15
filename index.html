@@ -77,7 +77,12 @@
 </nav>
 
 <!-- HERO -->
-<header id="top" class="voltage-bg line-grid relative min-h-[92vh] flex items-center pt-20 overflow-hidden">
+<header id="top" class="relative min-h-[92vh] flex items-center pt-20 overflow-hidden bg-[#0B1220]">
+  <div class="absolute inset-0 z-0">
+    <img src="hero-amanda.jpeg" alt="Amanda, Sales Executive BYD Harmony Karawang" class="w-full h-full object-cover object-[65%_20%]">
+    <div class="absolute inset-0 bg-gradient-to-r from-[#0B1220] via-[#0B1220]/85 to-[#0B1220]/40"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-transparent to-transparent"></div>
+  </div>
   <div class="relative z-10 max-w-7xl mx-auto px-6 py-16 w-full">
     <div class="grid lg:grid-cols-12 gap-10 items-end">
       <div class="lg:col-span-8">
@@ -96,19 +101,19 @@
         </div>
       </div>
       <div class="lg:col-span-4 grid grid-cols-2 gap-4">
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
+        <div class="bg-[#0B1220]/60 backdrop-blur-md border border-white/10 rounded-2xl p-5">
           <p class="font-display text-3xl font-bold text-white">16</p>
           <p class="text-white/50 text-xs mt-1">Varian siap simulasi kredit</p>
         </div>
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
+        <div class="bg-[#0B1220]/60 backdrop-blur-md border border-white/10 rounded-2xl p-5">
           <p class="font-display text-3xl font-bold text-white">0%</p>
           <p class="text-white/50 text-xs mt-1">Opsi bunga spesial*</p>
         </div>
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
+        <div class="bg-[#0B1220]/60 backdrop-blur-md border border-white/10 rounded-2xl p-5">
           <p class="font-display text-3xl font-bold text-white">1-5</p>
           <p class="text-white/50 text-xs mt-1">Tahun tenor fleksibel</p>
         </div>
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-5">
+        <div class="bg-[#0B1220]/60 backdrop-blur-md border border-white/10 rounded-2xl p-5">
           <p class="font-display text-3xl font-bold text-white">Gratis</p>
           <p class="text-white/50 text-xs mt-1">Home charging tertentu**</p>
         </div>
@@ -311,12 +316,17 @@
   </div>
 </section>
 
-<!-- TESTIMONI (placeholder, menyusul) -->
-<section class="py-20 bg-[#F3F5F7] px-6 border-t border-black/5">
-  <div class="max-w-4xl mx-auto text-center">
-    <span class="text-xs font-semibold tracking-widest uppercase text-[#0E7490]">Testimoni Customer</span>
-    <h2 class="font-display text-2xl sm:text-3xl font-bold text-[#0B1220] mt-2 mb-4">Dokumentasi serah terima unit menyusul di sini</h2>
-    <p class="text-[#5B6472] text-sm max-w-xl mx-auto">Bagian ini disiapkan untuk foto serah terima dan testimoni customer. Kirim materinya ke Amanda dan section ini akan diisi.</p>
+<!-- TESTIMONI -->
+<section id="testimoni" class="py-20 bg-[#F3F5F7] px-6 border-t border-black/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center max-w-xl mx-auto mb-12">
+      <span class="text-xs font-semibold tracking-widest uppercase text-[#0E7490]">Testimoni Customer</span>
+      <h2 class="font-display text-2xl sm:text-3xl font-bold text-[#0B1220] mt-2">Kata mereka yang udah bawa pulang unit</h2>
+    </div>
+    <div id="testimoniGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    <div id="testimoniEmpty" class="text-center py-6">
+      <p class="text-[#5B6472] text-sm max-w-xl mx-auto">Bagian ini disiapkan untuk foto serah terima dan testimoni customer. Kirim materinya ke Amanda dan section ini akan diisi.</p>
+    </div>
   </div>
 </section>
 
@@ -445,6 +455,34 @@ function sendToWA() {
   const data = dbMobil[carKey];
   const text = `Halo Amanda, saya lihat web dan tertarik dengan simulasi:\n\nMobil: *${data.nama}*\nOTR: Rp ${data.otr}\nDP: Rp ${data.dp}\nTenor: ${tenor} Tahun\nAngsuran: Rp ${data.cicilan[tenor]} / bulan\n\nMohon info selanjutnya ya.`;
   window.open(`https://wa.me/6287897999648?text=${encodeURIComponent(text)}`, '_blank');
+}
+
+/* ============ TESTIMONI ============ */
+/* Tambah entri baru di sini. Foto naruhnya di folder GitHub yang sama kayak gambar mobil. */
+const testimonials = [
+  // Contoh format, hapus komentar & isi data asli:
+  // { img:'testi-budi.jpg', name:'Budi Santoso', vehicle:'BYD Atto 3', quote:'Prosesnya cepat, Amanda bantu dari awal sampai unit sampai rumah.' },
+];
+
+const testimoniGrid = document.getElementById('testimoniGrid');
+const testimoniEmpty = document.getElementById('testimoniEmpty');
+if (testimonials.length > 0) {
+  testimoniEmpty.classList.add('hidden');
+  testimonials.forEach(t => {
+    testimoniGrid.innerHTML += `
+      <div class="bg-white border border-black/10 rounded-3xl p-6 flex flex-col">
+        <div class="flex items-center gap-3 mb-4">
+          <img src="${t.img}" alt="${t.name}" class="w-14 h-14 rounded-full object-cover bg-[#F3F5F7]" onerror="this.style.opacity=0.2">
+          <div>
+            <p class="font-semibold text-[#0B1220] text-sm">${t.name}</p>
+            <p class="text-[#0E7490] text-xs">${t.vehicle}</p>
+          </div>
+        </div>
+        <p class="text-[#5B6472] text-sm leading-relaxed">"${t.quote}"</p>
+      </div>`;
+  });
+} else {
+  testimoniGrid.classList.add('hidden');
 }
 
 /* ============ FAQ ============ */
