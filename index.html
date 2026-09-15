@@ -27,7 +27,7 @@
   .font-display{font-family:'Space Grotesk',sans-serif;}
   
   /* Animasi Slider */
-  .fade-in { animation: fadeIn 0.5s ease-in-out; }
+  .fade-in { animation: fadeIn 0.4s ease-in-out; }
   @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.98); }
     to { opacity: 1; transform: scale(1); }
@@ -54,16 +54,23 @@
     </a>
     
     <div class="hidden md:flex items-center gap-8">
+      <!-- Menu Beranda (Aktif) -->
+      <a href="#top" class="text-sm font-semibold text-[#22D3EE] transition">Beranda</a>
+
       <!-- Dropdown Menu Product -->
       <div class="relative group">
         <button class="text-sm font-medium text-white/70 hover:text-[#22D3EE] transition flex items-center gap-1.5 py-2">
           Product <i class="fa-solid fa-chevron-down text-[10px] group-hover:rotate-180 transition duration-300"></i>
         </button>
         <div class="absolute top-full left-0 w-48 bg-[#111B2E] border border-white/10 rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 flex flex-col overflow-hidden">
-          <a href="produk.html?id=seal" class="px-4 py-3 text-sm text-white/80 hover:bg-[#22D3EE] hover:text-[#0B1220] transition">BYD SEAL</a>
-          <a href="produk.html?id=atto3" class="px-4 py-3 text-sm text-white/80 hover:bg-[#22D3EE] hover:text-[#0B1220] transition">BYD ATTO 3</a>
-          <a href="produk.html?id=m6" class="px-4 py-3 text-sm text-white/80 hover:bg-[#22D3EE] hover:text-[#0B1220] transition">BYD M6</a>
-          <a href="produk.html?id=dolphin" class="px-4 py-3 text-sm text-white/80 hover:bg-[#22D3EE] hover:text-[#0B1220] transition">BYD DOLPHIN</a>
+          <a href="produk.html?id=atto1" class="px-4 py-3 text-sm text-white/80 hover:bg-[#22D3EE] hover:text-[#0B1220] transition border-b border-white/5">BYD ATTO 1</a>
+          <a href="produk.html?id=seal" class="px-4 py-3 text-sm text-white/80 hover:bg-[#22D3EE] hover:text-[#0B1220] transition border-b border-white/5">BYD SEAL</a>
+          <a href="produk.html?id=atto3" class="px-4 py-3 text-sm text-white/80 hover:bg-[#22D3EE] hover:text-[#0B1220] transition border-b border-white/5">BYD ATTO 3</a>
+          <a href="produk.html?id=dolphin" class="px-4 py-3 text-sm text-white/80 hover:bg-[#22D3EE] hover:text-[#0B1220] transition border-b border-white/5">BYD DOLPHIN</a>
+          <a href="produk.html?id=sealion7" class="px-4 py-3 text-sm text-white/80 hover:bg-[#22D3EE] hover:text-[#0B1220] transition border-b border-white/5">SEALION 7</a>
+          <a href="produk.html?id=m6" class="px-4 py-3 text-sm text-white/80 hover:bg-[#22D3EE] hover:text-[#0B1220] transition border-b border-white/5">BYD M6</a>
+          <a href="produk.html?id=m6dm" class="px-4 py-3 text-sm text-white/80 hover:bg-[#22D3EE] hover:text-[#0B1220] transition border-b border-white/5">BYD M6 DM</a>
+          <a href="produk.html?id=denza" class="px-4 py-3 text-sm text-white/80 hover:bg-[#22D3EE] hover:text-[#0B1220] transition">DENZA D9</a>
         </div>
       </div>
       <a href="#simulasi" class="text-sm font-medium text-white/70 hover:text-[#22D3EE] transition">Simulasi Kredit</a>
@@ -79,11 +86,17 @@
   
   <div id="mobileMenu" class="md:hidden overflow-hidden max-h-0 bg-[#0B1220] border-t border-white/10">
     <div class="flex flex-col px-6 py-4 gap-4">
+      <a href="#top" class="text-[#22D3EE] text-sm font-semibold">Beranda</a>
       <div class="flex flex-col gap-2">
         <span class="text-white/40 text-xs font-semibold tracking-widest uppercase">Products</span>
+        <a href="produk.html?id=atto1" class="text-white/90 text-sm pl-2 border-l border-white/20">BYD ATTO 1</a>
         <a href="produk.html?id=seal" class="text-white/90 text-sm pl-2 border-l border-white/20">BYD SEAL</a>
         <a href="produk.html?id=atto3" class="text-white/90 text-sm pl-2 border-l border-white/20">BYD ATTO 3</a>
+        <a href="produk.html?id=dolphin" class="text-white/90 text-sm pl-2 border-l border-white/20">BYD DOLPHIN</a>
+        <a href="produk.html?id=sealion7" class="text-white/90 text-sm pl-2 border-l border-white/20">SEALION 7</a>
         <a href="produk.html?id=m6" class="text-white/90 text-sm pl-2 border-l border-white/20">BYD M6</a>
+        <a href="produk.html?id=m6dm" class="text-white/90 text-sm pl-2 border-l border-white/20">BYD M6 DM</a>
+        <a href="produk.html?id=denza" class="text-white/90 text-sm pl-2 border-l border-white/20">DENZA D9</a>
       </div>
       <a href="#simulasi" class="text-white/80 text-sm font-medium mt-2">Simulasi Kredit</a>
       <a href="#lokasi" class="text-white/80 text-sm font-medium">Lokasi</a>
@@ -140,22 +153,25 @@
 </header>
 
 <!-- SECTION SLIDER PRODUK -->
-<section id="product-slider" class="relative bg-[#a1a7b0] w-full min-h-[80vh] flex items-center justify-center overflow-hidden">
+<section id="product-slider" class="relative bg-[#8ca4b5] transition-colors duration-500 w-full min-h-[85vh] flex items-center justify-center overflow-hidden py-20">
   <div id="sliderContent" class="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col items-center text-center fade-in">
-    <img id="sliderImg" src="seal.webp" alt="BYD SEAL" class="w-full max-w-4xl h-auto object-contain drop-shadow-2xl mb-2 -mt-10 lg:-mt-20">
+    <!-- Gambar udah dipatok tingginya h-[250px] sm:h-[400px] biar teks nggak naik turun pas digeser -->
+    <img id="sliderImg" src="seal.webp" alt="BYD SEAL" class="w-full max-w-4xl h-[250px] sm:h-[400px] object-contain drop-shadow-2xl mb-8">
     <h2 id="sliderTitle" class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-wide drop-shadow-lg uppercase">BYD SEAL</h2>
-    <p id="sliderDesc" class="text-white/90 text-sm sm:text-lg mt-3 mb-8 drop-shadow-md font-medium">Ocean Aesthetics. Pure Performance.</p>
+    <p id="sliderDesc" class="text-white/90 text-sm sm:text-lg mt-3 mb-10 drop-shadow-md font-medium">Ocean Aesthetics. Pure Performance.</p>
     <a id="sliderBtn" href="produk.html?id=seal" class="border-2 border-[#22D3EE] text-white hover:bg-[#22D3EE] hover:text-[#0B1220] font-semibold px-8 py-3 rounded-sm transition duration-300">
       Lihat Model
     </a>
   </div>
-  <button onclick="prevSlide()" class="absolute left-4 sm:left-10 top-1/2 -translate-y-1/2 z-20 text-white/50 hover:text-white text-3xl sm:text-5xl transition">
+  
+  <button onclick="prevSlide()" class="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 z-20 text-white/50 hover:text-white text-3xl sm:text-5xl transition p-4">
     <i class="fa-solid fa-angle-left"></i>
   </button>
-  <button onclick="nextSlide()" class="absolute right-4 sm:right-10 top-1/2 -translate-y-1/2 z-20 text-white/50 hover:text-white text-3xl sm:text-5xl transition">
+  <button onclick="nextSlide()" class="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 z-20 text-white/50 hover:text-white text-3xl sm:text-5xl transition p-4">
     <i class="fa-solid fa-angle-right"></i>
   </button>
-  <div class="absolute bottom-8 w-full flex justify-center gap-3 z-20" id="sliderDots"></div>
+  
+  <div class="absolute bottom-8 w-full flex flex-wrap justify-center gap-3 z-20 px-6" id="sliderDots"></div>
 </section>
 
 <!-- SIMULASI KREDIT -->
@@ -368,12 +384,16 @@ menuBtn.addEventListener('click', () => {
   menuBtn.innerHTML = menuOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
 });
 
-/* ============ SLIDER PRODUK ============ */
+/* ============ SLIDER PRODUK (FULL 8 LINEUP) ============ */
 const products = [
   { id: 'seal', name: 'BYD SEAL', tagline: 'Ocean Aesthetics. Pure Performance.', img: 'seal.webp', bg: '#8ca4b5' },
   { id: 'atto3', name: 'BYD ATTO 3', tagline: 'Kenyamanan Ekstra, Desain Dinamis.', img: 'atto3.webp', bg: '#4a5b6d' },
   { id: 'm6', name: 'BYD M6', tagline: 'MPV EV Pertama di Indonesia.', img: 'm6.webp', bg: '#d4d8db' },
-  { id: 'dolphin', name: 'BYD DOLPHIN', tagline: 'Lincah Mengeksplorasi Kota.', img: 'dolphin.webp', bg: '#c9aeb3' }
+  { id: 'dolphin', name: 'BYD DOLPHIN', tagline: 'Lincah Mengeksplorasi Kota.', img: 'dolphin.webp', bg: '#c9aeb3' },
+  { id: 'atto1', name: 'BYD ATTO 1', tagline: 'City Car Compact & Lincah.', img: 'atto1.webp', bg: '#71717a' },
+  { id: 'sealion7', name: 'SEALION 7', tagline: 'Premium SUV Performa Tinggi.', img: 'sealion7.webp', bg: '#3f3f46' },
+  { id: 'm6dm', name: 'BYD M6 DM', tagline: 'Efisiensi Hybrid Maksimal.', img: 'm6-dm.png', bg: '#52525b' },
+  { id: 'denza', name: 'DENZA D9', tagline: 'Luxury MPV Kelas Atas.', img: 'denza-d9.webp', bg: '#171717' }
 ];
 
 let currentSlide = 0;
@@ -385,6 +405,7 @@ const sliderSection = document.getElementById('product-slider');
 const sliderContent = document.getElementById('sliderContent');
 const sliderDots = document.getElementById('sliderDots');
 
+// Generate Navigasi Bulat (Dots)
 products.forEach((_, i) => {
   const dot = document.createElement('button');
   dot.className = `w-2 h-2 rounded-full transition-all duration-300 ${i === 0 ? 'bg-white w-6' : 'bg-white/40'}`;
@@ -394,6 +415,8 @@ products.forEach((_, i) => {
 
 function updateSlider() {
   const p = products[currentSlide];
+  
+  // Efek kedip transisi ganti konten
   sliderContent.classList.remove('fade-in');
   void sliderContent.offsetWidth; 
   sliderContent.classList.add('fade-in');
@@ -413,6 +436,7 @@ function nextSlide() { currentSlide = (currentSlide + 1) % products.length; upda
 function prevSlide() { currentSlide = (currentSlide - 1 + products.length) % products.length; updateSlider(); }
 function goToSlide(index) { currentSlide = index; updateSlider(); }
 
+// Fungsi Geser HP
 let startX = 0;
 sliderSection.addEventListener('touchstart', e => startX = e.changedTouches[0].screenX);
 sliderSection.addEventListener('touchend', e => {
