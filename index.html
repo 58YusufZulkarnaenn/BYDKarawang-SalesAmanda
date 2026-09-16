@@ -505,14 +505,14 @@ menuBtn.addEventListener('click', () => {
   menuBtn.innerHTML = menuOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
 });
 
-/* ============ VISITOR COUNTER (FIXED - NO SIGNUP) ============ */
+/* ============ VISITOR COUNTER (ABACUS API) ============ */
 (function () {
   const NAMESPACE = 'byd-harmony-karawang';
   const COUNTER_NAME = 'homepage-visits';
   const el = document.getElementById('visitorCounterValue');
   
-  // Pake endpoint alternatif karena counterapi.dev V1 udah mati
-  const endpoint = `https://countapi.mileshilliard.com/hit/${NAMESPACE}/${COUNTER_NAME}`;
+  // Endpoint Abacus dari temen lo
+  const endpoint = `https://abacus.jasoncameron.dev/hit/${NAMESPACE}/${COUNTER_NAME}`;
 
   fetch(endpoint)
     .then(res => {
@@ -520,7 +520,7 @@ menuBtn.addEventListener('click', () => {
       return res.json();
     })
     .then(data => {
-      // Perhatikan: API ini ngereturn angka di properti 'value' (bukan 'count')
+      // Abacus pake 'value', bukan 'count'
       if (typeof data.value !== 'undefined') {
         el.textContent = new Intl.NumberFormat('id-ID').format(data.value);
       } else {
