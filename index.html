@@ -505,27 +505,34 @@ menuBtn.addEventListener('click', () => {
   menuBtn.innerHTML = menuOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
 });
 
-/* ============ VISITOR COUNTER (HIT SETIAP KALI DIBUKA) ============ */
+/* ============ VISITOR COUNTER (FIXED - NO SIGNUP) ============ */
 (function () {
   const NAMESPACE = 'byd-harmony-karawang';
   const COUNTER_NAME = 'homepage-visits';
   const el = document.getElementById('visitorCounterValue');
   
-  // Langsung tembak "up" (nambah 1) setiap kali halaman dimuat
-  const endpoint = `https://api.counterapi.dev/v1/${NAMESPACE}/${COUNTER_NAME}/up`;
+  // Pake endpoint alternatif karena counterapi.dev V1 udah mati
+  const endpoint = `https://countapi.mileshilliard.com/hit/${NAMESPACE}/${COUNTER_NAME}`;
 
   fetch(endpoint)
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) throw new Error('API Error');
+      return res.json();
+    })
     .then(data => {
-      if (typeof data.count !== 'undefined') {
-        el.textContent = new Intl.NumberFormat('id-ID').format(data.count);
+      // Perhatikan: API ini ngereturn angka di properti 'value' (bukan 'count')
+      if (typeof data.value !== 'undefined') {
+        el.textContent = new Intl.NumberFormat('id-ID').format(data.value);
       } else {
         el.textContent = '0';
       }
     })
-    .catch(() => { el.textContent = '0'; });
+    .catch((err) => { 
+      console.error('Visitor counter error:', err);
+      el.textContent = '0'; 
+    });
 })();
-
+  
 /* ============ SLIDER PRODUK (FULL 8 LINEUP) ============ */
 const products = [
   { id: 'seal', name: 'BYD SEAL', tagline: 'Ocean Aesthetics. Pure Performance.', img: 'seal.webp', bg: '#8ca4b5' },
