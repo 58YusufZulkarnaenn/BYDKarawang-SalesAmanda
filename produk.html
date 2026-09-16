@@ -4,6 +4,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title id="pageTitle">Detail Produk | BYD Harmony Karawang</title>
+<meta name="description" content="Cek spesifikasi, pilihan warna, varian, dan harga mobil BYD & Denza di BYD Harmony Karawang. Simulasi kredit dan test drive langsung ke rumah bareng Amanda.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0B1220">
+
+<link rel="canonical" href="">
+
+<meta property="og:type" content="product">
+<meta property="og:site_name" content="BYD Harmony Karawang">
+<meta property="og:locale" content="id_ID">
+<meta property="og:title" content="Detail Produk | BYD Harmony Karawang">
+<meta property="og:description" content="Cek spesifikasi, pilihan warna, varian, dan harga mobil BYD & Denza di BYD Harmony Karawang.">
+<meta property="og:image" content="logo-byd.png">
+<meta property="og:url" content="">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Detail Produk | BYD Harmony Karawang">
+<meta name="twitter:description" content="Cek spesifikasi, pilihan warna, varian, dan harga mobil BYD & Denza di BYD Harmony Karawang.">
+<meta name="twitter:image" content="logo-byd.png">
+
+<link rel="icon" href="logo-byd.png">
+<link rel="apple-touch-icon" href="logo-byd.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -17,31 +42,45 @@
   /* Styling buat buletan warna biar rapi */
   .color-btn { transition: all 0.2s; border: 2px solid transparent; }
   .color-btn.active { border-color: var(--cyan); transform: scale(1.1); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+  /* Keyboard focus ring biar konsisten sama beranda */
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
 </style>
 </head>
 <body class="antialiased">
+
+<noscript>
+  <div style="background:#0B1220;color:#fff;text-align:center;padding:12px 16px;font-size:13px;">
+    Halaman ini butuh JavaScript aktif supaya detail produk bisa tampil. Aktifkan JavaScript di browser kamu.
+  </div>
+</noscript>
 
 <!-- NAVBAR (Sama kaya landing page biar konsisten) -->
 <nav class="bg-[#0B1220] fixed w-full z-50 top-0 shadow-lg">
   <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
     <a href="index.html" class="flex items-center gap-3">
       <span class="flex items-center">
-        <img src="logo-byd.png" alt="BYD Harmony Auto Karawang" alt="BYD" class="h-14 sm:h-16 w-auto object-contain">
+        <img src="logo-byd.png" alt="BYD Harmony Auto Karawang" class="h-14 sm:h-16 w-auto object-contain">
       </span>
     </a>
-    <div class="hidden md:flex items-center gap-6">
-      <a href="index.html" class="text-sm font-medium text-white/70 hover:text-[#22D3EE] transition"><i class="fa-solid fa-arrow-left mr-2"></i>Kembali ke Beranda</a>
-      <a id="navWaBtn" href="#" target="_blank" class="bg-[#22D3EE] hover:bg-white text-[#0B1220] px-5 py-2.5 rounded-full text-sm font-semibold transition">Tanya Amanda</a>
+    <div class="flex items-center gap-3 sm:gap-6">
+      <a href="index.html" class="text-sm font-medium text-white/70 hover:text-[#22D3EE] transition flex items-center gap-2">
+        <i class="fa-solid fa-arrow-left"></i><span class="hidden sm:inline">Kembali ke Beranda</span>
+      </a>
+      <a id="navWaBtn" href="#" target="_blank" rel="noopener noreferrer" class="bg-[#22D3EE] hover:bg-white text-[#0B1220] px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold transition">Tanya Amanda</a>
     </div>
   </div>
 </nav>
 
-<!-- HERO SECTION -->
 <!-- HERO SECTION (Bersih, Fokus ke Mobil) -->
 <header id="heroSection" class="relative pt-24 pb-12 px-6 min-h-[60vh] md:min-h-[75vh] flex items-end overflow-hidden">
   <!-- Background Image Full -->
   <div class="absolute inset-0 z-0 bg-[#0B1220]">
-    <img id="heroImg" src="seal.webp" alt="Car" class="w-full h-full object-cover object-center opacity-90">
+    <img id="heroImg" src="seal.webp" alt="Mobil BYD" class="w-full h-full object-cover object-center opacity-90">
     <!-- Gradient tipis di bawah aja biar judul tetep kebaca -->
     <div class="absolute inset-0 bg-gradient-to-t from-[#0B1220] via-[#0B1220]/40 to-transparent"></div>
   </div>
@@ -75,7 +114,7 @@
       <div class="flex-1 flex justify-center relative w-full">
         <!-- Bayangan di bawah mobil biar realistis -->
         <div class="absolute bottom-0 w-3/4 h-10 bg-black/20 blur-xl rounded-[100%]"></div>
-        <img id="colorDisplayImg" src="" alt="Pilihan Warna" class="w-full max-w-3xl object-contain relative z-10 transition-all duration-300">
+        <img id="colorDisplayImg" src="" alt="Pilihan Warna" loading="lazy" class="w-full max-w-3xl object-contain relative z-10 transition-all duration-300">
       </div>
       
       <!-- Panel Warna (Kanan) -->
@@ -114,10 +153,10 @@
     </p>
     
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a id="btnTestDrive" href="#" target="_blank" class="bg-[#22D3EE] hover:bg-white text-[#0B1220] font-bold py-4 px-8 rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-[#22D3EE]/20">
+      <a id="btnTestDrive" href="#" target="_blank" rel="noopener noreferrer" class="bg-[#22D3EE] hover:bg-white text-[#0B1220] font-bold py-4 px-8 rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-[#22D3EE]/20">
         <i class="fa-solid fa-car"></i> Jadwalkan Test Drive
       </a>
-      <a id="btnSimulasi" href="#" target="_blank" class="border border-white/20 hover:bg-white/10 text-white font-bold py-4 px-8 rounded-xl transition flex items-center justify-center gap-2">
+      <a id="btnSimulasi" href="#" target="_blank" rel="noopener noreferrer" class="border border-white/20 hover:bg-white/10 text-white font-bold py-4 px-8 rounded-xl transition flex items-center justify-center gap-2">
         <i class="fa-solid fa-calculator"></i> Minta Simulasi
       </a>
     </div>
@@ -126,8 +165,14 @@
 
 <!-- FOOTER -->
 <footer class="bg-[#0B1220] text-white/40 py-10 px-6 text-center text-xs">
+  <img src="logo-byd.png" alt="BYD Harmony Auto" class="h-14 sm:h-16 mx-auto mb-5 object-contain">
   <p>&copy; 2026 BYD Harmony Karawang. All rights reserved. Official Sales: Amanda.</p>
 </footer>
+
+<!-- FLOATING WHATSAPP -->
+<a id="floatWaBtn" href="#" target="_blank" rel="noopener noreferrer" aria-label="Chat WhatsApp Amanda" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-xl hover:bg-green-600 hover:scale-105 transition z-50">
+  <i class="fab fa-whatsapp"></i>
+</a>
 
 <script>
 /* ============ DATABASE SPESIFIKASI MOBIL ============ */
@@ -169,7 +214,7 @@ const dbProduk = {
     ],
     warna: [
       { nama: "Surf Blue", hex: "#4A80A6", img: "atto3-surf-blue.webp" },
-      { nama: "Ski White", hex: "#F5F5F5", img: "atto3-sky-white.webp" },
+      { nama: "Sky White", hex: "#F5F5F5", img: "atto3-sky-white.webp" },
       { nama: "Boulder Grey", hex: "#6C7378", img: "atto3-grey.webp" }
     ],
     varian: [
@@ -314,8 +359,10 @@ const urlParams = new URLSearchParams(window.location.search);
 const carId = urlParams.get('id') || 'seal'; // Kalau kosong, default ke seal
 const data = dbProduk[carId];
 
-// Kalau ID ngaco, lempar ke home
-if (!data) window.location.href = 'index.html';
+// FIX: kalau ID ngaco, langsung stop di sini & lempar ke home — nggak lanjut baca `data` yang kosong
+if (!data) {
+  window.location.href = 'index.html';
+} else {
 
 // 2. Isi data ke Hero Section
 document.title = `${data.nama} | BYD Harmony Karawang`;
@@ -324,6 +371,20 @@ document.getElementById('heroTitle').innerText = data.nama;
 document.getElementById('heroTagline').innerText = data.tagline;
 document.getElementById('heroPrice').innerText = data.hargaBawah;
 document.getElementById('heroImg').src = data.heroImg;
+document.getElementById('heroImg').alt = data.nama;
+
+// Update meta tags biar relevan sesuai mobil yang lagi dibuka (berguna buat browser & crawler yang jalanin JS)
+const fullUrl = window.location.href;
+const metaDesc = `${data.nama} — ${data.tagline} Mulai dari ${data.hargaBawah}. Simulasi kredit & test drive langsung ke rumah bareng Amanda, BYD Harmony Karawang.`;
+document.querySelector('meta[name="description"]').setAttribute('content', metaDesc);
+document.querySelector('meta[property="og:title"]').setAttribute('content', `${data.nama} | BYD Harmony Karawang`);
+document.querySelector('meta[property="og:description"]').setAttribute('content', metaDesc);
+document.querySelector('meta[property="og:image"]').setAttribute('content', data.heroImg);
+document.querySelector('meta[property="og:url"]').setAttribute('content', fullUrl);
+document.querySelector('meta[name="twitter:title"]').setAttribute('content', `${data.nama} | BYD Harmony Karawang`);
+document.querySelector('meta[name="twitter:description"]').setAttribute('content', metaDesc);
+document.querySelector('meta[name="twitter:image"]').setAttribute('content', data.heroImg);
+document.querySelector('link[rel="canonical"]').setAttribute('href', fullUrl);
 
 // 3. Setup Link WhatsApp
 const waNumber = "6287897999648"; // Nomor Amanda
@@ -334,6 +395,7 @@ const waTextUmum = `Halo Amanda, saya mau tanya-tanya seputar mobil *${data.nama
 document.getElementById('btnTestDrive').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(waTextTestDrive)}`;
 document.getElementById('btnSimulasi').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(waTextSimulasi)}`;
 document.getElementById('navWaBtn').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(waTextUmum)}`;
+document.getElementById('floatWaBtn').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(waTextUmum)}`;
 
 // 4. Bikin Grid Spesifikasi
 const specGrid = document.getElementById('specGrid');
@@ -346,7 +408,8 @@ data.spek.forEach(s => {
     </div>
   `;
 });
-  // --- PRELOAD GAMBAR BIAR KLIK WARNA LANGSUNG NONGOL SECARA INSTAN ---
+
+// --- PRELOAD GAMBAR BIAR KLIK WARNA LANGSUNG NONGOL SECARA INSTAN ---
 data.warna.forEach(w => {
   const preloadImg = new Image();
   preloadImg.src = w.img;
@@ -358,10 +421,13 @@ const colorDisplayImg = document.getElementById('colorDisplayImg');
 
 // Set warna default (warna pertama dari array)
 colorDisplayImg.src = data.warna[0].img;
+colorDisplayImg.alt = `${data.nama} warna ${data.warna[0].nama}`;
 
 data.warna.forEach((w, index) => {
   // Bikin button bulet untuk tiap warna
   const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.setAttribute('aria-pressed', index === 0 ? 'true' : 'false');
   btn.className = `color-btn flex flex-col items-center gap-2 outline-none group ${index === 0 ? 'active' : ''}`;
   
   btn.innerHTML = `
@@ -375,12 +441,17 @@ data.warna.forEach((w, index) => {
     colorDisplayImg.style.opacity = '0.5';
     setTimeout(() => {
       colorDisplayImg.src = w.img;
+      colorDisplayImg.alt = `${data.nama} warna ${w.nama}`;
       colorDisplayImg.style.opacity = '1';
     }, 150);
     
     // Ganti class active di tombol
-    document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.color-btn').forEach(b => {
+      b.classList.remove('active');
+      b.setAttribute('aria-pressed', 'false');
+    });
     btn.classList.add('active');
+    btn.setAttribute('aria-pressed', 'true');
   };
   
   colorSwatches.appendChild(btn);
@@ -399,6 +470,36 @@ data.varian.forEach(v => {
     </div>
   `;
 });
+
+// 7. Structured data Vehicle (JSON-LD) — auto-generate dari data produk biar bantu SEO tiap halaman
+const hargaAngka = parseInt(data.hargaBawah.replace(/[^0-9]/g, ''), 10);
+const vehicleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Vehicle",
+  "name": data.nama,
+  "description": data.tagline,
+  "image": data.heroImg,
+  "brand": { "@type": "Brand", "name": "BYD" },
+  "vehicleConfiguration": data.kategori,
+  "offers": {
+    "@type": "AggregateOffer",
+    "priceCurrency": "IDR",
+    "lowPrice": hargaAngka,
+    "availability": "https://schema.org/InStock",
+    "url": fullUrl,
+    "seller": {
+      "@type": "AutoDealer",
+      "name": "BYD Harmony Karawang",
+      "telephone": "+6287897999648"
+    }
+  }
+};
+const ldScript = document.createElement('script');
+ldScript.type = 'application/ld+json';
+ldScript.textContent = JSON.stringify(vehicleJsonLd);
+document.head.appendChild(ldScript);
+
+} // tutup blok else (data valid)
 </script>
 </body>
 </html>
