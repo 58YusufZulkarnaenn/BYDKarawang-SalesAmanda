@@ -9,21 +9,19 @@
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0B1220">
 
-<!-- TODO: ganti URL di bawah ini dengan domain final GitHub Pages / custom domain begitu sudah live -->
-<link rel="canonical" href="https://GANTI-DENGAN-DOMAIN-KAMU.github.io/">
+<link rel="canonical" href="https://bydkarawang-salesamanda.my.id/">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BYD Harmony Karawang">
 <meta property="og:locale" content="id_ID">
 <meta property="og:title" content="BYD Harmony Karawang — Dealer Resmi BYD & Denza">
 <meta property="og:description" content="Simulasi kredit lengkap, katalog 8 lineup, lokasi showroom, dan kontak langsung Amanda, Sales Executive BYD Harmony Karawang.">
-<!-- TODO: og:image idealnya URL absolut (https://domainmu.com/hero-amanda.jpeg), bukan relatif, biar preview link muncul bagus di WA/IG -->
-<meta property="og:image" content="hero-amanda.jpeg">
-<meta property="og:url" content="https://GANTI-DENGAN-DOMAIN-KAMU.github.io/">
+<meta property="og:image" content="https://bydkarawang-salesamanda.my.id/hero-amanda.jpeg">
+<meta property="og:url" content="https://bydkarawang-salesamanda.my.id/">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="BYD Harmony Karawang — Dealer Resmi BYD & Denza">
 <meta name="twitter:description" content="Simulasi kredit lengkap, katalog 8 lineup, lokasi showroom, dan kontak langsung Amanda.">
-<meta name="twitter:image" content="hero-amanda.jpeg">
+<meta name="twitter:image" content="https://bydkarawang-salesamanda.my.id/hero-amanda.jpeg">
 
 <link rel="icon" href="logo-byd.png">
 <link rel="apple-touch-icon" href="logo-byd.png">
@@ -70,6 +68,30 @@
     outline: 2px solid var(--cyan);
     outline-offset: 3px;
     border-radius: 4px;
+  }
+
+  /* VISITOR COUNTER */
+  #visitorCounter{
+    position: fixed;
+    left: 16px;
+    bottom: 16px;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(11,18,32,.85);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,.12);
+    color: rgba(255,255,255,.85);
+    font-size: 11px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    box-shadow: 0 6px 20px rgba(0,0,0,.25);
+  }
+  #visitorCounter i{ color: var(--cyan); }
+  #visitorCounterValue{ font-family:'Space Grotesk',sans-serif; font-weight:700; color:#fff; letter-spacing:.5px; }
+  @media (max-width: 640px){
+    #visitorCounter{ left: 10px; bottom: 10px; font-size: 10px; padding: 6px 10px; }
   }
 </style>
 </head>
@@ -440,6 +462,13 @@
   <p>&copy; 2026 BYD Harmony Karawang. All rights reserved. Official Sales: Amanda.</p>
 </footer>
 
+<!-- VISITOR COUNTER -->
+<div id="visitorCounter" aria-label="Jumlah pengunjung website">
+  <i class="fa-solid fa-eye"></i>
+  <span>Pengunjung:</span>
+  <span id="visitorCounterValue">—</span>
+</div>
+
 <!-- FLOATING WHATSAPP -->
 <a href="https://wa.me/6287897999648?text=Halo%20Amanda,%20saya%20tertarik%20dengan%20mobil%20BYD." target="_blank" rel="noopener noreferrer" aria-label="Chat WhatsApp Amanda" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-xl hover:bg-green-600 hover:scale-105 transition z-50">
   <i class="fab fa-whatsapp"></i>
@@ -452,7 +481,7 @@
   "@type": "AutomotiveBusiness",
   "name": "BYD Harmony Karawang",
   "image": "logo-byd.png",
-  "url": "https://GANTI-DENGAN-DOMAIN-KAMU.github.io/",
+  "url": "https://bydkarawang-salesamanda.my.id/",
   "telephone": "+6287897999648",
   "priceRange": "$$",
   "address": {
@@ -496,6 +525,33 @@ menuBtn.addEventListener('click', () => {
   menuBtn.setAttribute('aria-label', menuOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi');
   menuBtn.innerHTML = menuOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
 });
+
+/* ============ VISITOR COUNTER ============ */
+/* Pakai CounterAPI (counterapi.dev) — gratis, tanpa perlu bikin akun/backend sendiri.
+   "namespace" dipakai biar counter ini unik buat web ini doang, jangan sampai kepakai web lain.
+   Counter cuma nambah 1x per sesi browser tab (pakai sessionStorage) biar reload halaman
+   nggak bikin angkanya meledak nggak wajar. */
+(function () {
+  const NAMESPACE = 'byd-harmony-karawang';
+  const COUNTER_NAME = 'homepage-visits';
+  const el = document.getElementById('visitorCounterValue');
+  const alreadyCountedThisSession = sessionStorage.getItem('bydCounterHit');
+  const endpoint = alreadyCountedThisSession
+    ? `https://api.counterapi.dev/v1/${NAMESPACE}/${COUNTER_NAME}`
+    : `https://api.counterapi.dev/v1/${NAMESPACE}/${COUNTER_NAME}/up`;
+
+  fetch(endpoint)
+    .then(res => res.json())
+    .then(data => {
+      if (typeof data.count !== 'undefined') {
+        el.textContent = new Intl.NumberFormat('id-ID').format(data.count);
+        if (!alreadyCountedThisSession) sessionStorage.setItem('bydCounterHit', '1');
+      } else {
+        el.textContent = '0';
+      }
+    })
+    .catch(() => { el.textContent = '0'; });
+})();
 
 /* ============ SLIDER PRODUK (FULL 8 LINEUP) ============ */
 const products = [
