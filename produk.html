@@ -176,12 +176,15 @@
 
 <script>
 /* ============ DATABASE SPESIFIKASI MOBIL ============ */
+/* Harga per 2026-09: dicocokkan ke poster OTR Karawang & pricelist MUF resmi.
+   Varian yang harganya belum ada di sumber resmi ditandai "Hubungi Amanda"
+   daripada ditebak, biar nggak salah info ke calon customer. */
 const dbProduk = {
   seal: {
     nama: "BYD SEAL",
     tagline: "Ocean Aesthetics. Pure Performance.",
     kategori: "Pure EV Sedan",
-    hargaBawah: "Rp 629.000.000",
+    hargaBawah: "Rp 872.500.000",
     heroImg: "seal-hero.webp",
     spek: [
       { ikon: "fa-battery-full", judul: "82.56 kWh", sub: "Blade Battery" },
@@ -196,19 +199,19 @@ const dbProduk = {
       { nama: "Cosmos Black", hex: "#111111", img: "seal-cosmos-black.webp" }
     ],
     varian: [
-      { nama: "BYD Seal Premium", harga: "Rp 629.000.000" },
-      { nama: "BYD Seal Performance (AWD)", harga: "Rp 719.000.000" }
+      { nama: "BYD Seal Premium", harga: "Rp 872.500.000" },
+      { nama: "BYD Seal Performance (AWD)", harga: "Hubungi Amanda" }
     ]
   },
   atto3: {
     nama: "BYD ATTO 3",
     tagline: "Kenyamanan Ekstra, Desain Dinamis.",
     kategori: "Pure EV SUV",
-    hargaBawah: "Rp 515.000.000",
+    hargaBawah: "Rp 418.500.000",
     heroImg: "atto3-hero.webp",
     spek: [
       { ikon: "fa-battery-full", judul: "60.48 kWh", sub: "Blade Battery" },
-      { ikon: "fa-route", judul: "480 km", sub: "Jarak Tempuh (NEDC)" },
+      { ikon: "fa-route", judul: "410 km", sub: "Jarak Tempuh (NEDC)" },
       { ikon: "fa-stopwatch", judul: "7.3s", sub: "Akselerasi 0-100 km/h" },
       { ikon: "fa-car-side", judul: "204 PS", sub: "Tenaga Motor" }
     ],
@@ -218,15 +221,15 @@ const dbProduk = {
       { nama: "Boulder Grey", hex: "#6C7378", img: "atto3-grey.webp" }
     ],
     varian: [
-      { nama: "BYD Atto 3 Advanced", harga: "Rp 515.000.000" },
-      { nama: "BYD Atto 3 Superior", harga: "Rp 550.000.000" }
+      { nama: "BYD Atto 3 Advance Plus", harga: "Rp 418.500.000" },
+      { nama: "BYD Atto 3 Superior", harga: "Hubungi Amanda" }
     ]
   },
   m6: {
     nama: "BYD M6",
     tagline: "MPV EV Pertama di Indonesia.",
     kategori: "Pure EV 7-Seater",
-    hargaBawah: "Rp 379.000.000",
+    hargaBawah: "Rp 398.500.000",
     heroImg: "m6-hero.webp",
     spek: [
       { ikon: "fa-battery-full", judul: "71.8 kWh", sub: "Blade Battery" },
@@ -240,16 +243,16 @@ const dbProduk = {
       { nama: "Cosmos Black", hex: "#1A1A1A", img: "m6-cosmo-black.webp" }
     ],
     varian: [
-      { nama: "BYD M6 Standard 7-Seater", harga: "Rp 379.000.000" },
-      { nama: "BYD M6 Superior 7-Seater", harga: "Rp 419.000.000" },
-      { nama: "BYD M6 Superior Captain Seat", harga: "Rp 429.000.000" }
+      { nama: "BYD M6 Standard 7-Seater", harga: "Rp 398.500.000" },
+      { nama: "BYD M6 Superior 7-Seater", harga: "Rp 438.500.000" },
+      { nama: "BYD M6 Superior Captain Seat", harga: "Rp 448.500.000" }
     ]
   },
   dolphin: {
     nama: "BYD DOLPHIN",
     tagline: "Lincah Mengeksplorasi Kota.",
     kategori: "Pure EV Hatchback",
-    hargaBawah: "Rp 425.000.000",
+    hargaBawah: "Segera Rilis",
     heroImg: "dolphin-hero.webp",
     spek: [
       { ikon: "fa-battery-full", judul: "60.48 kWh", sub: "Blade Battery" },
@@ -263,8 +266,8 @@ const dbProduk = {
       { nama: "Sky White", hex: "#F1EEE9", img: "dolphin-sky-white.webp" }
     ],
     varian: [
-      { nama: "BYD Dolphin Dynamic", harga: "Rp 425.000.000" },
-      { nama: "BYD Dolphin Premium", harga: "Rp 490.000.000" }
+      { nama: "BYD Dolphin Dynamic", harga: "Hubungi Amanda" },
+      { nama: "BYD Dolphin Premium", harga: "Hubungi Amanda" }
     ]
   },
   atto1: {
@@ -275,7 +278,7 @@ const dbProduk = {
     heroImg: "atto1-hero.webp",
     spek: [
       { ikon: "fa-battery-full", judul: "38.88 kWh", sub: "Blade Battery" },
-      { ikon: "fa-route", judul: "405 km", sub: "Jarak Tempuh (NEDC)" },
+      { ikon: "fa-route", judul: "300 km", sub: "Jarak Tempuh (NEDC)" },
       { ikon: "fa-car", judul: "Desain Compact", sub: "Cocok untuk Perkotaan" },
       { ikon: "fa-bolt", judul: "40 kW", sub: "DC Fast Charging" }
     ],
@@ -298,7 +301,7 @@ const dbProduk = {
     heroImg: "sealion7-hero.webp",
     spek: [
       { ikon: "fa-battery-full", judul: "82.5 kWh", sub: "Blade Battery" },
-      { ikon: "fa-route", judul: "610 km", sub: "Jarak Tempuh (NEDC)" },
+      { ikon: "fa-route", judul: "650 km", sub: "Jarak Tempuh (NEDC)" },
       { ikon: "fa-stopwatch", judul: "4.5s", sub: "Akselerasi 0-100 km/h" },
       { ikon: "fa-truck-fast", judul: "AWD", sub: "Sistem Penggerak" }
     ],
@@ -327,7 +330,10 @@ const dbProduk = {
     ],
     varian: [
       { nama: "BYD M6 DM Classic Standard", harga: "Rp 302.000.000" },
-      { nama: "BYD M6 DM Classic Dynamic", harga: "Rp 322.000.000" }
+      { nama: "BYD M6 DM Classic Dynamic", harga: "Rp 322.000.000" },
+      { nama: "BYD M6 Cross Advanced", harga: "Rp 364.000.000" },
+      { nama: "BYD M6 Cross Superior 7 Seat", harga: "Rp 384.000.000" },
+      { nama: "BYD M6 Cross Superior Captain Seat", harga: "Rp 394.000.000" }
     ]
   },
   denza: {
@@ -472,32 +478,36 @@ data.varian.forEach(v => {
 });
 
 // 7. Structured data Vehicle (JSON-LD) — auto-generate dari data produk biar bantu SEO tiap halaman
+// (hanya digenerate kalau harga sudah berupa angka pasti, biar nggak nyetak "Segera Rilis"/"Hubungi Amanda" jadi harga di data terstruktur)
 const hargaAngka = parseInt(data.hargaBawah.replace(/[^0-9]/g, ''), 10);
-const vehicleJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Vehicle",
-  "name": data.nama,
-  "description": data.tagline,
-  "image": data.heroImg,
-  "brand": { "@type": "Brand", "name": "BYD" },
-  "vehicleConfiguration": data.kategori,
-  "offers": {
-    "@type": "AggregateOffer",
-    "priceCurrency": "IDR",
-    "lowPrice": hargaAngka,
-    "availability": "https://schema.org/InStock",
-    "url": fullUrl,
-    "seller": {
-      "@type": "AutoDealer",
-      "name": "BYD Harmony Karawang",
-      "telephone": "+6287897999648"
+if (!isNaN(hargaAngka) && hargaAngka > 0) {
+  const fullUrl2 = window.location.href;
+  const vehicleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Vehicle",
+    "name": data.nama,
+    "description": data.tagline,
+    "image": data.heroImg,
+    "brand": { "@type": "Brand", "name": "BYD" },
+    "vehicleConfiguration": data.kategori,
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "IDR",
+      "lowPrice": hargaAngka,
+      "availability": "https://schema.org/InStock",
+      "url": fullUrl2,
+      "seller": {
+        "@type": "AutoDealer",
+        "name": "BYD Harmony Karawang",
+        "telephone": "+6287897999648"
+      }
     }
-  }
-};
-const ldScript = document.createElement('script');
-ldScript.type = 'application/ld+json';
-ldScript.textContent = JSON.stringify(vehicleJsonLd);
-document.head.appendChild(ldScript);
+  };
+  const ldScript = document.createElement('script');
+  ldScript.type = 'application/ld+json';
+  ldScript.textContent = JSON.stringify(vehicleJsonLd);
+  document.head.appendChild(ldScript);
+}
 
 } // tutup blok else (data valid)
 </script>
