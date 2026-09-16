@@ -218,7 +218,7 @@
     <div class="text-center max-w-xl mx-auto mb-14">
       <span class="text-xs font-semibold tracking-widest uppercase text-[#22D3EE]">Simulasi Kredit Karawang</span>
       <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-2 mb-3">Cek cicilan sebelum ke showroom</h2>
-      <p class="text-white/50 text-sm">16 varian, lengkap DP dan cicilan per tenor lewat Mandiri Utama Finance (MUF) Area Karawang — atau atur sendiri DP &amp; bunga buat bandingkan dengan Adira Finance / leasing lain.</p>
+      <p class="text-white/50 text-sm">Bandingkan langsung: paket instan Mandiri Utama Finance (MUF) &amp; Adira Finance Area Karawang, atau atur sendiri DP &amp; bunga buat leasing lain.</p>
     </div>
 
     <div class="bg-white rounded-3xl shadow-2xl overflow-hidden grid md:grid-cols-2 p-8 gap-8">
@@ -227,7 +227,8 @@
           <label for="financePartner" class="block text-xs font-bold uppercase tracking-wider text-[#5B6472] mb-2">Skema Pembiayaan</label>
           <select id="financePartner" class="w-full bg-[#F3F5F7] border border-black/10 rounded-2xl p-4 text-sm font-medium focus:outline-none focus:border-[#22D3EE] transition">
             <option value="muf" selected>Mandiri Utama Finance (MUF) — Paket Instan</option>
-            <option value="custom">Custom / Leasing Lain (mis. Adira) — Atur DP &amp; Bunga Sendiri</option>
+            <option value="adira">Adira Finance — Paket Instan</option>
+            <option value="custom">Leasing Lain (Selain MUF &amp; Adira) — Atur DP &amp; Bunga Sendiri</option>
           </select>
         </div>
         <div>
@@ -235,7 +236,7 @@
           <select id="carType" class="w-full bg-[#F3F5F7] border border-black/10 rounded-2xl p-4 text-sm font-medium focus:outline-none focus:border-[#22D3EE] transition"></select>
         </div>
 
-        <!-- Field khusus MUF: tenor dari paket yang sudah ditentukan -->
+        <!-- Field khusus MUF & Adira: tenor dari paket yang sudah ditentukan -->
         <div id="mufTenorWrap">
           <label for="tenor" class="block text-xs font-bold uppercase tracking-wider text-[#5B6472] mb-2">Pilihan Tenor</label>
           <select id="tenor" class="w-full bg-[#F3F5F7] border border-black/10 rounded-2xl p-4 text-sm font-medium focus:outline-none focus:border-[#22D3EE] transition">
@@ -247,7 +248,7 @@
           </select>
         </div>
 
-        <!-- Field khusus Custom: DP, bunga, tenor diisi/dipilih sendiri -->
+        <!-- Field khusus Custom/Leasing Lain: DP, bunga, tenor diisi/dipilih sendiri -->
         <div id="customFieldsWrap" class="hidden space-y-6">
           <div>
             <label for="customDp" class="block text-xs font-bold uppercase tracking-wider text-[#5B6472] mb-2">Uang Muka / DP (Rp)</label>
@@ -272,7 +273,7 @@
         <button id="ctaButton" onclick="handleCtaClick()" class="w-full bg-[#22D3EE] hover:bg-[#0B1220] hover:text-white text-[#0B1220] font-semibold py-4 rounded-2xl transition flex items-center justify-center gap-2">
           <i class="fab fa-whatsapp text-lg"></i> <span id="ctaLabel">Booking Paket Ini</span>
         </button>
-        <p id="financeNote" class="text-[11px] text-[#5B6472] leading-relaxed">*BYD Dolphin belum masuk simulasi karena harga belum dirilis dealer — <a href="https://wa.me/6287897999648?text=Halo%20Amanda,%20saya%20mau%20tanya%20harga%20%26%20simulasi%20BYD%20Dolphin" target="_blank" rel="noopener noreferrer" class="text-[#0E7490] underline">tanya langsung ke Amanda</a>.</p>
+        <p id="financeNote" class="text-[11px] text-[#5B6472] leading-relaxed">*Line-up &amp; nama varian tiap partner pembiayaan bisa sedikit berbeda (paket promo masing-masing) — pilih skema dulu, baru pilih tipe mobilnya. Ada pertanyaan soal varian tertentu? <a href="https://wa.me/6287897999648?text=Halo%20Amanda,%20saya%20mau%20tanya%20soal%20paket%20pembiayaan%20BYD" target="_blank" rel="noopener noreferrer" class="text-[#0E7490] underline">tanya langsung ke Amanda</a>.</p>
       </div>
 
       <div class="bg-[#0B1220] text-white p-8 rounded-2xl flex flex-col justify-between">
@@ -592,12 +593,48 @@ const dbMobil = {
 };
 
 const selectCar = document.getElementById('carType');
-for (const key in dbMobil) {
-  const opt = document.createElement('option');
-  opt.value = key;
-  opt.text = dbMobil[key].nama;
-  selectCar.appendChild(opt);
+
+/* ============ DATA PAKET ADIRA FINANCE ============ */
+/* Sumber: PDF resmi "PAKET PEMBIAYAAN BYD REGULER SEPTEMBER 2026" — Adira Finance.
+   Tenor asli di PDF dalam satuan bulan (12/24/36/48/60), di sini dipetakan ke
+   tahun (1-5) biar konsisten sama UI tenor MUF. OTR & nama varian mengikuti persis
+   penamaan di paket Adira — bisa beda dari penamaan/OTR di paket MUF karena
+   masing-masing finance company punya struktur promo/varian sendiri. */
+const dbMobilAdira = {
+  dolphin_dyn:  { nama:'BYD Dolphin Dynamic',           otr:'372.500.000', dp:'60.600.000',  cicilan:{1:'29.554.000',2:'16.165.000',3:'11.772.000',4:'9.637.000',5:'8.549.000'} },
+  dolphin_prem: { nama:'BYD Dolphin Premium',           otr:'432.500.000', dp:'70.200.000',  cicilan:{1:'33.921.000',2:'18.554.000',3:'13.510.000',4:'11.060.000',5:'9.810.000'} },
+  m6_std_ad:    { nama:'BYD M6 Standard',               otr:'398.500.000', dp:'64.760.000',  cicilan:{1:'31.598.000',2:'17.283.000',3:'12.585.000',4:'10.302.000',5:'9.138.000'} },
+  m6_sup7_ad:   { nama:'BYD M6 Superior 7 Seater',      otr:'438.500.000', dp:'71.160.000',  cicilan:{1:'34.388.000',2:'18.810.000',3:'13.696.000',4:'11.212.000',5:'9.944.000'} },
+  m6_supc6_ad:  { nama:'BYD M6 Superior Captain 6 Seater', otr:'448.500.000', dp:'72.760.000', cicilan:{1:'35.166.000',2:'19.235.000',3:'14.006.000',4:'11.466.000',5:'10.169.000'} },
+  atto1_std_ad: { nama:'BYD Atto 1 Standard',           otr:'202.500.000', dp:'33.400.000',  cicilan:{1:'16.190.000',2:'8.860.000',3:'6.464.000',4:'5.301.000',5:'4.716.000'} },
+  atto1_dyn_ad: { nama:'BYD Atto 1 Dynamic',            otr:'213.500.000', dp:'35.160.000',  cicilan:{1:'17.055.000',2:'9.333.000',3:'6.808.000',4:'5.575.000',5:'4.953.000'} },
+  atto3_prem_ad:{ nama:'BYD Atto 3 Premium',            otr:'248.500.000', dp:'40.760.000',  cicilan:{1:'19.806.000',2:'10.833.000',3:'7.899.000',4:'6.469.000',5:'5.745.000'} },
+  atto3_adv_ad: { nama:'BYD Atto 3 Advanced Plus',      otr:'418.500.000', dp:'67.960.000',  cicilan:{1:'32.832.000',2:'17.958.000',3:'13.077.000',4:'10.705.000',5:'9.495.000'} },
+  sealion7_prem:{ nama:'Sealion 7 Premium',             otr:'632.500.000', dp:'102.200.000', cicilan:{1:'49.482.000',2:'27.032.000',3:'19.653.000',4:'16.089.000',5:'14.264.000'} },
+  sealion7_awd: { nama:'Sealion 7 Performance AWD',     otr:'722.500.000', dp:'116.600.000', cicilan:{1:'56.484.000',2:'30.857.000',3:'22.432.000',4:'18.347.000',5:'16.250.000'} },
+  sealion7_lav: { nama:'Sealion 7 Lavender Grey',       otr:'882.500.000', dp:'142.200.000', cicilan:{1:'68.806.000',2:'37.589.000',3:'27.322.000',4:'22.347.000',5:'19.790.000'} },
+  seal_prem_ad: { nama:'BYD Seal Premium',              otr:'642.500.000', dp:'103.800.000', cicilan:{1:'50.260.000',2:'27.457.000',3:'19.962.000',4:'16.342.000',5:'14.488.000'} },
+  seal_perf_ad: { nama:'BYD Seal Performance',          otr:'753.500.000', dp:'121.560.000', cicilan:{1:'58.896.000',2:'32.175.000',3:'23.389.000',4:'19.130.000',5:'16.943.000'} },
+  seal_lav_ad:  { nama:'BYD Seal Lavender Grey',        otr:'872.500.000', dp:'140.600.000', cicilan:{1:'68.029.000',2:'37.165.000',3:'27.014.000',4:'22.095.000',5:'19.567.000'} },
+  m6dm_std_ad:  { nama:'BYD M6 DM Classic Standard',    otr:'302.000.000', dp:'49.320.000',  hybrid:true, cicilan:{1:'24.012.000',2:'13.133.000',3:'9.568.000',4:'7.836.000',5:'6.956.000'} },
+  m6dm_dyn_ad:  { nama:'BYD M6 DM Classic Dynamic',     otr:'322.000.000', dp:'52.520.000',  hybrid:true, cicilan:{1:'25.584.000',2:'13.993.000',3:'10.193.000',4:'8.348.000',5:'7.409.000'} },
+  m6cross_adv_ad:{ nama:'BYD M6 DM Cross Advanced',     otr:'364.000.000', dp:'59.240.000',  hybrid:true, cicilan:{1:'28.886.000',2:'15.799.000',3:'11.507.000',4:'9.419.000',5:'8.356.000'} },
+  m6cross_s7_ad:{ nama:'BYD M6 DM Cross Superior 7 Seat', otr:'384.000.000', dp:'62.440.000', hybrid:true, cicilan:{1:'30.459.000',2:'16.659.000',3:'12.132.000',4:'9.931.000',5:'8.809.000'} },
+  m6cross_sc_ad:{ nama:'BYD M6 DM Cross Captain Seat',  otr:'394.000.000', dp:'64.040.000',  hybrid:true, cicilan:{1:'31.245.000',2:'17.089.000',3:'12.445.000',4:'10.187.000',5:'9.036.000'} },
+  denza_home_ad:{ nama:'Denza D9 With Home Charging',   otr:'953.000.000', dp:'153.480.000', cicilan:{1:'74.281.000',2:'40.557.000',3:'29.481.000',4:'24.113.000',5:'21.353.000'} },
+  denza_noh_ad: { nama:'Denza D9 Without Home Charging',otr:'944.500.000', dp:'152.120.000', cicilan:{1:'73.621.000',2:'40.196.000',3:'29.219.000',4:'23.899.000',5:'21.163.000'} },
+};
+
+function isiDropdownMobil(dbSumber) {
+  selectCar.innerHTML = '';
+  for (const key in dbSumber) {
+    const opt = document.createElement('option');
+    opt.value = key;
+    opt.text = dbSumber[key].nama;
+    selectCar.appendChild(opt);
+  }
 }
+isiDropdownMobil(dbMobil);
 
 /* ============ TOGGLE SKEMA PEMBIAYAAN (MUF / CUSTOM) ============ */
 /* Catatan penting: Adira Finance (dan leasing lain) nggak punya rate card publik
@@ -638,16 +675,25 @@ function togglePartnerFields() {
   } else {
     mufTenorWrap.classList.remove('hidden');
     customFieldsWrap.classList.add('hidden');
+    // MUF & Adira punya line-up/nama varian sendiri-sendiri, jadi dropdown mobil diisi ulang sesuai sumbernya
+    isiDropdownMobil(partner === 'adira' ? dbMobilAdira : dbMobil);
   }
+}
+
+function getDbAktif() {
+  const partner = financePartner.value;
+  if (partner === 'adira') return dbMobilAdira;
+  return dbMobil; // dipakai juga sebagai sumber harga OTR dasar untuk mode custom
 }
 
 function updateSimulasi() {
   const carKey = document.getElementById('carType').value;
   const partner = financePartner.value;
-  const data = dbMobil[carKey];
+  const data = getDbAktif()[carKey];
+  if (!data) return;
 
   document.getElementById('displayCarName').innerText = data.nama;
-  document.getElementById('displayRange').innerText = data.hybrid ? 'Tipe: Hybrid PHEV' : ('Jarak tempuh: ' + data.range);
+  document.getElementById('displayRange').innerText = data.hybrid ? 'Tipe: Hybrid PHEV' : (data.range ? 'Jarak tempuh: ' + data.range : '\u2014');
   document.getElementById('displayOtr').innerText = 'Rp ' + data.otr;
 
   if (partner === 'custom') {
@@ -657,7 +703,7 @@ function updateSimulasi() {
     const tenorAngka = parseInt(customTenorSelect.value, 10);
     const pokok = Math.max(otrAngka - dpAngka, 0);
 
-    document.getElementById('displayPartnerLabel').innerText = 'Estimasi Ilustratif — Custom';
+    document.getElementById('displayPartnerLabel').innerText = 'Estimasi Ilustratif — Leasing Lain';
     document.getElementById('displayDp').innerText = dpAngka > 0 ? 'Rp ' + formatRupiah(dpAngka) : '—';
     document.getElementById('displayTenorLabel').innerText = `Tenor ${tenorAngka} Tahun`;
 
@@ -668,15 +714,16 @@ function updateSimulasi() {
       document.getElementById('displayAngsuran').innerText = 'Isi DP & bunga';
     }
     document.getElementById('ctaLabel').innerText = 'Ajukan Simulasi Ini';
-    document.getElementById('displayDisclaimer').innerText = '*Simulasi ilustratif pakai rumus bunga flat, BUKAN penawaran resmi dari leasing manapun (termasuk Adira). Suku bunga & tenor asli ditentukan pihak leasing dan bisa berbeda — konfirmasikan ke Amanda sebelum mengajukan.';
+    document.getElementById('displayDisclaimer').innerText = '*Simulasi ilustratif pakai rumus bunga flat, BUKAN penawaran resmi dari leasing manapun. Suku bunga & tenor asli ditentukan pihak leasing dan bisa berbeda — konfirmasikan ke Amanda sebelum mengajukan.';
   } else {
     const tenor = document.getElementById('tenor').value;
-    document.getElementById('displayPartnerLabel').innerText = 'Estimasi Pembiayaan — MUF';
+    const namaPartner = partner === 'adira' ? 'Adira Finance' : 'MUF';
+    document.getElementById('displayPartnerLabel').innerText = 'Estimasi Pembiayaan — ' + namaPartner;
     document.getElementById('displayDp').innerText = 'Rp ' + data.dp;
     document.getElementById('displayTenorLabel').innerText = `Tenor ${tenor} Tahun`;
     document.getElementById('displayAngsuran').innerText = 'Rp ' + data.cicilan[tenor];
     document.getElementById('ctaLabel').innerText = 'Booking Paket Ini';
-    document.getElementById('displayDisclaimer').innerText = '*Syarat & ketentuan berlaku. Harga dapat berubah, konfirmasi terbaru ke Amanda.';
+    document.getElementById('displayDisclaimer').innerText = '*Syarat & ketentuan berlaku. Paket sewaktu-waktu dapat berubah, konfirmasi terbaru ke Amanda.';
   }
 }
 
@@ -692,7 +739,8 @@ updateSimulasi();
 function handleCtaClick() {
   const carKey = document.getElementById('carType').value;
   const partner = financePartner.value;
-  const data = dbMobil[carKey];
+  const data = getDbAktif()[carKey];
+  if (!data) return;
 
   let text;
   if (partner === 'custom') {
@@ -704,10 +752,11 @@ function handleCtaClick() {
     const angsuranText = (dpAngka > 0 && bungaAngka > 0)
       ? 'Rp ' + formatRupiah(hitungAngsuranFlat(pokok, bungaAngka, tenorAngka)) + ' / bulan (estimasi ilustratif)'
       : 'belum dihitung, DP/bunga belum diisi';
-    text = `Halo Amanda, saya lihat web dan mau bandingkan skema kredit *custom* (misal lewat Adira Finance) untuk:\n\nMobil: *${data.nama}*\nOTR: Rp ${data.otr}\nDP yang saya mau: Rp ${formatRupiah(dpAngka)}\nAsumsi bunga: ${bungaAngka}% / tahun\nTenor: ${tenorAngka} Tahun\nEstimasi angsuran (ilustratif): ${angsuranText}\n\nBoleh dibantu cek skema resminya ke leasing terkait?`;
+    text = `Halo Amanda, saya lihat web dan mau bandingkan skema kredit *leasing lain* (selain MUF & Adira) untuk:\n\nMobil: *${data.nama}*\nOTR: Rp ${data.otr}\nDP yang saya mau: Rp ${formatRupiah(dpAngka)}\nAsumsi bunga: ${bungaAngka}% / tahun\nTenor: ${tenorAngka} Tahun\nEstimasi angsuran (ilustratif): ${angsuranText}\n\nBoleh dibantu cek skema resminya?`;
   } else {
     const tenor = document.getElementById('tenor').value;
-    text = `Halo Amanda, saya lihat web dan tertarik dengan simulasi:\n\nMobil: *${data.nama}*\nOTR: Rp ${data.otr}\nDP: Rp ${data.dp}\nTenor: ${tenor} Tahun\nAngsuran: Rp ${data.cicilan[tenor]} / bulan\n\nMohon info selanjutnya ya.`;
+    const namaPartner = partner === 'adira' ? 'Adira Finance' : 'MUF';
+    text = `Halo Amanda, saya lihat web dan tertarik dengan simulasi *${namaPartner}*:\n\nMobil: *${data.nama}*\nOTR: Rp ${data.otr}\nDP: Rp ${data.dp}\nTenor: ${tenor} Tahun\nAngsuran: Rp ${data.cicilan[tenor]} / bulan\n\nMohon info selanjutnya ya.`;
   }
   window.open(`https://wa.me/6287897999648?text=${encodeURIComponent(text)}`, '_blank');
 }
