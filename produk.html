@@ -5,22 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title id="pageTitle">Detail Produk | BYD Harmony Karawang</title>
 <meta name="description" content="Cek spesifikasi, pilihan warna, varian, dan harga mobil BYD & Denza di BYD Harmony Karawang. Simulasi kredit dan test drive langsung ke rumah bareng Amanda.">
+<meta name="keywords" content="BYD Karawang, Dealer BYD Karawang, Harga BYD, Spesifikasi BYD, Promo BYD">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0B1220">
 
-<link rel="canonical" href="">
+<link rel="canonical" href="https://bydkarawang-salesamanda.my.id/produk.html">
 
 <meta property="og:type" content="product">
 <meta property="og:site_name" content="BYD Harmony Karawang">
 <meta property="og:locale" content="id_ID">
 <meta property="og:title" content="Detail Produk | BYD Harmony Karawang">
 <meta property="og:description" content="Cek spesifikasi, pilihan warna, varian, dan harga mobil BYD & Denza di BYD Harmony Karawang.">
-<meta property="og:image" content="logo-byd.png">
-<meta property="og:url" content="">
+<meta property="og:image" content="https://bydkarawang-salesamanda.my.id/logo-byd.png">
+<meta property="og:url" content="https://bydkarawang-salesamanda.my.id/produk.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Detail Produk | BYD Harmony Karawang">
 <meta name="twitter:description" content="Cek spesifikasi, pilihan warna, varian, dan harga mobil BYD & Denza di BYD Harmony Karawang.">
-<meta name="twitter:image" content="logo-byd.png">
+<meta name="twitter:image" content="https://bydkarawang-salesamanda.my.id/logo-byd.png">
 
 <link rel="icon" href="logo-byd.png">
 <link rel="apple-touch-icon" href="logo-byd.png">
@@ -360,6 +361,10 @@ const dbProduk = {
 };
 
 /* ============ LOGIC HALAMAN ============ */
+// Domain resmi — dipakai buat bikin canonical/og:url/og:image absolut biar konsisten
+// sama index.html dan gampang dibaca crawler Google & social media (WA/FB/Twitter).
+const BASE_URL = "https://bydkarawang-salesamanda.my.id";
+
 // 1. Ambil ID dari URL (?id=seal)
 const urlParams = new URLSearchParams(window.location.search);
 const carId = urlParams.get('id') || 'seal'; // Kalau kosong, default ke seal
@@ -380,16 +385,21 @@ document.getElementById('heroImg').src = data.heroImg;
 document.getElementById('heroImg').alt = data.nama;
 
 // Update meta tags biar relevan sesuai mobil yang lagi dibuka (berguna buat browser & crawler yang jalanin JS)
-const fullUrl = window.location.href;
+// fullUrl dibikin dari BASE_URL + carId (bukan window.location.href mentah) biar canonical-nya selalu
+// bentuk yang bersih & konsisten sama URL yang didaftarin di sitemap.xml, apapun query tambahan di address bar.
+const fullUrl = `${BASE_URL}/produk.html?id=${carId}`;
+const absoluteHeroImg = `${BASE_URL}/${data.heroImg}`;
+const metaKeywords = `${data.nama}, ${data.kategori}, Dealer BYD Karawang, Harga ${data.nama}, Promo BYD Karawang`;
 const metaDesc = `${data.nama} — ${data.tagline} Mulai dari ${data.hargaBawah}. Simulasi kredit & test drive langsung ke rumah bareng Amanda, BYD Harmony Karawang.`;
 document.querySelector('meta[name="description"]').setAttribute('content', metaDesc);
+document.querySelector('meta[name="keywords"]').setAttribute('content', metaKeywords);
 document.querySelector('meta[property="og:title"]').setAttribute('content', `${data.nama} | BYD Harmony Karawang`);
 document.querySelector('meta[property="og:description"]').setAttribute('content', metaDesc);
-document.querySelector('meta[property="og:image"]').setAttribute('content', data.heroImg);
+document.querySelector('meta[property="og:image"]').setAttribute('content', absoluteHeroImg);
 document.querySelector('meta[property="og:url"]').setAttribute('content', fullUrl);
 document.querySelector('meta[name="twitter:title"]').setAttribute('content', `${data.nama} | BYD Harmony Karawang`);
 document.querySelector('meta[name="twitter:description"]').setAttribute('content', metaDesc);
-document.querySelector('meta[name="twitter:image"]').setAttribute('content', data.heroImg);
+document.querySelector('meta[name="twitter:image"]').setAttribute('content', absoluteHeroImg);
 document.querySelector('link[rel="canonical"]').setAttribute('href', fullUrl);
 
 // 3. Setup Link WhatsApp
@@ -481,13 +491,12 @@ data.varian.forEach(v => {
 // (hanya digenerate kalau harga sudah berupa angka pasti, biar nggak nyetak "Segera Rilis"/"Hubungi Amanda" jadi harga di data terstruktur)
 const hargaAngka = parseInt(data.hargaBawah.replace(/[^0-9]/g, ''), 10);
 if (!isNaN(hargaAngka) && hargaAngka > 0) {
-  const fullUrl2 = window.location.href;
   const vehicleJsonLd = {
     "@context": "https://schema.org",
     "@type": "Vehicle",
     "name": data.nama,
     "description": data.tagline,
-    "image": data.heroImg,
+    "image": absoluteHeroImg,
     "brand": { "@type": "Brand", "name": "BYD" },
     "vehicleConfiguration": data.kategori,
     "offers": {
@@ -495,7 +504,7 @@ if (!isNaN(hargaAngka) && hargaAngka > 0) {
       "priceCurrency": "IDR",
       "lowPrice": hargaAngka,
       "availability": "https://schema.org/InStock",
-      "url": fullUrl2,
+      "url": fullUrl,
       "seller": {
         "@type": "AutoDealer",
         "name": "BYD Harmony Karawang",
