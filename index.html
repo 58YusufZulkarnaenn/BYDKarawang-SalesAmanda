@@ -70,29 +70,6 @@
     border-radius: 4px;
   }
 
-  /* VISITOR COUNTER */
-  #visitorCounter{
-    position: fixed;
-    left: 16px;
-    bottom: 16px;
-    z-index: 40;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(11,18,32,.85);
-    backdrop-filter: blur(6px);
-    border: 1px solid rgba(255,255,255,.12);
-    color: rgba(255,255,255,.85);
-    font-size: 11px;
-    padding: 8px 12px;
-    border-radius: 999px;
-    box-shadow: 0 6px 20px rgba(0,0,0,.25);
-  }
-  #visitorCounter i{ color: var(--cyan); }
-  #visitorCounterValue{ font-family:'Space Grotesk',sans-serif; font-weight:700; color:#fff; letter-spacing:.5px; }
-  @media (max-width: 640px){
-    #visitorCounter{ left: 10px; bottom: 10px; font-size: 10px; padding: 6px 10px; }
-  }
 </style>
 </head>
 <body class="antialiased">
@@ -457,17 +434,19 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-[#0B1220] text-white/40 py-10 px-6 text-center text-xs">
-  <img src="logo-byd.png" alt="BYD Harmony Auto" class="h-14 sm:h-16 mx-auto mb-5 object-contain">
-  <p>&copy; 2026 BYD Harmony Karawang. All rights reserved. Official Sales: Amanda.</p>
+<footer class="bg-[#0B1220] text-white/40 py-10 px-6 text-xs relative">
+  <div class="max-w-7xl mx-auto flex flex-col items-center">
+    <img src="logo-byd.png" alt="BYD Harmony Auto" class="h-14 sm:h-16 mb-5 object-contain">
+    <p>&copy; 2026 BYD Harmony Karawang. All rights reserved. Official Sales: Amanda.</p>
+  </div>
+  
+  <!-- VISITOR COUNTER (Sekarang nempel manis di kiri bawah footer) -->
+  <div id="visitorCounter" class="absolute bottom-6 left-6 flex items-center gap-2 bg-white/5 border border-white/10 text-white/80 font-medium text-[11px] sm:text-xs px-3 py-1.5 rounded-full" aria-label="Jumlah pengunjung website">
+    <i class="fa-solid fa-eye text-[#22D3EE]"></i>
+    <span>Pengunjung:</span>
+    <span id="visitorCounterValue" class="font-display font-bold text-white tracking-wide">—</span>
+  </div>
 </footer>
-
-<!-- VISITOR COUNTER -->
-<div id="visitorCounter" aria-label="Jumlah pengunjung website">
-  <i class="fa-solid fa-eye"></i>
-  <span>Pengunjung:</span>
-  <span id="visitorCounterValue">—</span>
-</div>
 
 <!-- FLOATING WHATSAPP -->
 <a href="https://wa.me/6287897999648?text=Halo%20Amanda,%20saya%20tertarik%20dengan%20mobil%20BYD." target="_blank" rel="noopener noreferrer" aria-label="Chat WhatsApp Amanda" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-xl hover:bg-green-600 hover:scale-105 transition z-50">
@@ -526,26 +505,20 @@ menuBtn.addEventListener('click', () => {
   menuBtn.innerHTML = menuOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
 });
 
-/* ============ VISITOR COUNTER ============ */
-/* Pakai CounterAPI (counterapi.dev) — gratis, tanpa perlu bikin akun/backend sendiri.
-   "namespace" dipakai biar counter ini unik buat web ini doang, jangan sampai kepakai web lain.
-   Counter cuma nambah 1x per sesi browser tab (pakai sessionStorage) biar reload halaman
-   nggak bikin angkanya meledak nggak wajar. */
+/* ============ VISITOR COUNTER (HIT SETIAP KALI DIBUKA) ============ */
 (function () {
   const NAMESPACE = 'byd-harmony-karawang';
   const COUNTER_NAME = 'homepage-visits';
   const el = document.getElementById('visitorCounterValue');
-  const alreadyCountedThisSession = sessionStorage.getItem('bydCounterHit');
-  const endpoint = alreadyCountedThisSession
-    ? `https://api.counterapi.dev/v1/${NAMESPACE}/${COUNTER_NAME}`
-    : `https://api.counterapi.dev/v1/${NAMESPACE}/${COUNTER_NAME}/up`;
+  
+  // Langsung tembak "up" (nambah 1) setiap kali halaman dimuat
+  const endpoint = `https://api.counterapi.dev/v1/${NAMESPACE}/${COUNTER_NAME}/up`;
 
   fetch(endpoint)
     .then(res => res.json())
     .then(data => {
       if (typeof data.count !== 'undefined') {
         el.textContent = new Intl.NumberFormat('id-ID').format(data.count);
-        if (!alreadyCountedThisSession) sessionStorage.setItem('bydCounterHit', '1');
       } else {
         el.textContent = '0';
       }
