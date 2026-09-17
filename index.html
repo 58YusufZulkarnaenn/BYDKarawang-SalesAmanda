@@ -608,9 +608,80 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowRight') nextSlide();
 });
 
-/* ============ SIMULASI KREDIT DATA ============ */
-/* Sumber: pricelist MUF Mobil Karawang bulan berjalan (OTR, DP, angsuran per tenor sudah dicocokkan langsung ke PDF resmi) */
-const dbMobil = {
+/* ============ CMS HARGA & PAKET — SUMBER DATA GOOGLE SHEETS ============ */
+/* Amanda edit langsung di Google Sheet (tab MUF / tab Adira), web ini fetch CSV publiknya
+   tiap kali halaman dibuka. Kalau fetch gagal (internet Amanda lagi ganti data, sheet
+   ke-unpublish, dsb), web otomatis jatuh ke data cadangan (FALLBACK) di bawah biar
+   simulasi kredit TETAP bisa dipakai calon customer, nggak sampai kosong/error. */
+const SHEET_MUF_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRDjQ-VpyaXq0QnRKlCDvcLcGELGiJbU4ayqIObXQKzTJ1akpIIDXxRi90aivRIhMuGd8M6tdDilFSe/pub?gid=1706197209&single=true&output=csv';
+const SHEET_ADIRA_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRDjQ-VpyaXq0QnRKlCDvcLcGELGiJbU4ayqIObXQKzTJ1akpIIDXxRi90aivRIhMuGd8M6tdDilFSe/pub?gid=2028763923&single=true&output=csv';
+
+// Parser CSV sederhana — ngerti angka yang ditulis dengan koma di dalam tanda kutip,
+// misal "202,500,000" harus dibaca sebagai 1 kolom utuh, bukan kepecah jadi 3 kolom.
+function parseCSV(text) {
+  const rows = [];
+  let row = [], field = '', inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i], next = text[i + 1];
+    if (inQuotes) {
+      if (char === '"' && next === '"') { field += '"'; i++; }
+      else if (char === '"') { inQuotes = false; }
+      else { field += char; }
+    } else {
+      if (char === '"') { inQuotes = true; }
+      else if (char === ',') { row.push(field); field = ''; }
+      else if (char === '\n' || char === '\r') {
+        if (char === '\r' && next === '\n') i++;
+        if (field !== '' || row.length > 0) { row.push(field); rows.push(row); }
+        row = []; field = '';
+      } else { field += char; }
+    }
+  }
+  if (field !== '' || row.length > 0) { row.push(field); rows.push(row); }
+  return rows.filter(r => r.length > 1 && r[0] !== '');
+}
+
+// Ubah baris CSV mentah jadi object { key: { nama, otr, dp, cicilan, hybrid?, range? } }
+// — persis struktur dbMobil/dbMobilAdira yang dulu ditulis manual di JS.
+function csvToDb(rows) {
+  const headers = rows[0].map(h => h.trim());
+  const db = {};
+  for (let i = 1; i < rows.length; i++) {
+    const cols = rows[i];
+    const obj = {};
+    headers.forEach((h, idx) => { obj[h] = (cols[idx] || '').trim(); });
+    const key = obj.key;
+    if (!key) continue;
+    db[key] = {
+      nama: obj.nama,
+      otr: obj.otr,
+      dp: obj.dp,
+      cicilan: {
+        1: obj.angsuran_1th,
+        2: obj.angsuran_2th,
+        3: obj.angsuran_3th,
+        4: obj.angsuran_4th,
+        5: obj.angsuran_5th
+      }
+    };
+    if (obj.hybrid && obj.hybrid.toUpperCase() === 'TRUE') db[key].hybrid = true;
+    if (obj.range_km) db[key].range = obj.range_km;
+  }
+  return db;
+}
+
+async function loadDbFromSheet(url) {
+  const res = await fetch(url, { cache: 'no-store' });
+  if (!res.ok) throw new Error('Gagal ambil CSV dari Google Sheets: ' + res.status);
+  const text = await res.text();
+  const db = csvToDb(parseCSV(text));
+  if (Object.keys(db).length === 0) throw new Error('CSV kebaca tapi datanya kosong');
+  return db;
+}
+
+/* ============ DATA CADANGAN (FALLBACK) ============ */
+/* Sama persis dengan isi Google Sheet per 2026-09 — cuma dipakai kalau fetch ke sheet gagal. */
+const FALLBACK_dbMobil = {
   atto1_std:   { nama:'BYD Atto 1 Standard',           otr:'202.500.000', dp:'38.600.000', range:'300 km', cicilan:{1:'15.435.000',2:'7.998.000',3:'5.521.000',4:'4.453.000',5:'3.849.000'} },
   atto1_dyn:   { nama:'BYD Atto 1 Dynamic',            otr:'213.500.000', dp:'40.200.000', range:'300 km', cicilan:{1:'16.273.000',2:'8.432.000',3:'5.821.000',4:'4.695.000',5:'4.058.000'} },
   atto1_prem:  { nama:'BYD Atto 1 Premium',            otr:'248.500.000', dp:'45.300.000', range:'380 km', cicilan:{1:'18.956.000',2:'9.817.000',3:'6.777.000',4:'5.466.000',5:'4.725.000'} },
@@ -629,15 +700,7 @@ const dbMobil = {
   denza_nohome:{ nama:'Denza D9 (No Home Charging)',   otr:'944.000.000', dp:'142.600.000', range:'600 km', cicilan:{1:'71.812.000',2:'37.125.000',3:'25.586.000',4:'20.608.000',5:'17.788.000'} },
 };
 
-const selectCar = document.getElementById('carType');
-
-/* ============ DATA PAKET ADIRA FINANCE ============ */
-/* Sumber: PDF resmi "PAKET PEMBIAYAAN BYD REGULER SEPTEMBER 2026" — Adira Finance.
-   Tenor asli di PDF dalam satuan bulan (12/24/36/48/60), di sini dipetakan ke
-   tahun (1-5) biar konsisten sama UI tenor MUF. OTR & nama varian mengikuti persis
-   penamaan di paket Adira — bisa beda dari penamaan/OTR di paket MUF karena
-   masing-masing finance company punya struktur promo/varian sendiri. */
-const dbMobilAdira = {
+const FALLBACK_dbMobilAdira = {
   dolphin_dyn:  { nama:'BYD Dolphin Dynamic',           otr:'372.500.000', dp:'60.600.000',  cicilan:{1:'29.554.000',2:'16.165.000',3:'11.772.000',4:'9.637.000',5:'8.549.000'} },
   dolphin_prem: { nama:'BYD Dolphin Premium',           otr:'432.500.000', dp:'70.200.000',  cicilan:{1:'33.921.000',2:'18.554.000',3:'13.510.000',4:'11.060.000',5:'9.810.000'} },
   m6_std_ad:    { nama:'BYD M6 Standard',               otr:'398.500.000', dp:'64.760.000',  cicilan:{1:'31.598.000',2:'17.283.000',3:'12.585.000',4:'10.302.000',5:'9.138.000'} },
@@ -662,6 +725,12 @@ const dbMobilAdira = {
   denza_noh_ad: { nama:'Denza D9 Without Home Charging',otr:'944.500.000', dp:'152.120.000', cicilan:{1:'73.621.000',2:'40.196.000',3:'29.219.000',4:'23.899.000',5:'21.163.000'} },
 };
 
+// Sekarang bukan const lagi — isinya diisi dari Google Sheets setelah fetch berhasil (atau FALLBACK kalau gagal)
+let dbMobil = {};
+let dbMobilAdira = {};
+
+const selectCar = document.getElementById('carType');
+
 function isiDropdownMobil(dbSumber) {
   selectCar.innerHTML = '';
   for (const key in dbSumber) {
@@ -671,7 +740,6 @@ function isiDropdownMobil(dbSumber) {
     selectCar.appendChild(opt);
   }
 }
-isiDropdownMobil(dbMobil);
 
 /* ============ TOGGLE SKEMA PEMBIAYAAN (MUF / CUSTOM) ============ */
 /* Catatan penting: Adira Finance (dan leasing lain) nggak punya rate card publik
@@ -687,6 +755,7 @@ const customFieldsWrap = document.getElementById('customFieldsWrap');
 const customDpInput = document.getElementById('customDp');
 const customBungaInput = document.getElementById('customBunga');
 const customTenorSelect = document.getElementById('customTenor');
+const ctaButton = document.getElementById('ctaButton');
 
 function formatRupiah(num) {
   if (isNaN(num)) return '—';
@@ -770,8 +839,35 @@ customTenorSelect.addEventListener('change', updateSimulasi);
 customDpInput.addEventListener('input', updateSimulasi);
 customBungaInput.addEventListener('input', updateSimulasi);
 financePartner.addEventListener('change', () => { togglePartnerFields(); updateSimulasi(); });
-togglePartnerFields();
-updateSimulasi();
+
+/* ============ INISIALISASI: AMBIL DATA DARI SHEET DULU, BARU NYALAIN FORM ============ */
+(async function initSimulasiKredit() {
+  // Selagi nunggu data sheet kebaca, form dikunci dulu biar orang nggak sempat pencet
+  // form yang datanya masih kosong
+  selectCar.disabled = true;
+  ctaButton.disabled = true;
+  ctaButton.classList.add('opacity-60', 'cursor-not-allowed');
+  document.getElementById('displayCarName').innerText = 'Memuat data harga...';
+
+  try {
+    const [mufData, adiraData] = await Promise.all([
+      loadDbFromSheet(SHEET_MUF_URL),
+      loadDbFromSheet(SHEET_ADIRA_URL)
+    ]);
+    dbMobil = mufData;
+    dbMobilAdira = adiraData;
+  } catch (err) {
+    console.error('Gagal ambil data harga dari Google Sheets, pakai data cadangan:', err);
+    dbMobil = FALLBACK_dbMobil;
+    dbMobilAdira = FALLBACK_dbMobilAdira;
+  }
+
+  selectCar.disabled = false;
+  ctaButton.disabled = false;
+  ctaButton.classList.remove('opacity-60', 'cursor-not-allowed');
+  togglePartnerFields();
+  updateSimulasi();
+})();
 
 function handleCtaClick() {
   const carKey = document.getElementById('carType').value;
