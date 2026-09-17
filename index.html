@@ -61,10 +61,10 @@
   .faq-icon{transition: transform .2s ease;}
   #mobileMenu{transition: max-height .3s ease;}
 
-  /* FIX: biar section nggak ketutup navbar fixed pas discroll lewat anchor link (#simulasi, #lokasi, dst) */
+  /* FIX: biar section nggak ketutup navbar fixed pas discroll lewat anchor link */
   section[id], header#top{ scroll-margin-top: 96px; }
 
-  /* Keyboard focus ring yang jelas buat aksesibilitas — cuma nongol pas navigasi keyboard (Tab), nggak ganggu klik mouse */
+  /* Keyboard focus ring yang jelas buat aksesibilitas */
   a:focus-visible, button:focus-visible, summary:focus-visible, select:focus-visible {
     outline: 2px solid var(--cyan);
     outline-offset: 3px;
@@ -92,10 +92,8 @@
     </a>
     
     <div class="hidden md:flex items-center gap-8">
-      <!-- Menu Beranda (Aktif) -->
       <a href="#top" class="text-sm font-semibold text-[#22D3EE] transition">Beranda</a>
 
-      <!-- Dropdown Menu Product -->
       <div class="relative group">
         <button type="button" aria-haspopup="true" class="text-sm font-medium text-white/70 hover:text-[#22D3EE] transition flex items-center gap-1.5 py-2">
           Product <i class="fa-solid fa-chevron-down text-[10px] group-hover:rotate-180 transition duration-300"></i>
@@ -193,7 +191,6 @@
 <!-- SECTION SLIDER PRODUK -->
 <section id="product-slider" class="relative bg-[#8ca4b5] transition-colors duration-500 w-full min-h-[85vh] flex items-center justify-center overflow-hidden py-20">
   <div id="sliderContent" class="relative z-10 w-full max-w-7xl mx-auto px-6 flex flex-col items-center text-center fade-in">
-    <!-- Gambar udah dipatok tingginya h-[250px] sm:h-[400px] biar teks nggak naik turun pas digeser -->
     <img id="sliderImg" src="seal.webp" alt="BYD SEAL" loading="lazy" class="w-full max-w-4xl h-[250px] sm:h-[400px] object-contain drop-shadow-2xl mb-8">
     <h2 id="sliderTitle" class="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-wide drop-shadow-lg uppercase">BYD SEAL</h2>
     <p id="sliderDesc" class="text-white/90 text-sm sm:text-lg mt-3 mb-10 drop-shadow-md font-medium">Ocean Aesthetics. Pure Performance.</p>
@@ -236,7 +233,6 @@
           <select id="carType" class="w-full bg-[#F3F5F7] border border-black/10 rounded-2xl p-4 text-sm font-medium focus:outline-none focus:border-[#22D3EE] transition"></select>
         </div>
 
-        <!-- Field khusus MUF & Adira: tenor dari paket yang sudah ditentukan -->
         <div id="mufTenorWrap">
           <label for="tenor" class="block text-xs font-bold uppercase tracking-wider text-[#5B6472] mb-2">Pilihan Tenor</label>
           <select id="tenor" class="w-full bg-[#F3F5F7] border border-black/10 rounded-2xl p-4 text-sm font-medium focus:outline-none focus:border-[#22D3EE] transition">
@@ -248,7 +244,6 @@
           </select>
         </div>
 
-        <!-- Field khusus Custom/Leasing Lain: DP, bunga, tenor diisi/dipilih sendiri -->
         <div id="customFieldsWrap" class="hidden space-y-6">
           <div>
             <label for="customDp" class="block text-xs font-bold uppercase tracking-wider text-[#5B6472] mb-2">Uang Muka / DP (Rp)</label>
@@ -441,7 +436,7 @@
     <p>&copy; 2026 BYD Harmony Karawang. All rights reserved. Official Sales: Amanda.</p>
   </div>
   
-  <!-- VISITOR COUNTER (Sekarang nempel manis di kiri bawah footer) -->
+  <!-- VISITOR COUNTER -->
   <div id="visitorCounter" class="absolute bottom-6 left-6 flex items-center gap-2 bg-white/5 border border-white/10 text-white/80 font-medium text-[11px] sm:text-xs px-3 py-1.5 rounded-full" aria-label="Jumlah pengunjung website">
     <i class="fa-solid fa-eye text-[#22D3EE]"></i>
     <span>Total Pengunjung:</span>
@@ -454,7 +449,7 @@
   <i class="fab fa-whatsapp"></i>
 </a>
 
-<!-- STRUCTURED DATA: bantu Google nampilin info dealer (alamat, jam buka, kontak) langsung di hasil pencarian -->
+<!-- STRUCTURED DATA -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -512,7 +507,6 @@ menuBtn.addEventListener('click', () => {
   const COUNTER_NAME = 'homepage-visits';
   const el = document.getElementById('visitorCounterValue');
   
-  // Endpoint Abacus dari temen lo
   const endpoint = `https://abacus.jasoncameron.dev/hit/${NAMESPACE}/${COUNTER_NAME}`;
 
   fetch(endpoint)
@@ -521,7 +515,6 @@ menuBtn.addEventListener('click', () => {
       return res.json();
     })
     .then(data => {
-      // Abacus pake 'value', bukan 'count'
       if (typeof data.value !== 'undefined') {
         el.textContent = new Intl.NumberFormat('id-ID').format(data.value);
       } else {
@@ -555,7 +548,6 @@ const sliderSection = document.getElementById('product-slider');
 const sliderContent = document.getElementById('sliderContent');
 const sliderDots = document.getElementById('sliderDots');
 
-// Generate Navigasi Bulat (Dots)
 products.forEach((_, i) => {
   const dot = document.createElement('button');
   dot.type = 'button';
@@ -569,7 +561,6 @@ function p_name(i){ return products[i].name; }
 function updateSlider() {
   const p = products[currentSlide];
   
-  // Efek kedip transisi ganti konten
   sliderContent.classList.remove('fade-in');
   void sliderContent.offsetWidth; 
   sliderContent.classList.add('fade-in');
@@ -589,7 +580,6 @@ function nextSlide() { currentSlide = (currentSlide + 1) % products.length; upda
 function prevSlide() { currentSlide = (currentSlide - 1 + products.length) % products.length; updateSlider(); }
 function goToSlide(index) { currentSlide = index; updateSlider(); }
 
-// Fungsi Geser HP
 let startX = 0;
 sliderSection.addEventListener('touchstart', e => startX = e.changedTouches[0].screenX);
 sliderSection.addEventListener('touchend', e => {
@@ -598,7 +588,6 @@ sliderSection.addEventListener('touchend', e => {
   if (diff < -50) nextSlide();
 });
 
-// Fungsi geser pakai panah kiri/kanan keyboard, tapi cuma aktif kalau slider lagi kelihatan di layar
 document.addEventListener('keydown', (e) => {
   if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
   const rect = sliderSection.getBoundingClientRect();
@@ -609,15 +598,9 @@ document.addEventListener('keydown', (e) => {
 });
 
 /* ============ CMS HARGA & PAKET — SUMBER DATA GOOGLE SHEETS ============ */
-/* Amanda edit langsung di Google Sheet (tab MUF / tab Adira), web ini fetch CSV publiknya
-   tiap kali halaman dibuka. Kalau fetch gagal (internet Amanda lagi ganti data, sheet
-   ke-unpublish, dsb), web otomatis jatuh ke data cadangan (FALLBACK) di bawah biar
-   simulasi kredit TETAP bisa dipakai calon customer, nggak sampai kosong/error. */
 const SHEET_MUF_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRDjQ-VpyaXq0QnRKlCDvcLcGELGiJbU4ayqIObXQKzTJ1akpIIDXxRi90aivRIhMuGd8M6tdDilFSe/pub?gid=1706197209&single=true&output=csv';
 const SHEET_ADIRA_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRDjQ-VpyaXq0QnRKlCDvcLcGELGiJbU4ayqIObXQKzTJ1akpIIDXxRi90aivRIhMuGd8M6tdDilFSe/pub?gid=2028763923&single=true&output=csv';
 
-// Parser CSV sederhana — ngerti angka yang ditulis dengan koma di dalam tanda kutip,
-// misal "202,500,000" harus dibaca sebagai 1 kolom utuh, bukan kepecah jadi 3 kolom.
 function parseCSV(text) {
   const rows = [];
   let row = [], field = '', inQuotes = false;
@@ -641,8 +624,6 @@ function parseCSV(text) {
   return rows.filter(r => r.length > 1 && r[0] !== '');
 }
 
-// Ubah baris CSV mentah jadi object { key: { nama, otr, dp, cicilan, hybrid?, range? } }
-// — persis struktur dbMobil/dbMobilAdira yang dulu ditulis manual di JS.
 function csvToDb(rows) {
   const headers = rows[0].map(h => h.trim());
   const db = {};
@@ -670,8 +651,10 @@ function csvToDb(rows) {
   return db;
 }
 
+// FIX UTAMA: nambahin cache-buster pakai timestamp di akhir URL
 async function loadDbFromSheet(url) {
-  const res = await fetch(url, { cache: 'no-store' });
+  const cacheBusterUrl = url + '&t=' + new Date().getTime();
+  const res = await fetch(cacheBusterUrl, { cache: 'no-store' });
   if (!res.ok) throw new Error('Gagal ambil CSV dari Google Sheets: ' + res.status);
   const text = await res.text();
   const db = csvToDb(parseCSV(text));
@@ -680,55 +663,52 @@ async function loadDbFromSheet(url) {
 }
 
 /* ============ DATA CADANGAN (FALLBACK) ============ */
-/* Sama persis dengan isi Google Sheet per 2026-09 — cuma dipakai kalau fetch ke sheet gagal. */
 const FALLBACK_dbMobil = {
-  atto1_std:   { nama:'BYD Atto 1 Standard',           otr:'202.500.000', dp:'38.600.000', range:'300 km', cicilan:{1:'15.435.000',2:'7.998.000',3:'5.521.000',4:'4.453.000',5:'3.849.000'} },
-  atto1_dyn:   { nama:'BYD Atto 1 Dynamic',            otr:'213.500.000', dp:'40.200.000', range:'300 km', cicilan:{1:'16.273.000',2:'8.432.000',3:'5.821.000',4:'4.695.000',5:'4.058.000'} },
-  atto1_prem:  { nama:'BYD Atto 1 Premium',            otr:'248.500.000', dp:'45.300.000', range:'380 km', cicilan:{1:'18.956.000',2:'9.817.000',3:'6.777.000',4:'5.466.000',5:'4.725.000'} },
-  atto3_adv:   { nama:'BYD Atto 3 Advance Plus',       otr:'418.500.000', dp:'66.600.000', range:'410 km', cicilan:{1:'31.970.000',2:'16.556.000',3:'11.423.000',4:'9.209.000',5:'7.957.000'} },
-  m6dm_std:    { nama:'BYD M6 DM Classic Standard',    otr:'302.000.000', dp:'53.200.000', hybrid:true,    cicilan:{1:'23.059.000',2:'11.941.000',3:'8.239.000',4:'6.642.000',5:'5.741.000'} },
-  m6dm_dyn:    { nama:'BYD M6 DM Classic Dynamic',     otr:'322.000.000', dp:'56.100.000', hybrid:true,    cicilan:{1:'24.596.000',2:'12.737.000',3:'8.788.000',4:'7.085.000',5:'6.121.000'} },
-  m6cross_adv: { nama:'BYD M6 Cross Advanced',         otr:'364.000.000', dp:'62.200.000', hybrid:true,    cicilan:{1:'27.808.000',2:'14.401.000',3:'9.936.000',4:'8.011.000',5:'6.921.000'} },
-  m6cross_s7:  { nama:'BYD M6 Cross Superior 7 Seat',  otr:'384.000.000', dp:'65.200.000', hybrid:true,    cicilan:{1:'29.331.000',2:'15.190.000',3:'10.480.000',4:'8.449.000',5:'7.300.000'} },
-  m6cross_sc:  { nama:'BYD M6 Cross Superior Captain', otr:'394.000.000', dp:'66.600.000', hybrid:true,    cicilan:{1:'30.101.000',2:'15.588.000',3:'10.755.000',4:'8.671.000',5:'7.492.000'} },
-  m6_std:      { nama:'BYD M6 Standard',               otr:'398.500.000', dp:'67.700.000', range:'450 km', cicilan:{1:'30.412.000',2:'15.750.000',3:'10.866.000',4:'8.761.000',5:'7.569.000'} },
-  m6_sup:      { nama:'BYD M6 Superior',               otr:'438.500.000', dp:'69.600.000', range:'600 km', cicilan:{1:'33.484.000',2:'17.340.000',3:'11.964.000',4:'9.645.000',5:'8.333.000'} },
-  m6_supc:     { nama:'BYD M6 Superior Captain Seat',  otr:'448.500.000', dp:'70.900.000', range:'600 km', cicilan:{1:'34.251.000',2:'17.737.000',3:'12.238.000',4:'9.866.000',5:'8.524.000'} },
-  sealion7_ext:{ nama:'Sealion 7 Extended',            otr:'882.500.000', dp:'133.300.000', range:'650 km', cicilan:{1:'67.144.000',2:'34.729.000',3:'23.934.000',4:'19.277.000',5:'16.640.000'} },
-  seal_prem:   { nama:'BYD Seal Premium',              otr:'872.500.000', dp:'131.800.000', range:'650 km', cicilan:{1:'66.391.000',2:'34.339.000',3:'23.666.000',4:'19.061.000',5:'16.453.000'} },
-  denza_home:  { nama:'Denza D9 (With Home Charging)', otr:'953.000.000', dp:'143.900.000', range:'600 km', cicilan:{1:'72.452.000',2:'37.456.000',3:'25.814.000',4:'20.792.000',5:'17.947.000'} },
-  denza_nohome:{ nama:'Denza D9 (No Home Charging)',   otr:'944.000.000', dp:'142.600.000', range:'600 km', cicilan:{1:'71.812.000',2:'37.125.000',3:'25.586.000',4:'20.608.000',5:'17.788.000'} },
+  atto1_std:   { nama:'BYD Atto 1 Standard',            otr:'202.500.000', dp:'38.600.000', range:'300 km', cicilan:{1:'15.435.000',2:'7.998.000',3:'5.521.000',4:'4.453.000',5:'3.849.000'} },
+  atto1_dyn:   { nama:'BYD Atto 1 Dynamic',             otr:'213.500.000', dp:'40.200.000', range:'300 km', cicilan:{1:'16.273.000',2:'8.432.000',3:'5.821.000',4:'4.695.000',5:'4.058.000'} },
+  atto1_prem:  { nama:'BYD Atto 1 Premium',             otr:'248.500.000', dp:'45.300.000', range:'380 km', cicilan:{1:'18.956.000',2:'9.817.000',3:'6.777.000',4:'5.466.000',5:'4.725.000'} },
+  atto3_adv:   { nama:'BYD Atto 3 Advance Plus',        otr:'418.500.000', dp:'66.600.000', range:'410 km', cicilan:{1:'31.970.000',2:'16.556.000',3:'11.423.000',4:'9.209.000',5:'7.957.000'} },
+  m6dm_std:    { nama:'BYD M6 DM Classic Standard',     otr:'302.000.000', dp:'53.200.000', hybrid:true,    cicilan:{1:'23.059.000',2:'11.941.000',3:'8.239.000',4:'6.642.000',5:'5.741.000'} },
+  m6dm_dyn:    { nama:'BYD M6 DM Classic Dynamic',      otr:'322.000.000', dp:'56.100.000', hybrid:true,    cicilan:{1:'24.596.000',2:'12.737.000',3:'8.788.000',4:'7.085.000',5:'6.121.000'} },
+  m6cross_adv: { nama:'BYD M6 Cross Advanced',          otr:'364.000.000', dp:'62.200.000', hybrid:true,    cicilan:{1:'27.808.000',2:'14.401.000',3:'9.936.000',4:'8.011.000',5:'6.921.000'} },
+  m6cross_s7:  { nama:'BYD M6 Cross Superior 7 Seat',   otr:'384.000.000', dp:'65.200.000', hybrid:true,    cicilan:{1:'29.331.000',2:'15.190.000',3:'10.480.000',4:'8.449.000',5:'7.300.000'} },
+  m6cross_sc:  { nama:'BYD M6 Cross Superior Captain',  otr:'394.000.000', dp:'66.600.000', hybrid:true,    cicilan:{1:'30.101.000',2:'15.588.000',3:'10.755.000',4:'8.671.000',5:'7.492.000'} },
+  m6_std:      { nama:'BYD M6 Standard',                otr:'398.500.000', dp:'67.700.000', range:'450 km', cicilan:{1:'30.412.000',2:'15.750.000',3:'10.866.000',4:'8.761.000',5:'7.569.000'} },
+  m6_sup:      { nama:'BYD M6 Superior',                otr:'438.500.000', dp:'69.600.000', range:'600 km', cicilan:{1:'33.484.000',2:'17.340.000',3:'11.964.000',4:'9.645.000',5:'8.333.000'} },
+  m6_supc:     { nama:'BYD M6 Superior Captain Seat',   otr:'448.500.000', dp:'70.900.000', range:'600 km', cicilan:{1:'34.251.000',2:'17.737.000',3:'12.238.000',4:'9.866.000',5:'8.524.000'} },
+  sealion7_ext:{ nama:'Sealion 7 Extended',             otr:'882.500.000', dp:'133.300.000', range:'650 km', cicilan:{1:'67.144.000',2:'34.729.000',3:'23.934.000',4:'19.277.000',5:'16.640.000'} },
+  seal_prem:   { nama:'BYD Seal Premium',               otr:'872.500.000', dp:'131.800.000', range:'650 km', cicilan:{1:'66.391.000',2:'34.339.000',3:'23.666.000',4:'19.061.000',5:'16.453.000'} },
+  denza_home:  { nama:'Denza D9 (With Home Charging)',  otr:'953.000.000', dp:'143.900.000', range:'600 km', cicilan:{1:'72.452.000',2:'37.456.000',3:'25.814.000',4:'20.792.000',5:'17.947.000'} },
+  denza_nohome:{ nama:'Denza D9 (No Home Charging)',    otr:'944.000.000', dp:'142.600.000', range:'600 km', cicilan:{1:'71.812.000',2:'37.125.000',3:'25.586.000',4:'20.608.000',5:'17.788.000'} },
 };
 
 const FALLBACK_dbMobilAdira = {
-  dolphin_dyn:  { nama:'BYD Dolphin Dynamic',           otr:'372.500.000', dp:'60.600.000',  cicilan:{1:'29.554.000',2:'16.165.000',3:'11.772.000',4:'9.637.000',5:'8.549.000'} },
-  dolphin_prem: { nama:'BYD Dolphin Premium',           otr:'432.500.000', dp:'70.200.000',  cicilan:{1:'33.921.000',2:'18.554.000',3:'13.510.000',4:'11.060.000',5:'9.810.000'} },
-  m6_std_ad:    { nama:'BYD M6 Standard',               otr:'398.500.000', dp:'64.760.000',  cicilan:{1:'31.598.000',2:'17.283.000',3:'12.585.000',4:'10.302.000',5:'9.138.000'} },
-  m6_sup7_ad:   { nama:'BYD M6 Superior 7 Seater',      otr:'438.500.000', dp:'71.160.000',  cicilan:{1:'34.388.000',2:'18.810.000',3:'13.696.000',4:'11.212.000',5:'9.944.000'} },
+  dolphin_dyn:  { nama:'BYD Dolphin Dynamic',            otr:'372.500.000', dp:'60.600.000',  cicilan:{1:'29.554.000',2:'16.165.000',3:'11.772.000',4:'9.637.000',5:'8.549.000'} },
+  dolphin_prem: { nama:'BYD Dolphin Premium',            otr:'432.500.000', dp:'70.200.000',  cicilan:{1:'33.921.000',2:'18.554.000',3:'13.510.000',4:'11.060.000',5:'9.810.000'} },
+  m6_std_ad:    { nama:'BYD M6 Standard',                otr:'398.500.000', dp:'64.760.000',  cicilan:{1:'31.598.000',2:'17.283.000',3:'12.585.000',4:'10.302.000',5:'9.138.000'} },
+  m6_sup7_ad:   { nama:'BYD M6 Superior 7 Seater',       otr:'438.500.000', dp:'71.160.000',  cicilan:{1:'34.388.000',2:'18.810.000',3:'13.696.000',4:'11.212.000',5:'9.944.000'} },
   m6_supc6_ad:  { nama:'BYD M6 Superior Captain 6 Seater', otr:'448.500.000', dp:'72.760.000', cicilan:{1:'35.166.000',2:'19.235.000',3:'14.006.000',4:'11.466.000',5:'10.169.000'} },
-  atto1_std_ad: { nama:'BYD Atto 1 Standard',           otr:'202.500.000', dp:'33.400.000',  cicilan:{1:'16.190.000',2:'8.860.000',3:'6.464.000',4:'5.301.000',5:'4.716.000'} },
-  atto1_dyn_ad: { nama:'BYD Atto 1 Dynamic',            otr:'213.500.000', dp:'35.160.000',  cicilan:{1:'17.055.000',2:'9.333.000',3:'6.808.000',4:'5.575.000',5:'4.953.000'} },
-  atto3_prem_ad:{ nama:'BYD Atto 3 Premium',            otr:'248.500.000', dp:'40.760.000',  cicilan:{1:'19.806.000',2:'10.833.000',3:'7.899.000',4:'6.469.000',5:'5.745.000'} },
-  atto3_adv_ad: { nama:'BYD Atto 3 Advanced Plus',      otr:'418.500.000', dp:'67.960.000',  cicilan:{1:'32.832.000',2:'17.958.000',3:'13.077.000',4:'10.705.000',5:'9.495.000'} },
-  sealion7_prem:{ nama:'Sealion 7 Premium',             otr:'632.500.000', dp:'102.200.000', cicilan:{1:'49.482.000',2:'27.032.000',3:'19.653.000',4:'16.089.000',5:'14.264.000'} },
-  sealion7_awd: { nama:'Sealion 7 Performance AWD',     otr:'722.500.000', dp:'116.600.000', cicilan:{1:'56.484.000',2:'30.857.000',3:'22.432.000',4:'18.347.000',5:'16.250.000'} },
-  sealion7_lav: { nama:'Sealion 7 Lavender Grey',       otr:'882.500.000', dp:'142.200.000', cicilan:{1:'68.806.000',2:'37.589.000',3:'27.322.000',4:'22.347.000',5:'19.790.000'} },
-  seal_prem_ad: { nama:'BYD Seal Premium',              otr:'642.500.000', dp:'103.800.000', cicilan:{1:'50.260.000',2:'27.457.000',3:'19.962.000',4:'16.342.000',5:'14.488.000'} },
-  seal_perf_ad: { nama:'BYD Seal Performance',          otr:'753.500.000', dp:'121.560.000', cicilan:{1:'58.896.000',2:'32.175.000',3:'23.389.000',4:'19.130.000',5:'16.943.000'} },
-  seal_lav_ad:  { nama:'BYD Seal Lavender Grey',        otr:'872.500.000', dp:'140.600.000', cicilan:{1:'68.029.000',2:'37.165.000',3:'27.014.000',4:'22.095.000',5:'19.567.000'} },
-  m6dm_std_ad:  { nama:'BYD M6 DM Classic Standard',    otr:'302.000.000', dp:'49.320.000',  hybrid:true, cicilan:{1:'24.012.000',2:'13.133.000',3:'9.568.000',4:'7.836.000',5:'6.956.000'} },
-  m6dm_dyn_ad:  { nama:'BYD M6 DM Classic Dynamic',     otr:'322.000.000', dp:'52.520.000',  hybrid:true, cicilan:{1:'25.584.000',2:'13.993.000',3:'10.193.000',4:'8.348.000',5:'7.409.000'} },
-  m6cross_adv_ad:{ nama:'BYD M6 DM Cross Advanced',     otr:'364.000.000', dp:'59.240.000',  hybrid:true, cicilan:{1:'28.886.000',2:'15.799.000',3:'11.507.000',4:'9.419.000',5:'8.356.000'} },
+  atto1_std_ad: { nama:'BYD Atto 1 Standard',            otr:'202.500.000', dp:'33.400.000',  cicilan:{1:'16.190.000',2:'8.860.000',3:'6.464.000',4:'5.301.000',5:'4.716.000'} },
+  atto1_dyn_ad: { nama:'BYD Atto 1 Dynamic',             otr:'213.500.000', dp:'35.160.000',  cicilan:{1:'17.055.000',2:'9.333.000',3:'6.808.000',4:'5.575.000',5:'4.953.000'} },
+  atto3_prem_ad:{ nama:'BYD Atto 3 Premium',             otr:'248.500.000', dp:'40.760.000',  cicilan:{1:'19.806.000',2:'10.833.000',3:'7.899.000',4:'6.469.000',5:'5.745.000'} },
+  atto3_adv_ad: { nama:'BYD Atto 3 Advanced Plus',       otr:'418.500.000', dp:'67.960.000',  cicilan:{1:'32.832.000',2:'17.958.000',3:'13.077.000',4:'10.705.000',5:'9.495.000'} },
+  sealion7_prem:{ nama:'Sealion 7 Premium',              otr:'632.500.000', dp:'102.200.000', cicilan:{1:'49.482.000',2:'27.032.000',3:'19.653.000',4:'16.089.000',5:'14.264.000'} },
+  sealion7_awd: { nama:'Sealion 7 Performance AWD',      otr:'722.500.000', dp:'116.600.000', cicilan:{1:'56.484.000',2:'30.857.000',3:'22.432.000',4:'18.347.000',5:'16.250.000'} },
+  sealion7_lav: { nama:'Sealion 7 Lavender Grey',        otr:'882.500.000', dp:'142.200.000', cicilan:{1:'68.806.000',2:'37.589.000',3:'27.322.000',4:'22.347.000',5:'19.790.000'} },
+  seal_prem_ad: { nama:'BYD Seal Premium',               otr:'642.500.000', dp:'103.800.000', cicilan:{1:'50.260.000',2:'27.457.000',3:'19.962.000',4:'16.342.000',5:'14.488.000'} },
+  seal_perf_ad: { nama:'BYD Seal Performance',           otr:'753.500.000', dp:'121.560.000', cicilan:{1:'58.896.000',2:'32.175.000',3:'23.389.000',4:'19.130.000',5:'16.943.000'} },
+  seal_lav_ad:  { nama:'BYD Seal Lavender Grey',         otr:'872.500.000', dp:'140.600.000', cicilan:{1:'68.029.000',2:'37.165.000',3:'27.014.000',4:'22.095.000',5:'19.567.000'} },
+  m6dm_std_ad:  { nama:'BYD M6 DM Classic Standard',     otr:'302.000.000', dp:'49.320.000',  hybrid:true, cicilan:{1:'24.012.000',2:'13.133.000',3:'9.568.000',4:'7.836.000',5:'6.956.000'} },
+  m6dm_dyn_ad:  { nama:'BYD M6 DM Classic Dynamic',      otr:'322.000.000', dp:'52.520.000',  hybrid:true, cicilan:{1:'25.584.000',2:'13.993.000',3:'10.193.000',4:'8.348.000',5:'7.409.000'} },
+  m6cross_adv_ad:{ nama:'BYD M6 DM Cross Advanced',      otr:'364.000.000', dp:'59.240.000',  hybrid:true, cicilan:{1:'28.886.000',2:'15.799.000',3:'11.507.000',4:'9.419.000',5:'8.356.000'} },
   m6cross_s7_ad:{ nama:'BYD M6 DM Cross Superior 7 Seat', otr:'384.000.000', dp:'62.440.000', hybrid:true, cicilan:{1:'30.459.000',2:'16.659.000',3:'12.132.000',4:'9.931.000',5:'8.809.000'} },
-  m6cross_sc_ad:{ nama:'BYD M6 DM Cross Captain Seat',  otr:'394.000.000', dp:'64.040.000',  hybrid:true, cicilan:{1:'31.245.000',2:'17.089.000',3:'12.445.000',4:'10.187.000',5:'9.036.000'} },
-  denza_home_ad:{ nama:'Denza D9 With Home Charging',   otr:'953.000.000', dp:'153.480.000', cicilan:{1:'74.281.000',2:'40.557.000',3:'29.481.000',4:'24.113.000',5:'21.353.000'} },
+  m6cross_sc_ad:{ nama:'BYD M6 DM Cross Captain Seat',   otr:'394.000.000', dp:'64.040.000',  hybrid:true, cicilan:{1:'31.245.000',2:'17.089.000',3:'12.445.000',4:'10.187.000',5:'9.036.000'} },
+  denza_home_ad:{ nama:'Denza D9 With Home Charging',    otr:'953.000.000', dp:'153.480.000', cicilan:{1:'74.281.000',2:'40.557.000',3:'29.481.000',4:'24.113.000',5:'21.353.000'} },
   denza_noh_ad: { nama:'Denza D9 Without Home Charging',otr:'944.500.000', dp:'152.120.000', cicilan:{1:'73.621.000',2:'40.196.000',3:'29.219.000',4:'23.899.000',5:'21.163.000'} },
 };
 
-// Sekarang bukan const lagi — isinya diisi dari Google Sheets setelah fetch berhasil (atau FALLBACK kalau gagal)
 let dbMobil = {};
 let dbMobilAdira = {};
-
 const selectCar = document.getElementById('carType');
 
 function isiDropdownMobil(dbSumber) {
@@ -741,14 +721,7 @@ function isiDropdownMobil(dbSumber) {
   }
 }
 
-/* ============ TOGGLE SKEMA PEMBIAYAAN (MUF / CUSTOM) ============ */
-/* Catatan penting: Adira Finance (dan leasing lain) nggak punya rate card publik
-   (DP% & bunga per tenor) yang bisa dipastikan akurat untuk lineup BYD ini. Daripada
-   nampilin angka kira-kira yang diklaim resmi dari Adira, mode "Custom" di bawah ini
-   pakai rumus bunga flat standar (persis pola kalkulator yang dipakai banyak dealer
-   BYD lain, mis. simulasi di bydhakapejaten.id) — DP dan bunganya diisi sendiri oleh
-   pengunjung/Amanda pas sudah tahu penawaran dari leasing pilihannya. Hasilnya jelas
-   ditandai "ilustrasi", bukan angka resmi dari finance company manapun. */
+/* ============ TOGGLE SKEMA PEMBIAYAAN ============ */
 const financePartner = document.getElementById('financePartner');
 const mufTenorWrap = document.getElementById('mufTenorWrap');
 const customFieldsWrap = document.getElementById('customFieldsWrap');
@@ -766,7 +739,6 @@ function parseRupiahString(str) {
   return parseInt(String(str).replace(/\./g, ''), 10);
 }
 
-// Rumus bunga flat standar: bunga = pokok x (bunga%/100) x tenor(tahun)
 function hitungAngsuranFlat(pokok, bungaPersenTahun, tenorTahun) {
   const bunga = pokok * (bungaPersenTahun / 100) * tenorTahun;
   const total = pokok + bunga;
@@ -781,7 +753,6 @@ function togglePartnerFields() {
   } else {
     mufTenorWrap.classList.remove('hidden');
     customFieldsWrap.classList.add('hidden');
-    // MUF & Adira punya line-up/nama varian sendiri-sendiri, jadi dropdown mobil diisi ulang sesuai sumbernya
     isiDropdownMobil(partner === 'adira' ? dbMobilAdira : dbMobil);
   }
 }
@@ -789,7 +760,7 @@ function togglePartnerFields() {
 function getDbAktif() {
   const partner = financePartner.value;
   if (partner === 'adira') return dbMobilAdira;
-  return dbMobil; // dipakai juga sebagai sumber harga OTR dasar untuk mode custom
+  return dbMobil; 
 }
 
 function updateSimulasi() {
@@ -840,14 +811,14 @@ customDpInput.addEventListener('input', updateSimulasi);
 customBungaInput.addEventListener('input', updateSimulasi);
 financePartner.addEventListener('change', () => { togglePartnerFields(); updateSimulasi(); });
 
-/* ============ INISIALISASI: AMBIL DATA DARI SHEET DULU, BARU NYALAIN FORM ============ */
+/* ============ INISIALISASI ============ */
 (async function initSimulasiKredit() {
-  // Selagi nunggu data sheet kebaca, form dikunci dulu biar orang nggak sempat pencet
-  // form yang datanya masih kosong
   selectCar.disabled = true;
   ctaButton.disabled = true;
   ctaButton.classList.add('opacity-60', 'cursor-not-allowed');
-  document.getElementById('displayCarName').innerText = 'Memuat data harga...';
+  
+  // Nambahin icon muter (spinner) pas awal loading fetch datanya
+  document.getElementById('displayCarName').innerHTML = '<i class="fa-solid fa-spinner fa-spin text-[#22D3EE] mr-2"></i> Mensinkronisasi data...';
 
   try {
     const [mufData, adiraData] = await Promise.all([
@@ -924,7 +895,7 @@ if (testimonials.length > 0) {
 
 /* ============ FAQ ============ */
 const faqs = [
-  { q:'Bagaimana proses pengajuan kredit lewat MUF & ADIRA FINANCE?', a:'Konsultasi tipe & simulasi bersama Amanda, lengkapi dokumen (KTP, KK, slip gaji/NPWP untuk wiraswasta), lalu pengajuan diproses tim MUF. Proses persetujuan umumnya cepat untuk berkas lengkap.' },
+  { q:'Bagaimana proses pengajuan kredit lewat MUF & ADIRA FINANCE?', a:'Konsultasi tipe & simulasi bersama Amanda, lengkapi dokumen (KTP, KK, slip gaji/NPWP untuk wiraswasta), lalu pengajuan diproses tim MUF & ADIRA FINANCE. Proses persetujuan umumnya cepat untuk berkas lengkap.' },
   { q:'Berapa lama garansi baterai BYD?', a:'Umumnya baterai BYD mendapat garansi 8 tahun dengan ketentuan jarak tempuh dan State of Health tertentu. Detail garansi per model bisa dikonfirmasi langsung ke Amanda karena ketentuannya bisa berbeda tiap tipe.' },
   { q:'Apakah bisa test drive tanpa datang ke showroom?', a:'Bisa. BYD Harmony Karawang melayani test drive langsung ke rumah atau kantor di area Karawang dan sekitarnya — tinggal jadwalkan lewat WhatsApp Amanda.' },
   { q:'Ada layanan trade-in mobil lama?', a:'Ada, trade-in bisa untuk berbagai merek. Nilai tukar tambah akan dihitung saat konsultasi dengan tim sales.' },
@@ -942,7 +913,6 @@ faqs.forEach(f => {
     </details>`;
 });
 
-// Structured data FAQPage — digenerate otomatis dari array faqs di atas biar selalu sinkron, nggak perlu tulis 2x
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
