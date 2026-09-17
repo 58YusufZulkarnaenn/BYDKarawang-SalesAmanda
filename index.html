@@ -598,6 +598,8 @@ document.addEventListener('keydown', (e) => {
 });
 
 /* ============ CMS HARGA & PAKET — SUMBER DATA GOOGLE SHEETS ============ */
+const SPREADSHEET_ID = '13jXUj_g4qRV_l4GPmzSGJfwZXDXnEzOV';
+  
 const SHEET_MUF_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRDjQ-VpyaXq0QnRKlCDvcLcGELGiJbU4ayqIObXQKzTJ1akpIIDXxRi90aivRIhMuGd8M6tdDilFSe/pub?gid=1706197209&single=true&output=csv';
 const SHEET_ADIRA_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRDjQ-VpyaXq0QnRKlCDvcLcGELGiJbU4ayqIObXQKzTJ1akpIIDXxRi90aivRIhMuGd8M6tdDilFSe/pub?gid=2028763923&single=true&output=csv';
 
@@ -661,7 +663,7 @@ async function loadDbFromSheet(url) {
   if (Object.keys(db).length === 0) throw new Error('CSV kebaca tapi datanya kosong');
   return db;
 }
-
+  
 /* ============ DATA CADANGAN (FALLBACK) ============ */
 const FALLBACK_dbMobil = {
   atto1_std:   { nama:'BYD Atto 1 Standard',            otr:'202.500.000', dp:'38.600.000', range:'300 km', cicilan:{1:'15.435.000',2:'7.998.000',3:'5.521.000',4:'4.453.000',5:'3.849.000'} },
